@@ -161,13 +161,44 @@ function Index() {
                 </a>
               </div>
               <div className="detail-item">
+                <p className="detail-label">Mobile</p>
+                <a className="contact-link" href="tel:+9779860437025">
+                  9860437025
+                </a>
+              </div>
+              <div className="detail-item">
                 <p className="detail-label">Location</p>
                 <p className="detail-value">Narayantar, Kathmandu, Nepal</p>
+              </div>
+              <div className="detail-item">
+                <p className="detail-label">LinkedIn</p>
+                <a
+                  className="contact-link"
+                  href="https://www.linkedin.com/in/sajesh-shrestha13/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  linkedin.com/in/sajesh-shrestha13
+                </a>
               </div>
             </div>
             <div className="contact-list" aria-label="Contact actions">
               <a className="contact-chip" href="mailto:sajesh.shrestha04@gmail.com">
                 Send Email
+              </a>
+              <a className="contact-chip" href="https://wa.me/9779860437025" target="_blank" rel="noreferrer">
+                WhatsApp
+              </a>
+              <a className="contact-chip" href="viber://chat?number=%2B9779860437025">
+                Viber
+              </a>
+              <a
+                className="contact-chip"
+                href="https://www.linkedin.com/in/sajesh-shrestha13/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                LinkedIn
               </a>
             </div>
           </aside>
