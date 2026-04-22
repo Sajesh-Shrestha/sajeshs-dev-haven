@@ -46,9 +46,6 @@ function Index() {
             <a href="#experience" className="portfolio-nav-link">
               Experience
             </a>
-            <a href="#education" className="portfolio-nav-link">
-              Education
-            </a>
             <a href="#contact" className="portfolio-nav-link">
               Contact
             </a>
@@ -67,15 +64,15 @@ function Index() {
               Sajesh <span className="hero-highlight">Shrestha</span>
             </h1>
             <p className="hero-text">
-              QA Engineer with 3.5 years at Amnil Technology, delivering robust web and mobile products through structured
-              manual testing, API validation, SQL checks, and Playwright-based automation.
+              QA Engineer with 3.5 years of experience in manual testing, API validation, SQL testing, and basic
+              Playwright automation.
             </p>
             <div className="hero-actions">
               <a className="cta-primary" href="mailto:sajesh.shrestha04@gmail.com">
                 Let&apos;s Connect
               </a>
-              <a className="cta-secondary" href="#experience">
-                View Experience
+              <a className="cta-secondary" href="#contact">
+                Contact
               </a>
             </div>
             <div className="hero-tags" aria-label="Core testing strengths">
@@ -109,24 +106,19 @@ function Index() {
 
         <section className="stats-grid" aria-label="QA metrics snapshot">
           <article className="metric-card">
-            <p className="metric-label">Current Company</p>
-            <p className="metric-value">Amnil</p>
-            <p className="metric-detail">Hands-on QA across regulated and customer-facing products.</p>
+            <p className="metric-label">Experience</p>
+            <p className="metric-value">3.5 Years</p>
+            <p className="metric-detail">QA practice across web and mobile products.</p>
           </article>
           <article className="metric-card">
-            <p className="metric-label">Testing Scope</p>
-            <p className="metric-value">Web + Mobile</p>
-            <p className="metric-detail">Cross-platform validation with practical release support.</p>
+            <p className="metric-label">Current Role</p>
+            <p className="metric-value">QA Engineer</p>
+            <p className="metric-detail">Currently at Amnil Technology.</p>
           </article>
           <article className="metric-card">
-            <p className="metric-label">Domain Exposure</p>
-            <p className="metric-value">4+</p>
-            <p className="metric-detail">Banking, eKYC, registration systems, and media platforms.</p>
-          </article>
-          <article className="metric-card">
-            <p className="metric-label">Automation Level</p>
-            <p className="metric-value">Foundation</p>
-            <p className="metric-detail">Playwright for basic automated regression checks.</p>
+            <p className="metric-label">Focus</p>
+            <p className="metric-value">API + SQL</p>
+            <p className="metric-detail">Validation, investigation, and release confidence.</p>
           </article>
         </section>
 
@@ -134,10 +126,10 @@ function Index() {
           <div className="content-panel">
             <div className="section-header">
               <p className="section-kicker">Professional Summary</p>
-              <h2 className="section-title">Reliable quality through structured testing discipline</h2>
+              <h2 className="section-title">Focused on stable releases and clear validation</h2>
               <p className="section-copy">
-                I focus on finding risk early, validating complex business flows, and giving teams confidence before release.
-                My work combines manual exploratory depth with practical API and data verification.
+                I support teams with functional, regression, smoke, API, and database testing across banking, eKYC,
+                customer registration, and media platforms.
               </p>
             </div>
 
@@ -150,19 +142,8 @@ function Index() {
                   <span className="meta-pill">Web & Mobile Applications</span>
                 </div>
                 <p className="section-note">
-                  Worked on high-impact systems including banking workflows, eKYC verification pipelines, customer
-                  registration modules, and media-driven products.
+                  Manual testing, API testing with Postman, SQL validation, and basic automation with Playwright.
                 </p>
-              </article>
-
-              <article className="domain-card">
-                <h3 className="domain-title">Domain Highlights</h3>
-                <div className="domain-list">
-                  <span className="tag-pill">Banking Systems</span>
-                  <span className="tag-pill">eKYC Workflows</span>
-                  <span className="tag-pill">Customer Registration</span>
-                  <span className="tag-pill">Media Platforms</span>
-                </div>
               </article>
             </div>
           </div>
@@ -187,9 +168,6 @@ function Index() {
             <div className="contact-list" aria-label="Contact actions">
               <a className="contact-chip" href="mailto:sajesh.shrestha04@gmail.com">
                 Send Email
-              </a>
-              <a className="contact-chip" href="#education">
-                View Education
               </a>
             </div>
           </aside>
@@ -220,7 +198,7 @@ function Index() {
                 <h3 className="skill-title">API Testing</h3>
                 <span className="skill-level">Strong</span>
               </div>
-              <p className="section-note">Hands-on request and response validation with Postman.</p>
+              <p className="section-note">Hands-on request, response, and workflow validation with Postman.</p>
             </article>
 
             <article className="skill-card">
@@ -253,7 +231,7 @@ function Index() {
           </div>
           <div className="timeline-stack">
             <article className="timeline-card">
-              <h3 className="timeline-title">Bachelor in Computer Science and Information Technology (BSc. CSIT)</h3>
+              <h3 className="timeline-title">BSc. CSIT</h3>
               <p className="timeline-subtitle">Trinity International College, Dillibazar</p>
               <div className="timeline-meta">
                 <span className="meta-pill">2017 – 2022</span>
@@ -261,7 +239,7 @@ function Index() {
             </article>
 
             <article className="timeline-card">
-              <h3 className="timeline-title">+2 (Higher Secondary)</h3>
+              <h3 className="timeline-title">+2 Higher Secondary</h3>
               <p className="timeline-subtitle">Golden Gate International College</p>
               <div className="timeline-meta">
                 <span className="meta-pill">2015 – 2017</span>
@@ -270,7 +248,7 @@ function Index() {
           </div>
         </section>
 
-        <p className="footer-note">Built for quality-first engineering impact.</p>
+        <p className="footer-note">QA Engineer portfolio</p>
       </main>
     </div>
   );
