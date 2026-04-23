@@ -1,30 +1,29 @@
 html:not(.dark) {
   --background: oklch(0.985 0.004 255);
   --foreground: oklch(0.24 0.02 255);
-  --card: oklch(1 0 0 / 0.9);
+  --card: oklch(1 0 0 / 0.96);
   --card-foreground: oklch(0.24 0.02 255);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.24 0.02 255);
-  --primary: oklch(0.58 0.18 255);
+  --primary: oklch(0.52 0.12 250);
   --primary-foreground: oklch(0.98 0.002 255);
   --secondary: oklch(0.94 0.01 255);
   --secondary-foreground: oklch(0.24 0.02 255);
   --muted: oklch(0.95 0.01 250);
   --muted-foreground: oklch(0.5 0.02 252);
-  --accent: oklch(0.8 0.12 90);
+  --accent: oklch(0.72 0.08 145);
   --accent-foreground: oklch(0.2 0.02 255);
   --border: oklch(0.84 0.015 250 / 0.8);
   --input: oklch(0.98 0.003 250);
-  --ring: oklch(0.58 0.18 255 / 0.35);
-  --surface-strong: oklch(1 0 0 / 0.88);
-  --surface-soft: oklch(0.98 0.004 255 / 0.8);
-  --surface-elevated: oklch(1 0 0 / 0.95);
-  --page-gradient: linear-gradient(180deg, oklch(0.98 0.004 255), oklch(0.94 0.015 250));
-  --panel-gradient: linear-gradient(145deg, oklch(1 0 0 / 0.96), oklch(0.96 0.01 252 / 0.9));
-  --hero-glow: radial-gradient(circle at top left, oklch(0.58 0.18 255 / 0.12), transparent 35%),
-    radial-gradient(circle at bottom right, oklch(0.8 0.12 90 / 0.16), transparent 28%);
-  --shadow-soft: 0 20px 60px oklch(0.65 0.03 255 / 0.12);
-  --shadow-card: 0 18px 48px oklch(0.7 0.02 255 / 0.12);
+  --ring: oklch(0.52 0.12 250 / 0.2);
+  --surface-strong: oklch(1 0 0 / 0.98);
+  --surface-soft: oklch(0.985 0.004 255 / 0.95);
+  --surface-elevated: oklch(1 0 0);
+  --page-gradient: none;
+  --panel-gradient: none;
+  --hero-glow: none;
+  --shadow-soft: 0 10px 28px oklch(0.65 0.03 255 / 0.08);
+  --shadow-card: 0 8px 24px oklch(0.7 0.02 255 / 0.08);
 }
 
 @keyframes qaRise {
@@ -62,8 +61,7 @@ html:not(.dark) {
     height: 100vh;
     padding: 1.25rem;
     border-right: 1px solid color-mix(in oklab, var(--color-border) 78%, transparent);
-    background: color-mix(in oklab, var(--color-background) 80%, transparent);
-    backdrop-filter: blur(18px);
+    background: var(--color-background);
   }
 
   .qa-sidebar-inner,
@@ -92,8 +90,8 @@ html:not(.dark) {
     align-items: center;
     gap: 0.9rem;
     padding: 0.85rem;
-    border-radius: 1rem;
-    background: color-mix(in oklab, var(--color-card) 84%, transparent);
+    border-radius: 0.75rem;
+    background: var(--color-card);
     border: 1px solid color-mix(in oklab, var(--color-border) 70%, transparent);
   }
 
@@ -103,10 +101,9 @@ html:not(.dark) {
     place-items: center;
     width: 2.75rem;
     height: 2.75rem;
-    border-radius: 0.8rem;
-    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+    border-radius: 0.6rem;
+    background: var(--color-primary);
     color: var(--color-primary-foreground);
-    box-shadow: var(--shadow-soft);
   }
 
   .qa-brand-name,
@@ -159,13 +156,13 @@ html:not(.dark) {
   .qa-sidebar-card,
   .qa-glass-card {
     border: 1px solid color-mix(in oklab, var(--color-border) 75%, transparent);
-    background: var(--panel-gradient);
+    background: var(--color-card);
     box-shadow: var(--shadow-card);
   }
 
   .qa-sidebar-card {
     padding: 1rem;
-    border-radius: 1rem;
+    border-radius: 0.75rem;
   }
 
   .qa-sidebar-card-compact {
@@ -220,10 +217,9 @@ html:not(.dark) {
     gap: 1.2rem;
     margin-bottom: 1.2rem;
     padding: 1.2rem 1.3rem;
-    border-radius: 1.2rem;
+    border-radius: 0.85rem;
     border: 1px solid color-mix(in oklab, var(--color-border) 75%, transparent);
-    background: color-mix(in oklab, var(--color-card) 80%, transparent);
-    backdrop-filter: blur(14px);
+    background: var(--color-card);
   }
 
   .qa-page-title,
@@ -262,9 +258,9 @@ html:not(.dark) {
 
   .qa-hero-copy {
     padding: 1.4rem;
-    border-radius: 1.4rem;
+    border-radius: 0.85rem;
     border: 1px solid color-mix(in oklab, var(--color-border) 72%, transparent);
-    background: var(--panel-gradient);
+    background: var(--color-card);
     box-shadow: var(--shadow-card);
   }
 
@@ -277,7 +273,7 @@ html:not(.dark) {
     padding-inline: 0.9rem;
     border-radius: 999px;
     border: 1px solid color-mix(in oklab, var(--color-border) 78%, transparent);
-    background: color-mix(in oklab, var(--color-card) 84%, transparent);
+    background: var(--surface-soft);
     font-size: 0.88rem;
     font-weight: 700;
   }
@@ -312,7 +308,7 @@ html:not(.dark) {
   .qa-photo-frame {
     overflow: hidden;
     min-height: 24rem;
-    border-radius: 1.4rem;
+    border-radius: 0.85rem;
     border: 1px solid color-mix(in oklab, var(--color-border) 78%, transparent);
     background: var(--surface-strong);
     box-shadow: var(--shadow-card);
@@ -364,7 +360,7 @@ html:not(.dark) {
   .qa-awards-grid,
   .qa-skill-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1rem;
   }
 
@@ -393,7 +389,7 @@ html:not(.dark) {
 
   .qa-panel-block,
   .qa-timeline-block {
-    padding: 1.25rem;
+    padding: 1rem;
   }
 
   .qa-section-title {
@@ -545,10 +541,9 @@ html:not(.dark) {
     flex-wrap: wrap;
     gap: 0.75rem;
     padding: 0.8rem;
-    border-radius: 1rem;
+    border-radius: 0.75rem;
     border: 1px solid color-mix(in oklab, var(--color-border) 75%, transparent);
-    background: color-mix(in oklab, var(--color-card) 82%, transparent);
-    backdrop-filter: blur(14px);
+    background: var(--color-card);
   }
 
   .qa-tab-button {
@@ -609,10 +604,9 @@ html:not(.dark) {
       gap: 1rem;
       margin-bottom: 1rem;
       padding: 1rem 1.1rem;
-      border-radius: 1rem;
+      border-radius: 0.75rem;
       border: 1px solid color-mix(in oklab, var(--color-border) 75%, transparent);
-      background: color-mix(in oklab, var(--color-card) 80%, transparent);
-      backdrop-filter: blur(14px);
+      background: var(--color-card);
     }
   }
 
