@@ -530,6 +530,69 @@ html:not(.dark) {
     animation: qaFloat 5s ease-in-out infinite;
   }
 
+
+  .qa-tab-shell {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    margin-bottom: 1rem;
+    padding-block: 0.15rem 0.35rem;
+    background: linear-gradient(180deg, color-mix(in oklab, var(--color-background) 94%, transparent), transparent);
+  }
+
+  .qa-tab-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding: 0.8rem;
+    border-radius: 1rem;
+    border: 1px solid color-mix(in oklab, var(--color-border) 75%, transparent);
+    background: color-mix(in oklab, var(--color-card) 82%, transparent);
+    backdrop-filter: blur(14px);
+  }
+
+  .qa-tab-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    min-height: 2.7rem;
+    padding-inline: 0.95rem;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    color: var(--color-muted-foreground);
+    font-size: 0.92rem;
+    font-weight: 700;
+  }
+
+  .qa-tab-button:hover,
+  .qa-tab-button:focus-visible {
+    background: color-mix(in oklab, var(--color-primary) 10%, var(--color-card));
+    color: var(--color-foreground);
+    outline: none;
+  }
+
+  .qa-tab-button-active {
+    background: color-mix(in oklab, var(--color-primary) 16%, var(--color-card));
+    border-color: color-mix(in oklab, var(--color-primary) 32%, transparent);
+    color: var(--color-foreground);
+    box-shadow: inset 0 0 0 1px color-mix(in oklab, var(--color-primary) 16%, transparent);
+  }
+
+  .qa-section-stage {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .qa-inline-tags-column {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .qa-sidebar-summary {
+    align-content: start;
+  }
+
+
   @media (max-width: 1080px) {
     .qa-portfolio-shell {
       grid-template-columns: 1fr;

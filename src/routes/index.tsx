@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { HomePanel, PortfolioShell } from "@/components/portfolio-site";
+import { SinglePagePortfolio } from "@/components/portfolio-site";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -9,17 +9,17 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Modern portfolio of Sajesh Shrestha, QA Engineer specializing in manual testing, API testing, SQL, and Playwright basics.",
+          "Single-page portfolio of Sajesh Shrestha, QA Engineer specializing in manual testing, API testing, SQL, and Playwright basics.",
       },
       { property: "og:title", content: "Sajesh Shrestha | QA Engineer Portfolio" },
       {
         property: "og:description",
-        content: "Explore Sajesh Shrestha's QA journey, skills, awards, projects, and contact details.",
+        content: "Explore Sajesh Shrestha's QA journey, skills, awards, projects, and contact details in one modern page.",
       },
       { name: "twitter:title", content: "Sajesh Shrestha | QA Engineer Portfolio" },
       {
         name: "twitter:description",
-        content: "QA Engineer portfolio with a modern split layout, timeline journey, projects, and contact page.",
+        content: "A modern single-page QA Engineer portfolio with inline tabs, timeline, projects, and contact section.",
       },
     ],
     links: [{ rel: "canonical", href: "/" }],
@@ -28,12 +28,5 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
-  return (
-    <PortfolioShell
-      title="Sajesh Shrestha"
-      intro="QA Engineer crafting reliable software experiences through structured testing, thoughtful validation, and steady growth in modern QA practices."
-    >
-      <HomePanel />
-    </PortfolioShell>
-  );
+  return <SinglePagePortfolio />;
 }
