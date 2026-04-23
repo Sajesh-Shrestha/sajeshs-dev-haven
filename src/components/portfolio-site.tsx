@@ -212,15 +212,12 @@ export function SinglePagePortfolio() {
             </div>
           </div>
 
-          <Card className="qa-glass-card">
-            <CardContent className="qa-panel-block qa-sidebar-summary">
-              <p className="qa-section-kicker">Profile</p>
-              <h2 className="qa-section-title qa-section-title-sm">Quality-first engineer with a strong manual testing core.</h2>
-              <p className="qa-section-text">
-                Focused on API testing, SQL validation, structured regression coverage, and steady growth in automation.
-              </p>
-            </CardContent>
-          </Card>
+          <div className="qa-sidebar-card qa-sidebar-summary">
+            <p className="qa-side-kicker">Profile</p>
+            <p className="qa-side-text">
+              QA Engineer focused on manual testing, API validation, SQL checks, and steady learning in automation.
+            </p>
+          </div>
 
           <div className="qa-sidebar-card">
             <div>
@@ -321,9 +318,9 @@ function HomePanel({ onContactClick }: { onContactClick: () => void }) {
   return (
     <div className="qa-stack-lg">
       <section className="qa-hero-grid">
-        <div className="qa-hero-copy qa-animate-rise">
-          <span className="qa-chip qa-chip-highlight">Quality-first. Detail-driven. Always learning.</span>
-          <h2 className="qa-hero-title">Building confidence into every release.</h2>
+        <div className="qa-hero-copy">
+          <span className="qa-chip qa-chip-highlight">QA Engineer • 3.5+ years</span>
+          <h2 className="qa-hero-title">Simple, reliable quality engineering.</h2>
           <p className="qa-hero-text">
             I am a QA Engineer with 3.5+ years of experience, specializing in manual testing, API testing, and SQL,
             with basic automation skills in Playwright. Passionate about ensuring software quality and continuously
@@ -349,7 +346,7 @@ function HomePanel({ onContactClick }: { onContactClick: () => void }) {
           </div>
         </div>
 
-        <div className="qa-hero-visual qa-animate-float">
+        <div className="qa-hero-visual">
           <div className="qa-photo-frame">
             <img
               src={heroImage}
@@ -358,14 +355,6 @@ function HomePanel({ onContactClick }: { onContactClick: () => void }) {
               height={1080}
               className="qa-photo"
             />
-          </div>
-          <div className="qa-floating-card qa-floating-card-top">
-            <span>Location</span>
-            <strong>Narayantar, Kathmandu</strong>
-          </div>
-          <div className="qa-floating-card qa-floating-card-bottom">
-            <span>Current role</span>
-            <strong>QA Engineer</strong>
           </div>
         </div>
       </section>
@@ -381,29 +370,6 @@ function HomePanel({ onContactClick }: { onContactClick: () => void }) {
         ))}
       </section>
 
-      <section className="qa-overview-grid">
-        <Card className="qa-glass-card">
-          <CardContent className="qa-panel-block">
-            <p className="qa-section-kicker">Snapshot</p>
-            <h3 className="qa-section-title">QA with ownership, clarity, and practical depth.</h3>
-            <p className="qa-section-text">
-              Based in Kathmandu and currently growing at Amnil Technology, I work across web and mobile products with a
-              focus on dependable releases, strong collaboration, and thoughtful validation.
-            </p>
-          </CardContent>
-        </Card>
-
-        <Card className="qa-glass-card">
-          <CardContent className="qa-panel-block">
-            <p className="qa-section-kicker">Highlights</p>
-            <div className="qa-inline-tags qa-inline-tags-column">
-              <span className="qa-chip">Manual, API, and SQL testing</span>
-              <span className="qa-chip">2 professional awards</span>
-              <span className="qa-chip">Web and mobile product exposure</span>
-            </div>
-          </CardContent>
-        </Card>
-      </section>
     </div>
   );
 }
