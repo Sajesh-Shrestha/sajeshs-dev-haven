@@ -1,7 +1,6 @@
 import * as React from "react";
-import { Link } from "@tanstack/react-router";
+import { Navigate } from "@tanstack/react-router";
 import {
-  ArrowUpRight,
   Award,
   BriefcaseBusiness,
   Bug,
@@ -10,7 +9,6 @@ import {
   ExternalLink,
   FlaskConical,
   Github,
-  Home,
   Linkedin,
   Mail,
   MapPin,
@@ -34,15 +32,19 @@ import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
 
-const navItems = [
-  { to: "/", label: "Home", icon: Home },
-  { to: "/about", label: "About", icon: Sparkles },
-  { to: "/journey", label: "QA Journey", icon: Workflow },
-  { to: "/skills", label: "Skills", icon: Bug },
-  { to: "/awards", label: "Awards", icon: Trophy },
-  { to: "/projects", label: "Projects", icon: BriefcaseBusiness },
-  { to: "/contact", label: "Contact", icon: Mail },
-] as const;
+type SectionKey = "home" | "about" | "journey" | "skills" | "awards" | "projects" | "contact";
+
+const sections = [
+  { key: "home", label: "Home", icon: Sparkles },
+  { key: "about", label: "About", icon: Linkedin },
+  { key: "journey", label: "QA Journey", icon: Workflow },
+  { key: "skills", label: "Skills", icon: Bug },
+  { key: "awards", label: "Awards", icon: Trophy },
+  { key: "projects", label: "Projects", icon: BriefcaseBusiness },
+  { key: "contact", label: "Contact", icon: Mail },
+] as const satisfies ReadonlyArray<{ key: SectionKey; label: string; icon: React.ComponentType<{ className?: string; "aria-hidden"?: boolean }> }>;
+
+const sectionSet = new Set<SectionKey>(sections.map((section) => section.key));
 
 const journeySteps = [
   {
@@ -152,16 +154,18 @@ const stats = [
   { value: "Web + Mobile", label: "Testing surfaces" },
 ] as const;
 
-export function PortfolioShell({
-  children,
-  title,
-  intro,
-}: {
-  children: React.ReactNode;
-  title: string;
-  intro: string;
-}) {
+function readHashSection(): SectionKey {
+  if (typeof window === "undefined") {
+    return "home";
+  }
+
+  const next = window.location.hash.replace("#", "") as SectionKey;
+  return sectionSet.has(next) ? next : "home";
+}
+
+export function SinglePagePortfolio() {
   const [theme, setTheme] = React.useState<"dark" | "light">("dark");
+  const [activeSection, setActiveSection] = React.useState<SectionKey>("home");
 
   React.useEffect(() => {
     if (typeof window === "undefined") {
@@ -171,6 +175,11 @@ export function PortfolioShell({
     const stored = window.localStorage.getItem("portfolio-theme");
     const nextTheme = stored === "light" || stored === "dark" ? stored : "dark";
     setTheme(nextTheme);
+    setActiveSection(readHashSection());
+
+    const handleHashChange = () => setActiveSection(readHashSection());
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
   }, []);
 
   React.useEffect(() => {
@@ -181,6 +190,15 @@ export function PortfolioShell({
     document.documentElement.classList.toggle("dark", theme === "dark");
     window.localStorage.setItem("portfolio-theme", theme);
   }, [theme]);
+
+  const openSection = (section: SectionKey) => {
+    setActiveSection(section);
+
+    if (typeof window !== "undefined") {
+      const url = section === "home" ? window.location.pathname : `${window.location.pathname}#${section}`;
+      window.history.replaceState(null, "", url);
+    }
+  };
 
   return (
     <div className="qa-portfolio-shell">
@@ -194,19 +212,15 @@ export function PortfolioShell({
             </div>
           </div>
 
-          <nav className="qa-nav" aria-label="Primary navigation">
-            {navItems.map(({ to, label, icon: Icon }) => (
-              <Link
-                key={to}
-                to={to}
-                className="qa-nav-link"
-                activeProps={{ className: "qa-nav-link qa-nav-link-active" }}
-              >
-                <Icon aria-hidden="true" />
-                <span>{label}</span>
-              </Link>
-            ))}
-          </nav>
+          <Card className="qa-glass-card">
+            <CardContent className="qa-panel-block qa-sidebar-summary">
+              <p className="qa-section-kicker">Profile</p>
+              <h2 className="qa-section-title qa-section-title-sm">Quality-first engineer with a strong manual testing core.</h2>
+              <p className="qa-section-text">
+                Focused on API testing, SQL validation, structured regression coverage, and steady growth in automation.
+              </p>
+            </CardContent>
+          </Card>
 
           <div className="qa-sidebar-card">
             <div>
@@ -260,18 +274,50 @@ export function PortfolioShell({
         <section className="qa-page-head">
           <div>
             <p className="qa-page-kicker">QA Engineer Portfolio</p>
-            <h1 className="qa-page-title">{title}</h1>
+            <h1 className="qa-page-title">Sajesh Shrestha</h1>
           </div>
-          <p className="qa-page-intro">{intro}</p>
+          <p className="qa-page-intro">
+            A single-page portfolio with inline sections covering my QA story, practical strengths, selected work, and
+            direct contact details.
+          </p>
         </section>
 
-        {children}
+        <div className="qa-tab-shell">
+          <div className="qa-tab-row" role="tablist" aria-label="Portfolio sections">
+            {sections.map(({ key, label, icon: Icon }) => {
+              const active = activeSection === key;
+              return (
+                <button
+                  key={key}
+                  type="button"
+                  role="tab"
+                  aria-selected={active}
+                  className={active ? "qa-tab-button qa-tab-button-active" : "qa-tab-button"}
+                  onClick={() => openSection(key)}
+                >
+                  <Icon aria-hidden="true" />
+                  <span>{label}</span>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        <div className="qa-section-stage">
+          {activeSection === "home" && <HomePanel onContactClick={() => openSection("contact")} />}
+          {activeSection === "about" && <AboutPanel />}
+          {activeSection === "journey" && <JourneyPanel />}
+          {activeSection === "skills" && <SkillsPanel />}
+          {activeSection === "awards" && <AwardsPanel />}
+          {activeSection === "projects" && <ProjectsPanel />}
+          {activeSection === "contact" && <ContactPanel />}
+        </div>
       </main>
     </div>
   );
 }
 
-export function HomePanel() {
+function HomePanel({ onContactClick }: { onContactClick: () => void }) {
   return (
     <div className="qa-stack-lg">
       <section className="qa-hero-grid">
@@ -290,11 +336,9 @@ export function HomePanel() {
                 Download CV
               </a>
             </Button>
-            <Button asChild variant="outline">
-              <Link to="/contact">
-                <Mail aria-hidden="true" />
-                Contact
-              </Link>
+            <Button type="button" variant="outline" onClick={onContactClick}>
+              <Mail aria-hidden="true" />
+              Contact
             </Button>
           </div>
           <div className="qa-inline-tags" aria-label="Core strengths">
@@ -351,20 +395,11 @@ export function HomePanel() {
 
         <Card className="qa-glass-card">
           <CardContent className="qa-panel-block">
-            <p className="qa-section-kicker">Explore</p>
-            <div className="qa-link-list">
-              <Link to="/journey" className="qa-inline-link">
-                See QA journey
-                <ArrowUpRight aria-hidden="true" />
-              </Link>
-              <Link to="/awards" className="qa-inline-link">
-                View awards
-                <ArrowUpRight aria-hidden="true" />
-              </Link>
-              <Link to="/projects" className="qa-inline-link">
-                Browse projects
-                <ArrowUpRight aria-hidden="true" />
-              </Link>
+            <p className="qa-section-kicker">Highlights</p>
+            <div className="qa-inline-tags qa-inline-tags-column">
+              <span className="qa-chip">Manual, API, and SQL testing</span>
+              <span className="qa-chip">2 professional awards</span>
+              <span className="qa-chip">Web and mobile product exposure</span>
             </div>
           </CardContent>
         </Card>
@@ -373,7 +408,7 @@ export function HomePanel() {
   );
 }
 
-export function AboutPanel() {
+function AboutPanel() {
   return (
     <div className="qa-stack-lg">
       <section className="qa-feature-grid">
@@ -382,13 +417,13 @@ export function AboutPanel() {
             <p className="qa-section-kicker">About</p>
             <h2 className="qa-section-title">A QA professional focused on reliable software experiences.</h2>
             <p className="qa-section-text">
-              I am Sajesh Shrestha, a QA Engineer based in Narayantar, Kathmandu, with 3.5 years of experience at
-              Amnil Technology. I specialize in manual testing, API testing, and SQL, with basic knowledge of
-              automation using Playwright.
+              I am Sajesh Shrestha, a QA Engineer based in Narayantar, Kathmandu, with 3.5 years of experience at Amnil
+              Technology. I specialize in manual testing, API testing, and SQL, with basic knowledge of automation
+              using Playwright.
             </p>
             <p className="qa-section-text">
-              I hold a BSc. CSIT from Trinity International College (2017–2022) and enjoy sports, trekking, and
-              exploring new places outside of work.
+              I hold a BSc. CSIT from Trinity International College (2017–2022). Outside of work, I enjoy sports,
+              trekking, and exploring new places.
             </p>
           </CardContent>
         </Card>
@@ -406,7 +441,7 @@ export function AboutPanel() {
   );
 }
 
-export function JourneyPanel() {
+function JourneyPanel() {
   return (
     <section className="qa-timeline" aria-label="QA career journey">
       {journeySteps.map((step, index) => (
@@ -425,7 +460,7 @@ export function JourneyPanel() {
   );
 }
 
-export function SkillsPanel() {
+function SkillsPanel() {
   return (
     <div className="qa-skill-grid">
       {skills.map(({ title, level, detail, tags, icon: Icon }) => (
@@ -460,7 +495,7 @@ export function SkillsPanel() {
   );
 }
 
-export function AwardsPanel() {
+function AwardsPanel() {
   return (
     <div className="qa-awards-grid">
       {awards.map(({ title, year, description, icon: Icon }) => (
@@ -481,7 +516,7 @@ export function AwardsPanel() {
   );
 }
 
-export function ProjectsPanel() {
+function ProjectsPanel() {
   return (
     <div className="qa-project-grid">
       {projects.map((project) => (
@@ -504,16 +539,14 @@ export function ProjectsPanel() {
   );
 }
 
-export function ContactPanel() {
+function ContactPanel() {
   const [form, setForm] = React.useState({ name: "", email: "", message: "" });
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     const subject = encodeURIComponent(`Portfolio inquiry from ${form.name || "a visitor"}`);
-    const body = encodeURIComponent(
-      `Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`,
-    );
+    const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`);
 
     window.location.href = `mailto:sajesh.shrestha04@gmail.com?subject=${subject}&body=${body}`;
   };
@@ -589,4 +622,8 @@ export function ContactPanel() {
       </Card>
     </div>
   );
+}
+
+export function RedirectToPortfolioSection({ section }: { section: Exclude<SectionKey, "home"> }) {
+  return <Navigate to="/" hash={section} replace />;
 }
