@@ -64,8 +64,9 @@ function Index() {
               Sajesh <span className="hero-highlight">Shrestha</span>
             </h1>
             <p className="hero-text">
-              QA Engineer with 3.5 years of experience in manual testing, API validation, SQL testing, and basic
-              Playwright automation.
+              I am Sajesh Shrestha, a QA Engineer based in Narayantar, Kathmandu, with 3.5 years of experience at
+              Amnil Technology. I specialize in manual testing, API testing, and SQL, with basic knowledge of
+              automation using Playwright.
             </p>
             <div className="hero-actions">
               <a className="cta-primary" href="mailto:sajesh.shrestha04@gmail.com">
@@ -80,6 +81,7 @@ function Index() {
               <span className="tag-pill">API Testing</span>
               <span className="tag-pill">SQL Validation</span>
               <span className="tag-pill">Playwright Basics</span>
+              <span className="tag-pill">2 Award Wins</span>
             </div>
           </div>
 
@@ -129,7 +131,7 @@ function Index() {
               <h2 className="section-title">Focused on stable releases and clear validation</h2>
               <p className="section-copy">
                 I support teams with functional, regression, smoke, API, and database testing across banking, eKYC,
-                customer registration, and media platforms.
+                customer registration systems, and media platforms, helping teams ship with confidence.
               </p>
             </div>
 
@@ -249,6 +251,33 @@ function Index() {
                 <span className="meta-pill">Playwright (Basic)</span>
                 <span className="meta-pill">JMeter (Basic)</span>
               </div>
+            </article>
+          </div>
+        </section>
+
+        <section className="content-panel" id="education" aria-labelledby="education-heading">
+          <div className="section-header">
+            <p className="section-kicker">Recognition</p>
+            <h2 className="section-title">Awards & personal profile</h2>
+            <p className="section-copy">
+              Recognition for ownership at work, backed by a practical testing mindset and an active life outside the
+              office.
+            </p>
+          </div>
+          <div className="timeline-stack">
+            <article className="timeline-card">
+              <h3 className="timeline-title">Extreme Ownership</h3>
+              <p className="timeline-subtitle">Award received in 2024</p>
+            </article>
+
+            <article className="timeline-card">
+              <h3 className="timeline-title">Above and Beyond</h3>
+              <p className="timeline-subtitle">Award received in 2025</p>
+            </article>
+
+            <article className="timeline-card">
+              <h3 className="timeline-title">Beyond Work</h3>
+              <p className="timeline-subtitle">Sports, trekking, and exploring new places</p>
             </article>
           </div>
         </section>
