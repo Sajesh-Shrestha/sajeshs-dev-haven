@@ -52,7 +52,7 @@
 
 :root {
   --radius: 0.5rem;
-  --background: oklch(0.985 0.004 255);
+  --background: oklch(0.995 0.002 255);
   --foreground: oklch(0.24 0.02 255);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.24 0.02 255);
@@ -88,7 +88,7 @@
   --surface-soft: oklch(0.97 0.006 250);
   --surface-elevated: oklch(1 0 0);
   --hero-glow: none;
-  --page-gradient: linear-gradient(180deg, oklch(0.985 0.004 255), oklch(0.96 0.01 250));
+  --page-gradient: linear-gradient(180deg, oklch(0.995 0.002 255), oklch(0.985 0.006 250));
   --panel-gradient: none;
   --line-glow: linear-gradient(90deg, transparent, oklch(0.55 0.14 250 / 0.5), transparent);
   --shadow-soft: 0 10px 30px oklch(0.6 0.03 250 / 0.08);

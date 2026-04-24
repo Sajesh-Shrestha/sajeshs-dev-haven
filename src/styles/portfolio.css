@@ -9,6 +9,35 @@
   }
 }
 
+@keyframes qaSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes qaDotPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 4px color-mix(in oklab, var(--color-primary) 18%, transparent);
+  }
+  50% {
+    box-shadow: 0 0 0 8px color-mix(in oklab, var(--color-primary) 10%, transparent);
+  }
+}
+
+@keyframes qaLineGrow {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
 @layer components {
   /* ===== Page shell ===== */
   .qa-page {
@@ -213,7 +242,7 @@
   }
 
   .qa-card-pad {
-    padding: 1.4rem;
+    padding: 1.5rem !important;
   }
 
   .qa-card-title {
@@ -275,12 +304,21 @@
       color-mix(in oklab, var(--color-accent) 70%, transparent)
     );
     opacity: 0.5;
+    transform-origin: top;
+    animation: qaLineGrow 1.2s ease-out both;
   }
 
   .qa-timeline-item {
     position: relative;
     padding-left: 3rem;
+    opacity: 0;
+    animation: qaSlideIn 0.6s ease-out both;
   }
+
+  .qa-timeline-item:nth-child(1) { animation-delay: 0.15s; }
+  .qa-timeline-item:nth-child(2) { animation-delay: 0.35s; }
+  .qa-timeline-item:nth-child(3) { animation-delay: 0.55s; }
+  .qa-timeline-item:nth-child(4) { animation-delay: 0.75s; }
 
   .qa-timeline-dot {
     position: absolute;
@@ -294,6 +332,20 @@
     background: var(--color-primary);
     color: var(--color-primary-foreground);
     box-shadow: 0 0 0 4px color-mix(in oklab, var(--color-primary) 18%, transparent);
+    animation: qaDotPulse 2.8s ease-in-out infinite;
+    transition: transform 0.25s ease;
+  }
+
+  .qa-timeline-item:hover .qa-timeline-dot {
+    transform: scale(1.1) rotate(8deg);
+  }
+
+  .qa-timeline-card-v2 {
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .qa-timeline-item:hover .qa-timeline-card-v2 {
+    transform: translateX(4px);
   }
 
   .qa-timeline-dot svg {
