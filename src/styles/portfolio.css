@@ -433,9 +433,23 @@
 
   /* ===== Contact ===== */
   .qa-contact-lead {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.65rem;
     font-size: 1.05rem;
     color: var(--color-muted-foreground);
     margin-bottom: 1.5rem;
+    padding: 0.75rem 1rem;
+    border-radius: 0.75rem;
+    background: color-mix(in oklab, var(--color-primary) 8%, var(--color-card));
+    border: 1px solid color-mix(in oklab, var(--color-primary) 18%, transparent);
+  }
+
+  .qa-contact-lead-icon {
+    flex-shrink: 0;
+    width: 1.25rem;
+    height: 1.25rem;
+    color: var(--color-primary);
   }
 
   .qa-contact-lead a {
