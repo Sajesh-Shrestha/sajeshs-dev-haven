@@ -213,7 +213,7 @@
   }
 
   .qa-card-pad {
-    padding: 1.4rem;
+    padding: 1.5rem !important;
   }
 
   .qa-card-title {
