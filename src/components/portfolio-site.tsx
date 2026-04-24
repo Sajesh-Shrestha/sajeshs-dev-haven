@@ -251,6 +251,26 @@ export function SinglePagePortfolio() {
               <span>LinkedIn</span>
             </a>
           </div>
+          <div className="qa-contact-cta">
+            <Button asChild>
+              <a href="mailto:sajesh.shrestha04@gmail.com">
+                <Mail aria-hidden="true" />
+                Send Email
+              </a>
+            </Button>
+            <Button asChild variant="outline">
+              <a href="https://wa.me/9779860437025" target="_blank" rel="noreferrer">
+                <MessageCircleMore aria-hidden="true" />
+                Chat on WhatsApp
+              </a>
+            </Button>
+            <Button asChild variant="outline">
+              <a href="https://www.linkedin.com/in/sajesh-shrestha13/" target="_blank" rel="noreferrer">
+                <Linkedin aria-hidden="true" />
+                LinkedIn
+              </a>
+            </Button>
+          </div>
         </section>
 
         <footer className="qa-footer">
