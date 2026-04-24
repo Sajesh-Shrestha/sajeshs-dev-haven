@@ -1,0 +1,36 @@
+Sajesh Shrestha
+QA Engineer
+Narayantar, Kathmandu, Nepal
+Email: sajesh.shrestha04@gmail.com
+Phone: 9860437025
+LinkedIn: https://www.linkedin.com/in/sajesh-shrestha13/
+
+Professional Summary
+QA Engineer with 3.5+ years of experience specializing in manual testing, API testing, SQL, and basic automation using Playwright. Passionate about software quality and continuous learning in modern testing practices.
+
+Experience
+- QA Intern | April 2022 – June 2022
+  Learned software testing fundamentals, real-world QA workflows, and supported testing activities.
+
+- Associate QA Engineer | October 2022 – January 2026
+  Worked on functional, regression, and API testing, collaborated closely with development teams, and improved product quality across multiple projects.
+
+- QA Engineer | January 2026 – Present
+  Taking ownership of quality processes, strengthening testing strategies, and growing in automation and performance testing.
+
+Skills
+- Manual Testing (Functional, Regression, Smoke)
+- API Testing (Postman)
+- SQL & Database Validation
+- Basic Automation (Playwright)
+- Basic Load Testing (JMeter)
+- Basic Security Testing
+- Mobile App Testing
+- Agile/Scrum
+
+Awards
+- Extreme Ownership Award – 2024
+- Above and Beyond Award – 2025
+
+Education
+BSc. CSIT, Trinity International College (2017–2022)
