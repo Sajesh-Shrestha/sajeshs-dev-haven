@@ -220,8 +220,11 @@ export function SinglePagePortfolio() {
         <section id="contact" className="qa-section qa-contact-v2">
           <SectionHeading eyebrow="Contact" title="Let's connect" />
           <p className="qa-contact-lead">
-            Feel free to reach out:{" "}
-            <a href="mailto:sajesh.shrestha04@gmail.com">sajesh.shrestha04@gmail.com</a>
+            <Mail aria-hidden="true" className="qa-contact-lead-icon" />
+            <span>
+              Feel free to reach out:{" "}
+              <a href="mailto:sajesh.shrestha04@gmail.com">sajesh.shrestha04@gmail.com</a>
+            </span>
           </p>
           <div className="qa-contact-grid-v2">
             <a href="mailto:sajesh.shrestha04@gmail.com" className="qa-contact-link">
@@ -250,26 +253,6 @@ export function SinglePagePortfolio() {
               <Linkedin aria-hidden="true" />
               <span>LinkedIn</span>
             </a>
-          </div>
-          <div className="qa-contact-cta">
-            <Button asChild>
-              <a href="mailto:sajesh.shrestha04@gmail.com">
-                <Mail aria-hidden="true" />
-                Send Email
-              </a>
-            </Button>
-            <Button asChild variant="outline">
-              <a href="https://wa.me/9779860437025" target="_blank" rel="noreferrer">
-                <MessageCircleMore aria-hidden="true" />
-                Chat on WhatsApp
-              </a>
-            </Button>
-            <Button asChild variant="outline">
-              <a href="https://www.linkedin.com/in/sajesh-shrestha13/" target="_blank" rel="noreferrer">
-                <Linkedin aria-hidden="true" />
-                LinkedIn
-              </a>
-            </Button>
           </div>
         </section>
 
