@@ -179,17 +179,15 @@ export function SinglePagePortfolio() {
         <section id="journey" className="qa-section">
           <SectionHeading eyebrow="Journey" title="My QA path so far" />
           <ol className="qa-timeline-v2">
-            {journeySteps.map((step, index) => (
+            {journeySteps.map((step) => (
               <li key={step.period} className="qa-timeline-item">
                 <div className="qa-timeline-dot" aria-hidden="true">
                   <Workflow />
                 </div>
                 <Card className="qa-card qa-timeline-card-v2">
                   <CardContent className="qa-card-pad">
-                    <span className="qa-timeline-step">Step 0{index + 1}</span>
                     <p className="qa-timeline-period">{step.period}</p>
                     <h3 className="qa-card-title">{step.role}</h3>
-                    <p className="qa-card-text">{step.summary}</p>
                   </CardContent>
                 </Card>
               </li>
@@ -252,6 +250,26 @@ export function SinglePagePortfolio() {
               <Linkedin aria-hidden="true" />
               <span>LinkedIn</span>
             </a>
+          </div>
+          <div className="qa-contact-cta">
+            <Button asChild>
+              <a href="mailto:sajesh.shrestha04@gmail.com">
+                <Mail aria-hidden="true" />
+                Send Email
+              </a>
+            </Button>
+            <Button asChild variant="outline">
+              <a href="https://wa.me/9779860437025" target="_blank" rel="noreferrer">
+                <MessageCircleMore aria-hidden="true" />
+                Chat on WhatsApp
+              </a>
+            </Button>
+            <Button asChild variant="outline">
+              <a href="https://www.linkedin.com/in/sajesh-shrestha13/" target="_blank" rel="noreferrer">
+                <Linkedin aria-hidden="true" />
+                LinkedIn
+              </a>
+            </Button>
           </div>
         </section>
 

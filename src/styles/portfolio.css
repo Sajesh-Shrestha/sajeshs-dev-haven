@@ -473,6 +473,13 @@
     transform: translateY(-1px);
   }
 
+  .qa-contact-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
   .qa-contact-link svg {
     width: 1.1rem;
     height: 1.1rem;
