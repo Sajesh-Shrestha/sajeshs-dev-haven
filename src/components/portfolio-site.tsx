@@ -348,21 +348,38 @@ function AutoTimeline({
 }
 
 function EducationSection() {
+  const educationItems = [
+    {
+      title: "Bachelor in Computer Science and Information Technology (BSc. CSIT)",
+      institute: "Trinity International College",
+      period: "2017 – 2022",
+    },
+    {
+      title: "+2 Science",
+      institute: "Golden Gate International College",
+      period: "2015 – 2017",
+    },
+  ] as const;
+
   return (
     <section id="education" className="qa-section">
       <SectionHeading eyebrow="Education" title="Academic background" />
-      <Card className="qa-card qa-education-card">
-        <CardContent className="qa-card-pad qa-education-content">
-          <div className="qa-education-icon">
-            <GraduationCap aria-hidden="true" />
-          </div>
-          <div>
-            <h3 className="qa-card-title">Bachelor in Computer Science and Information Technology (BSc. CSIT)</h3>
-            <p className="qa-card-text">Trinity International College</p>
-            <p className="qa-timeline-period">2017 – 2022</p>
-          </div>
-        </CardContent>
-      </Card>
+      <div className="qa-education-list">
+        {educationItems.map((item) => (
+          <Card key={item.title} className="qa-card qa-education-card">
+            <CardContent className="qa-card-pad qa-education-content">
+              <div className="qa-education-icon">
+                <GraduationCap aria-hidden="true" />
+              </div>
+              <div>
+                <h3 className="qa-card-title">{item.title}</h3>
+                <p className="qa-card-text">{item.institute}</p>
+                <p className="qa-timeline-period">{item.period}</p>
+              </div>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
     </section>
   );
 }
