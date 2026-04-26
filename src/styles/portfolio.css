@@ -501,14 +501,14 @@
     border-radius: 1rem;
     background:
       linear-gradient(135deg, color-mix(in oklab, var(--color-primary) 16%, transparent), transparent 42%),
-      color-mix(in oklab, var(--color-foreground) 88%, var(--color-secondary));
-    color: var(--color-background);
+      var(--contact-panel);
+    color: var(--contact-panel-foreground);
     border-top: 0;
     box-shadow: var(--shadow-soft);
   }
 
   .qa-contact-v2 .qa-section-title-v2 {
-    color: var(--color-background);
+    color: var(--contact-panel-foreground);
   }
 
   .qa-contact-v2 .qa-eyebrow,
@@ -523,11 +523,11 @@
     align-items: center;
     gap: 0.65rem;
     font-size: 1.05rem;
-    color: color-mix(in oklab, var(--color-background) 78%, transparent);
+    color: color-mix(in oklab, var(--contact-panel-foreground) 78%, transparent);
     margin-bottom: 1.5rem;
     padding: 0.75rem 1rem;
     border-radius: 0.75rem;
-    background: color-mix(in oklab, var(--color-primary) 18%, var(--color-foreground));
+    background: color-mix(in oklab, var(--color-primary) 18%, var(--contact-panel));
     border: 1px solid color-mix(in oklab, var(--color-primary) 42%, transparent);
   }
 
@@ -560,9 +560,9 @@
     gap: 0.7rem;
     padding: 0.9rem 1rem;
     border-radius: 0.65rem;
-    border: 1px solid color-mix(in oklab, var(--color-background) 14%, transparent);
-    background: color-mix(in oklab, var(--color-background) 9%, transparent);
-    color: var(--color-background);
+    border: 1px solid color-mix(in oklab, var(--contact-panel-foreground) 14%, transparent);
+    background: color-mix(in oklab, var(--contact-panel-foreground) 9%, transparent);
+    color: var(--contact-panel-foreground);
     text-decoration: none;
     transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
   }
