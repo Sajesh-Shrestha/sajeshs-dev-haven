@@ -173,8 +173,8 @@ export function SinglePagePortfolio() {
           <span className="qa-eyebrow">QA Engineer</span>
           <h1 className="qa-intro-title">Hi, I'm Sajesh Shrestha.</h1>
           <p className="qa-intro-text">
-            QA Engineer with 3+ years of experience in manual testing, API testing, and basic automation,
-            focused on delivering high-quality and reliable software.
+            QA Engineer passionate about quality. I like exploring how systems work and finding ways to make
+            them better, with a focus on creating reliable and user-friendly experiences.
           </p>
           <div className="qa-intro-actions">
             <Button asChild>
@@ -200,8 +200,8 @@ export function SinglePagePortfolio() {
             <h2 className="qa-section-title-v2">Quality-focused, practical, and detail-oriented.</h2>
           </div>
           <p>
-            QA Engineer with 3+ years of experience in manual testing, API testing, and basic automation,
-            focused on delivering high-quality and reliable software.
+            I like exploring how systems work and finding ways to make them better. I focus on creating
+            reliable and user-friendly experiences through thoughtful testing and quality practices.
           </p>
         </section>
 
