@@ -550,7 +550,7 @@
 
   .qa-contact-grid-v2 {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 270px), 1fr));
     gap: 0.75rem;
   }
 
@@ -564,7 +564,14 @@
     background: color-mix(in oklab, var(--contact-panel-foreground) 9%, transparent);
     color: var(--contact-panel-foreground);
     text-decoration: none;
+    min-width: 0;
     transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+  }
+
+  .qa-contact-link span {
+    min-width: 0;
+    overflow-wrap: anywhere;
+    line-height: 1.35;
   }
 
   .qa-contact-link:hover {
