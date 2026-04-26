@@ -2,65 +2,124 @@ import * as React from "react";
 import { Navigate } from "@tanstack/react-router";
 import {
   Award,
+  Brain,
+  BriefcaseBusiness,
   Bug,
+  CircleCheck,
   Code2,
   DatabaseZap,
   Download,
   FileJson,
   FlaskConical,
+  GitBranch,
+  GraduationCap,
   Linkedin,
   Mail,
   MapPin,
   MessageCircleMore,
   MoonStar,
   Phone,
+  Puzzle,
+  RefreshCw,
+  ShieldCheck,
   SunMedium,
   TestTube2,
   TimerReset,
   Trophy,
-  Workflow,
+  Users,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
-type SectionKey = "about" | "skills" | "journey" | "awards" | "contact";
+type SectionKey = "about" | "skills" | "tools" | "journey" | "education" | "projects" | "awards" | "contact";
+
+type IconType = React.ComponentType<React.SVGProps<SVGSVGElement>>;
 
 const navItems: ReadonlyArray<{ id: SectionKey; label: string }> = [
   { id: "about", label: "About" },
   { id: "skills", label: "Skills" },
-  { id: "journey", label: "Journey" },
+  { id: "tools", label: "Tools" },
+  { id: "journey", label: "Experience" },
+  { id: "education", label: "Education" },
+  { id: "projects", label: "Projects" },
   { id: "awards", label: "Awards" },
   { id: "contact", label: "Contact" },
 ];
 
-const skills = [
-  { title: "Manual Testing", detail: "Functional, regression, smoke", icon: TestTube2 },
-  { title: "API Testing", detail: "Postman, request/response validation", icon: FlaskConical },
-  { title: "Basic Load Testing", detail: "JMeter fundamentals", icon: TimerReset },
-  { title: "Basic Automation", detail: "Playwright UI flows", icon: Bug },
-  { title: "SQL Testing", detail: "Database & data integrity checks", icon: DatabaseZap },
-  { title: "RJSF (Basic)", detail: "React JSON Schema Forms", icon: Code2 },
-  { title: "JSON Workflow Design", detail: "Structured workflow validation", icon: FileJson },
+const technicalSkills = [
+  { title: "Manual Testing", detail: "Functional, regression, smoke, and exploratory testing", icon: TestTube2 },
+  { title: "API Testing", detail: "Request/response validation and backend workflow checks", icon: FlaskConical },
+  { title: "SQL (Database Testing)", detail: "Data validation, integrity checks, and query-based testing", icon: DatabaseZap },
+  { title: "Basic Automation Testing", detail: "Playwright UI flow automation fundamentals", icon: Bug },
+  { title: "Load Testing", detail: "JMeter basics for performance and traffic validation", icon: TimerReset },
+  { title: "Basic Security Testing", detail: "Security awareness with basic vulnerability checks", icon: ShieldCheck },
 ] as const;
 
-const journeySteps = [
+const softSkills = [
+  { title: "Team Player", detail: "Collaborates clearly across QA, product, and engineering", icon: Users },
+  { title: "Critical Thinking", detail: "Breaks down issues and validates edge cases carefully", icon: Brain },
+  { title: "Communication Skills", detail: "Writes clear defects, test notes, and status updates", icon: MessageCircleMore },
+  { title: "Problem Solving", detail: "Finds practical paths to isolate and resolve quality risks", icon: Puzzle },
+  { title: "Adaptability", detail: "Adjusts quickly to changing requirements and priorities", icon: RefreshCw },
+] as const;
+
+const tools = [
+  { title: "Git", detail: "Version control and collaborative workflow", icon: GitBranch },
+  { title: "Postman", detail: "API testing and collection-based validation", icon: FileJson },
+  { title: "JMeter", detail: "Basic load and performance test execution", icon: TimerReset },
+  { title: "Playwright", detail: "Basic browser automation and UI checks", icon: Code2 },
+  { title: "Burp Suite", detail: "Basic security testing and request inspection", icon: ShieldCheck },
+] as const;
+
+const experienceSteps = [
   {
-    period: "April 2022 – June 2022",
-    role: "QA Intern",
-    summary: "Learned software testing fundamentals and supported real-world testing activities.",
+    period: "January 2026 – Present",
+    role: "QA Engineer",
+    company: "Current Role",
+    points: [
+      "Owns quality processes for reliable product delivery.",
+      "Performs manual, API, database, and regression testing.",
+      "Contributes to automation and performance testing improvements.",
+    ],
   },
   {
     period: "October 2022 – January 2026",
     role: "Associate QA Engineer",
-    summary:
-      "Hands-on experience in functional, regression, and API testing. Worked closely with development teams and improved product quality across projects.",
+    company: "Professional QA Experience",
+    points: [
+      "Tested functional, regression, smoke, and API workflows.",
+      "Collaborated closely with developers to identify and verify fixes.",
+      "Improved test coverage and defect reporting quality across projects.",
+    ],
   },
   {
-    period: "January 2026 – Present",
-    role: "QA Engineer",
-    summary:
-      "Owning quality processes, contributing to better testing strategies, and growing in automation and performance testing.",
+    period: "April 2022 – June 2022",
+    role: "QA Intern",
+    company: "Internship",
+    points: [
+      "Learned software testing fundamentals in a real project environment.",
+      "Supported test case execution, bug tracking, and QA documentation.",
+      "Built a strong foundation in product quality and structured testing.",
+    ],
+  },
+] as const;
+
+const projects = [
+  {
+    title: "API Quality Validation",
+    detail: "Validated REST APIs with Postman, response checks, negative cases, and regression coverage.",
+    icon: FlaskConical,
+  },
+  {
+    title: "Regression Test Coverage",
+    detail: "Prepared and executed structured test scenarios to reduce release risk and improve reliability.",
+    icon: CircleCheck,
+  },
+  {
+    title: "Basic Automation Practice",
+    detail: "Created Playwright-based UI checks for repeatable browser flow validation and learning.",
+    icon: Bug,
   },
 ] as const;
 
@@ -130,14 +189,12 @@ export function SinglePagePortfolio() {
       </header>
 
       <main className="qa-main-flow">
-        {/* Introduction */}
         <section id="about" className="qa-section qa-intro">
           <span className="qa-eyebrow">QA Engineer</span>
           <h1 className="qa-intro-title">Hi, I'm Sajesh Shrestha.</h1>
           <p className="qa-intro-text">
-            QA Engineer with 3.5+ years of experience, strong in manual testing and API testing,
-            with basic knowledge of automation using Playwright and load testing with JMeter.
-            Passionate about building reliable software through clear, structured quality processes.
+            QA Engineer with 3+ years of experience in manual testing, API testing, and basic automation,
+            focused on delivering high-quality and reliable software.
           </p>
           <div className="qa-intro-actions">
             <Button asChild>
@@ -157,45 +214,44 @@ export function SinglePagePortfolio() {
           </div>
         </section>
 
-        {/* Skills */}
-        <section id="skills" className="qa-section">
-          <SectionHeading eyebrow="Skills" title="What I work with" />
-          <div className="qa-skills-grid">
-            {skills.map(({ title, detail, icon: Icon }) => (
-              <Card key={title} className="qa-card qa-skill-card">
-                <CardContent className="qa-card-pad">
-                  <div className="qa-skill-icon">
-                    <Icon aria-hidden="true" />
-                  </div>
-                  <h3 className="qa-card-title">{title}</h3>
-                  <p className="qa-card-text">{detail}</p>
-                </CardContent>
-              </Card>
-            ))}
+        <section className="qa-section qa-about-card" aria-label="About Me">
+          <div>
+            <span className="qa-eyebrow">About Me</span>
+            <h2 className="qa-section-title-v2">Quality-focused, practical, and detail-oriented.</h2>
           </div>
+          <p>
+            QA Engineer with 3+ years of experience in manual testing, API testing, and basic automation,
+            focused on delivering high-quality and reliable software.
+          </p>
         </section>
 
-        {/* Journey */}
+        <section id="skills" className="qa-section">
+          <SectionHeading eyebrow="Technical Skills" title="Core QA strengths" />
+          <IconCardGrid items={technicalSkills} />
+        </section>
+
+        <section className="qa-section">
+          <SectionHeading eyebrow="Soft Skills" title="How I work with teams" />
+          <IconCardGrid items={softSkills} compact />
+        </section>
+
+        <section id="tools" className="qa-section">
+          <SectionHeading eyebrow="Tools & Platforms" title="Tools I use for testing workflows" />
+          <IconCardGrid items={tools} compact />
+        </section>
+
         <section id="journey" className="qa-section">
-          <SectionHeading eyebrow="Journey" title="My QA path so far" />
-          <ol className="qa-timeline-v2">
-            {journeySteps.map((step) => (
-              <li key={step.period} className="qa-timeline-item">
-                <div className="qa-timeline-dot" aria-hidden="true">
-                  <Workflow />
-                </div>
-                <Card className="qa-card qa-timeline-card-v2">
-                  <CardContent className="qa-card-pad">
-                    <p className="qa-timeline-period">{step.period}</p>
-                    <h3 className="qa-card-title">{step.role}</h3>
-                  </CardContent>
-                </Card>
-              </li>
-            ))}
-          </ol>
+          <SectionHeading eyebrow="Experience" title="Professional history" />
+          <AutoTimeline steps={experienceSteps} />
         </section>
 
-        {/* Awards */}
+        <EducationSection />
+
+        <section id="projects" className="qa-section">
+          <SectionHeading eyebrow="Projects" title="Selected QA work" />
+          <IconCardGrid items={projects} />
+        </section>
+
         <section id="awards" className="qa-section">
           <SectionHeading eyebrow="Awards" title="Recognition I'm proud of" />
           <div className="qa-awards-grid-v2">
@@ -216,7 +272,6 @@ export function SinglePagePortfolio() {
           </div>
         </section>
 
-        {/* Contact */}
         <section id="contact" className="qa-section qa-contact-v2">
           <SectionHeading eyebrow="Contact" title="Let's connect" />
           <p className="qa-contact-lead">
@@ -235,12 +290,7 @@ export function SinglePagePortfolio() {
               <Phone aria-hidden="true" />
               <span>+977 9860437025</span>
             </a>
-            <a
-              href="https://wa.me/9779860437025"
-              target="_blank"
-              rel="noreferrer"
-              className="qa-contact-link"
-            >
+            <a href="https://wa.me/9779860437025" target="_blank" rel="noreferrer" className="qa-contact-link">
               <MessageCircleMore aria-hidden="true" />
               <span>WhatsApp</span>
             </a>
@@ -261,6 +311,84 @@ export function SinglePagePortfolio() {
         </footer>
       </main>
     </div>
+  );
+}
+
+function IconCardGrid({
+  items,
+  compact = false,
+}: {
+  items: ReadonlyArray<{ title: string; detail: string; icon: IconType }>;
+  compact?: boolean;
+}) {
+  return (
+    <div className={compact ? "qa-skills-grid qa-skills-grid-compact" : "qa-skills-grid"}>
+      {items.map(({ title, detail, icon: Icon }) => (
+        <Card key={title} className="qa-card qa-skill-card">
+          <CardContent className="qa-card-pad">
+            <div className="qa-skill-icon">
+              <Icon aria-hidden="true" />
+            </div>
+            <h3 className="qa-card-title">{title}</h3>
+            <p className="qa-card-text">{detail}</p>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  );
+}
+
+function AutoTimeline({
+  steps,
+}: {
+  steps: ReadonlyArray<{ period: string; role: string; company: string; points: readonly string[] }>;
+}) {
+  const timelineItems = [...steps, ...steps];
+
+  return (
+    <div className="qa-timeline-shell" aria-label="Auto-scrolling experience timeline">
+      <ol className="qa-timeline-track">
+        {timelineItems.map((step, index) => (
+          <li key={`${step.period}-${index}`} className="qa-timeline-item" aria-hidden={index >= steps.length}>
+            <div className="qa-timeline-dot" aria-hidden="true">
+              <BriefcaseBusiness />
+            </div>
+            <Card className="qa-card qa-timeline-card-v2">
+              <CardContent className="qa-card-pad">
+                <p className="qa-timeline-period">{step.period}</p>
+                <h3 className="qa-card-title">{step.role}</h3>
+                <p className="qa-timeline-company">{step.company}</p>
+                <ul className="qa-timeline-points">
+                  {step.points.map((point) => (
+                    <li key={point}>{point}</li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+          </li>
+        ))}
+      </ol>
+    </div>
+  );
+}
+
+function EducationSection() {
+  return (
+    <section id="education" className="qa-section">
+      <SectionHeading eyebrow="Education" title="Academic background" />
+      <Card className="qa-card qa-education-card">
+        <CardContent className="qa-card-pad qa-education-content">
+          <div className="qa-education-icon">
+            <GraduationCap aria-hidden="true" />
+          </div>
+          <div>
+            <h3 className="qa-card-title">Bachelor in Computer Science and Information Technology (BSc. CSIT)</h3>
+            <p className="qa-card-text">Trinity International College</p>
+            <p className="qa-timeline-period">2017 – 2022</p>
+          </div>
+        </CardContent>
+      </Card>
+    </section>
   );
 }
 

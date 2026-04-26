@@ -12,7 +12,7 @@
 @keyframes qaSlideIn {
   from {
     opacity: 0;
-    transform: translateX(-24px);
+    transform: translateX(-18px);
   }
   to {
     opacity: 1;
@@ -22,38 +22,36 @@
 
 @keyframes qaDotPulse {
   0%, 100% {
-    box-shadow: 0 0 0 4px color-mix(in oklab, var(--color-primary) 18%, transparent);
+    box-shadow: 0 0 0 4px color-mix(in oklab, var(--color-primary) 16%, transparent);
   }
   50% {
-    box-shadow: 0 0 0 8px color-mix(in oklab, var(--color-primary) 10%, transparent);
+    box-shadow: 0 0 0 8px color-mix(in oklab, var(--color-accent) 12%, transparent);
   }
 }
 
-@keyframes qaLineGrow {
+@keyframes qaTimelineScroll {
   from {
-    transform: scaleY(0);
+    transform: translateY(0);
   }
   to {
-    transform: scaleY(1);
+    transform: translateY(-50%);
   }
 }
 
 @layer components {
-  /* ===== Page shell ===== */
   .qa-page {
     min-height: 100vh;
     background: var(--page-gradient, var(--color-background));
     color: var(--color-foreground);
   }
 
-  /* ===== Top bar ===== */
   .qa-topbar {
     position: sticky;
     top: 0;
     z-index: 30;
-    background: color-mix(in oklab, var(--color-background) 85%, transparent);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid color-mix(in oklab, var(--color-border) 80%, transparent);
+    background: color-mix(in oklab, var(--color-background) 84%, transparent);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid color-mix(in oklab, var(--color-border) 75%, transparent);
   }
 
   .qa-topbar-inner {
@@ -70,6 +68,7 @@
     display: flex;
     align-items: center;
     gap: 0.65rem;
+    flex-shrink: 0;
   }
 
   .qa-brand-mark {
@@ -77,11 +76,12 @@
     place-items: center;
     width: 2.4rem;
     height: 2.4rem;
-    border-radius: 0.6rem;
-    background: var(--color-primary);
+    border-radius: 0.65rem;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
     color: var(--color-primary-foreground);
     font-family: var(--font-display);
     font-weight: 700;
+    box-shadow: var(--shadow-card);
   }
 
   .qa-brand-name {
@@ -107,17 +107,18 @@
     background: transparent;
     border: none;
     cursor: pointer;
-    padding: 0.5rem 0.85rem;
+    padding: 0.5rem 0.75rem;
     border-radius: 0.5rem;
-    font-size: 0.9rem;
-    font-weight: 500;
+    font-size: 0.88rem;
+    font-weight: 600;
     color: var(--color-muted-foreground);
-    transition: color 0.15s ease, background 0.15s ease;
+    transition: color 0.15s ease, background 0.15s ease, transform 0.15s ease;
   }
 
   .qa-topnav-link:hover {
     color: var(--color-foreground);
-    background: color-mix(in oklab, var(--color-primary) 8%, transparent);
+    background: color-mix(in oklab, var(--color-primary) 9%, transparent);
+    transform: translateY(-1px);
   }
 
   .qa-theme-toggle {
@@ -130,14 +131,12 @@
     background: var(--color-card);
     color: var(--color-foreground);
     cursor: pointer;
-    transition: background 0.15s ease;
   }
 
   .qa-theme-toggle:hover {
     background: color-mix(in oklab, var(--color-primary) 8%, var(--color-card));
   }
 
-  /* ===== Sections ===== */
   .qa-main-flow {
     max-width: 1100px;
     margin: 0 auto;
@@ -151,7 +150,7 @@
   }
 
   .qa-section + .qa-section {
-    border-top: 1px solid color-mix(in oklab, var(--color-border) 60%, transparent);
+    border-top: 1px solid color-mix(in oklab, var(--color-border) 58%, transparent);
   }
 
   .qa-section-heading {
@@ -161,7 +160,7 @@
   .qa-eyebrow {
     display: inline-block;
     font-size: 0.78rem;
-    font-weight: 700;
+    font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     color: var(--color-primary);
@@ -175,7 +174,6 @@
     font-weight: 700;
   }
 
-  /* ===== Intro ===== */
   .qa-intro {
     padding-top: 5rem;
     padding-bottom: 5rem;
@@ -226,19 +224,40 @@
     color: var(--color-primary);
   }
 
-  /* ===== Cards ===== */
+  .qa-about-card {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: 2rem;
+    align-items: center;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    border: 1px solid color-mix(in oklab, var(--color-primary) 16%, var(--color-border));
+    border-radius: 1rem;
+    background:
+      linear-gradient(135deg, color-mix(in oklab, var(--color-primary) 8%, transparent), transparent 45%),
+      color-mix(in oklab, var(--color-card) 86%, var(--color-secondary));
+    box-shadow: var(--shadow-card);
+  }
+
+  .qa-about-card p {
+    color: var(--color-muted-foreground);
+    line-height: 1.75;
+    font-size: 1rem;
+  }
+
   .qa-card {
-    background: var(--color-card);
-    border: 1px solid color-mix(in oklab, var(--color-border) 70%, transparent);
-    border-radius: 0.75rem;
+    background: color-mix(in oklab, var(--color-card) 92%, var(--color-secondary));
+    border: 1px solid color-mix(in oklab, var(--color-border) 74%, transparent);
+    border-radius: 0.8rem;
     box-shadow: var(--shadow-card, 0 4px 12px rgba(0, 0, 0, 0.04));
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease;
   }
 
   .qa-card:hover {
-    transform: translateY(-2px);
+    transform: translateY(-3px);
     border-color: color-mix(in oklab, var(--color-primary) 35%, transparent);
     box-shadow: var(--shadow-soft, 0 10px 28px rgba(0, 0, 0, 0.08));
+    background: var(--color-card);
   }
 
   .qa-card-pad {
@@ -249,7 +268,7 @@
     font-family: var(--font-display);
     font-size: 1.1rem;
     font-weight: 700;
-    margin: 0.4rem 0;
+    margin: 0.45rem 0;
   }
 
   .qa-card-text {
@@ -258,86 +277,102 @@
     font-size: 0.95rem;
   }
 
-  /* ===== Skills ===== */
   .qa-skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
     gap: 1rem;
   }
 
-  .qa-skill-icon {
-    display: inline-grid;
-    place-items: center;
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 0.55rem;
-    background: color-mix(in oklab, var(--color-primary) 12%, var(--color-card));
-    color: var(--color-primary);
-    margin-bottom: 0.4rem;
+  .qa-skills-grid-compact {
+    grid-template-columns: repeat(auto-fit, minmax(205px, 1fr));
   }
 
-  .qa-skill-icon svg {
+  .qa-skill-card {
+    min-height: 100%;
+  }
+
+  .qa-skill-icon,
+  .qa-education-icon {
+    display: inline-grid;
+    place-items: center;
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 0.65rem;
+    background: linear-gradient(
+      135deg,
+      color-mix(in oklab, var(--color-primary) 16%, var(--color-card)),
+      color-mix(in oklab, var(--color-accent) 16%, var(--color-card))
+    );
+    color: var(--color-primary);
+    margin-bottom: 0.45rem;
+  }
+
+  .qa-skill-icon svg,
+  .qa-education-icon svg {
     width: 1.25rem;
     height: 1.25rem;
   }
 
-  /* ===== Timeline ===== */
-  .qa-timeline-v2 {
+  .qa-timeline-shell {
+    position: relative;
+    max-height: 31rem;
+    overflow: hidden;
+    padding-left: 0.2rem;
+    mask-image: linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+  }
+
+  .qa-timeline-shell::before {
+    content: "";
+    position: absolute;
+    left: 1.35rem;
+    top: 1rem;
+    bottom: 1rem;
+    width: 2px;
+    background: linear-gradient(180deg, var(--color-primary), var(--color-accent), var(--color-primary));
+    opacity: 0.48;
+    z-index: 0;
+  }
+
+  .qa-timeline-shell:hover .qa-timeline-track {
+    animation-play-state: paused;
+  }
+
+  .qa-timeline-track {
     list-style: none;
     margin: 0;
     padding: 0;
     position: relative;
     display: grid;
-    gap: 1.25rem;
-  }
-
-  .qa-timeline-v2::before {
-    content: "";
-    position: absolute;
-    left: 1.1rem;
-    top: 0.5rem;
-    bottom: 0.5rem;
-    width: 2px;
-    background: linear-gradient(
-      180deg,
-      var(--color-primary),
-      color-mix(in oklab, var(--color-accent) 70%, transparent)
-    );
-    opacity: 0.5;
-    transform-origin: top;
-    animation: qaLineGrow 1.2s ease-out both;
+    gap: 1.1rem;
+    animation: qaTimelineScroll 24s linear infinite;
+    will-change: transform;
   }
 
   .qa-timeline-item {
     position: relative;
-    padding-left: 3rem;
-    opacity: 0;
+    padding-left: 3.35rem;
     animation: qaSlideIn 0.6s ease-out both;
   }
 
-  .qa-timeline-item:nth-child(1) { animation-delay: 0.15s; }
-  .qa-timeline-item:nth-child(2) { animation-delay: 0.35s; }
-  .qa-timeline-item:nth-child(3) { animation-delay: 0.55s; }
-  .qa-timeline-item:nth-child(4) { animation-delay: 0.75s; }
-
   .qa-timeline-dot {
     position: absolute;
-    left: 0;
-    top: 0.5rem;
-    width: 2.4rem;
-    height: 2.4rem;
+    left: 0.2rem;
+    top: 1.2rem;
+    width: 2.35rem;
+    height: 2.35rem;
     display: grid;
     place-items: center;
     border-radius: 999px;
     background: var(--color-primary);
     color: var(--color-primary-foreground);
-    box-shadow: 0 0 0 4px color-mix(in oklab, var(--color-primary) 18%, transparent);
-    animation: qaDotPulse 2.8s ease-in-out infinite;
+    box-shadow: 0 0 0 4px color-mix(in oklab, var(--color-primary) 16%, transparent);
+    animation: qaDotPulse 3s ease-in-out infinite;
     transition: transform 0.25s ease;
+    z-index: 1;
   }
 
   .qa-timeline-item:hover .qa-timeline-dot {
-    transform: scale(1.1) rotate(8deg);
+    transform: scale(1.08);
   }
 
   .qa-timeline-card-v2 {
@@ -349,18 +384,8 @@
   }
 
   .qa-timeline-dot svg {
-    width: 1.1rem;
-    height: 1.1rem;
-  }
-
-  .qa-timeline-step {
-    display: inline-block;
-    font-size: 0.72rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--color-accent);
-    margin-bottom: 0.3rem;
+    width: 1.05rem;
+    height: 1.05rem;
   }
 
   .qa-timeline-period {
@@ -369,7 +394,40 @@
     margin: 0;
   }
 
-  /* ===== Awards ===== */
+  .qa-timeline-company {
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 0 0 0.75rem;
+    font-size: 0.94rem;
+  }
+
+  .qa-timeline-points {
+    margin: 0;
+    padding-left: 1rem;
+    color: var(--color-muted-foreground);
+    line-height: 1.65;
+    font-size: 0.94rem;
+  }
+
+  .qa-timeline-points li + li {
+    margin-top: 0.3rem;
+  }
+
+  .qa-education-card {
+    max-width: 760px;
+  }
+
+  .qa-education-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .qa-education-icon {
+    flex-shrink: 0;
+    margin-bottom: 0;
+  }
+
   .qa-awards-grid-v2 {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -411,7 +469,7 @@
     place-items: center;
     width: 2.6rem;
     height: 2.6rem;
-    border-radius: 0.6rem;
+    border-radius: 0.65rem;
     background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
     color: var(--color-primary-foreground);
   }
@@ -431,7 +489,6 @@
     border: 1px solid color-mix(in oklab, var(--color-primary) 25%, transparent);
   }
 
-  /* ===== Contact ===== */
   .qa-contact-lead {
     display: inline-flex;
     align-items: center;
@@ -454,7 +511,7 @@
 
   .qa-contact-lead a {
     color: var(--color-primary);
-    font-weight: 600;
+    font-weight: 700;
     text-decoration: none;
   }
 
@@ -473,9 +530,9 @@
     align-items: center;
     gap: 0.7rem;
     padding: 0.9rem 1rem;
-    border-radius: 0.6rem;
+    border-radius: 0.65rem;
     border: 1px solid color-mix(in oklab, var(--color-border) 75%, transparent);
-    background: var(--color-card);
+    background: color-mix(in oklab, var(--color-card) 94%, var(--color-secondary));
     color: var(--color-foreground);
     text-decoration: none;
     transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
@@ -484,23 +541,16 @@
   .qa-contact-link:hover {
     border-color: color-mix(in oklab, var(--color-primary) 40%, transparent);
     background: color-mix(in oklab, var(--color-primary) 6%, var(--color-card));
-    transform: translateY(-1px);
-  }
-
-  .qa-contact-cta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    margin-top: 1.5rem;
+    transform: translateY(-2px);
   }
 
   .qa-contact-link svg {
     width: 1.1rem;
     height: 1.1rem;
     color: var(--color-primary);
+    flex-shrink: 0;
   }
 
-  /* ===== Footer ===== */
   .qa-footer {
     padding: 2rem 0 3rem;
     text-align: center;
@@ -510,7 +560,6 @@
     margin-top: 2rem;
   }
 
-  /* ===== Responsive ===== */
   @media (max-width: 720px) {
     .qa-topbar-inner {
       flex-wrap: wrap;
@@ -532,12 +581,33 @@
     .qa-intro {
       padding-top: 3rem;
     }
+
+    .qa-about-card {
+      grid-template-columns: 1fr;
+      padding: 1.25rem;
+      gap: 1rem;
+    }
+
+    .qa-timeline-shell {
+      max-height: 34rem;
+    }
+
+    .qa-timeline-item {
+      padding-left: 3rem;
+    }
+
+    .qa-contact-lead {
+      align-items: flex-start;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
     .qa-section,
     .qa-card,
-    .qa-contact-link {
+    .qa-contact-link,
+    .qa-timeline-track,
+    .qa-timeline-dot,
+    .qa-timeline-item {
       animation: none !important;
       transition: none !important;
     }
