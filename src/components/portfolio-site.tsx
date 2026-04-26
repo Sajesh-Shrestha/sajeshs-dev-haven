@@ -31,7 +31,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
-type SectionKey = "about" | "skills" | "tools" | "journey" | "education" | "projects" | "awards" | "contact";
+type SectionKey = "about" | "skills" | "tools" | "journey" | "education" | "awards" | "contact";
 
 type IconType = React.ComponentType<React.SVGProps<SVGSVGElement>>;
 
