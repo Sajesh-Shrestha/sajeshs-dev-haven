@@ -5,7 +5,6 @@ import {
   Brain,
   BriefcaseBusiness,
   Bug,
-  CircleCheck,
   Code2,
   DatabaseZap,
   Download,
@@ -32,7 +31,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
-type SectionKey = "about" | "skills" | "tools" | "journey" | "education" | "projects" | "awards" | "contact";
+type SectionKey = "about" | "skills" | "tools" | "journey" | "education" | "awards" | "contact";
 
 type IconType = React.ComponentType<React.SVGProps<SVGSVGElement>>;
 
@@ -42,7 +41,6 @@ const navItems: ReadonlyArray<{ id: SectionKey; label: string }> = [
   { id: "tools", label: "Tools" },
   { id: "journey", label: "Experience" },
   { id: "education", label: "Education" },
-  { id: "projects", label: "Projects" },
   { id: "awards", label: "Awards" },
   { id: "contact", label: "Contact" },
 ];
@@ -102,24 +100,6 @@ const experienceSteps = [
       "Supported test case execution, bug tracking, and QA documentation.",
       "Built a strong foundation in product quality and structured testing.",
     ],
-  },
-] as const;
-
-const projects = [
-  {
-    title: "API Quality Validation",
-    detail: "Validated REST APIs with Postman, response checks, negative cases, and regression coverage.",
-    icon: FlaskConical,
-  },
-  {
-    title: "Regression Test Coverage",
-    detail: "Prepared and executed structured test scenarios to reduce release risk and improve reliability.",
-    icon: CircleCheck,
-  },
-  {
-    title: "Basic Automation Practice",
-    detail: "Created Playwright-based UI checks for repeatable browser flow validation and learning.",
-    icon: Bug,
   },
 ] as const;
 
@@ -247,11 +227,6 @@ export function SinglePagePortfolio() {
 
         <EducationSection />
 
-        <section id="projects" className="qa-section">
-          <SectionHeading eyebrow="Projects" title="Selected QA work" />
-          <IconCardGrid items={projects} />
-        </section>
-
         <section id="awards" className="qa-section">
           <SectionHeading eyebrow="Awards" title="Recognition I'm proud of" />
           <div className="qa-awards-grid-v2">
@@ -373,21 +348,38 @@ function AutoTimeline({
 }
 
 function EducationSection() {
+  const educationItems = [
+    {
+      title: "Bachelor in Computer Science and Information Technology (BSc. CSIT)",
+      institute: "Trinity International College",
+      period: "2017 – 2022",
+    },
+    {
+      title: "+2 Science",
+      institute: "Golden Gate International College",
+      period: "2015 – 2017",
+    },
+  ] as const;
+
   return (
     <section id="education" className="qa-section">
       <SectionHeading eyebrow="Education" title="Academic background" />
-      <Card className="qa-card qa-education-card">
-        <CardContent className="qa-card-pad qa-education-content">
-          <div className="qa-education-icon">
-            <GraduationCap aria-hidden="true" />
-          </div>
-          <div>
-            <h3 className="qa-card-title">Bachelor in Computer Science and Information Technology (BSc. CSIT)</h3>
-            <p className="qa-card-text">Trinity International College</p>
-            <p className="qa-timeline-period">2017 – 2022</p>
-          </div>
-        </CardContent>
-      </Card>
+      <div className="qa-education-list">
+        {educationItems.map((item) => (
+          <Card key={item.title} className="qa-card qa-education-card">
+            <CardContent className="qa-card-pad qa-education-content">
+              <div className="qa-education-icon">
+                <GraduationCap aria-hidden="true" />
+              </div>
+              <div>
+                <h3 className="qa-card-title">{item.title}</h3>
+                <p className="qa-card-text">{item.institute}</p>
+                <p className="qa-timeline-period">{item.period}</p>
+              </div>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
     </section>
   );
 }
