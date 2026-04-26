@@ -5,7 +5,6 @@ import {
   Brain,
   BriefcaseBusiness,
   Bug,
-  CircleCheck,
   Code2,
   DatabaseZap,
   Download,
@@ -42,7 +41,6 @@ const navItems: ReadonlyArray<{ id: SectionKey; label: string }> = [
   { id: "tools", label: "Tools" },
   { id: "journey", label: "Experience" },
   { id: "education", label: "Education" },
-  { id: "projects", label: "Projects" },
   { id: "awards", label: "Awards" },
   { id: "contact", label: "Contact" },
 ];
@@ -102,24 +100,6 @@ const experienceSteps = [
       "Supported test case execution, bug tracking, and QA documentation.",
       "Built a strong foundation in product quality and structured testing.",
     ],
-  },
-] as const;
-
-const projects = [
-  {
-    title: "API Quality Validation",
-    detail: "Validated REST APIs with Postman, response checks, negative cases, and regression coverage.",
-    icon: FlaskConical,
-  },
-  {
-    title: "Regression Test Coverage",
-    detail: "Prepared and executed structured test scenarios to reduce release risk and improve reliability.",
-    icon: CircleCheck,
-  },
-  {
-    title: "Basic Automation Practice",
-    detail: "Created Playwright-based UI checks for repeatable browser flow validation and learning.",
-    icon: Bug,
   },
 ] as const;
 
@@ -246,11 +226,6 @@ export function SinglePagePortfolio() {
         </section>
 
         <EducationSection />
-
-        <section id="projects" className="qa-section">
-          <SectionHeading eyebrow="Projects" title="Selected QA work" />
-          <IconCardGrid items={projects} />
-        </section>
 
         <section id="awards" className="qa-section">
           <SectionHeading eyebrow="Awards" title="Recognition I'm proud of" />
