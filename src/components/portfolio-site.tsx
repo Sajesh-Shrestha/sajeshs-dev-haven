@@ -27,7 +27,6 @@ import {
   TimerReset,
   Trophy,
   Users,
-  Wrench,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
