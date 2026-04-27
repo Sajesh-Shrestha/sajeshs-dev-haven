@@ -574,9 +574,9 @@
     place-items: center;
     width: 2.6rem;
     height: 2.6rem;
-    border-radius: 0.65rem;
-    background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-    color: var(--color-primary-foreground);
+    border-radius: 0.35rem;
+    background: var(--color-foreground);
+    color: var(--color-background);
   }
 
   .qa-award-icon svg {
@@ -597,9 +597,9 @@
   .qa-contact-v2 {
     margin-top: 1.5rem;
     padding: 2rem;
-    border-radius: 1rem;
+    border-radius: 0.45rem;
     background:
-      linear-gradient(135deg, color-mix(in oklab, var(--color-primary) 16%, transparent), transparent 42%),
+      linear-gradient(135deg, color-mix(in oklab, var(--color-accent) 14%, transparent), transparent 42%),
       var(--contact-panel);
     color: var(--contact-panel-foreground);
     border-top: 0;
@@ -625,7 +625,7 @@
     color: color-mix(in oklab, var(--contact-panel-foreground) 78%, transparent);
     margin-bottom: 1.5rem;
     padding: 0.75rem 1rem;
-    border-radius: 0.75rem;
+    border-radius: 0.35rem;
     background: color-mix(in oklab, var(--color-primary) 18%, var(--contact-panel));
     border: 1px solid color-mix(in oklab, var(--color-primary) 42%, transparent);
   }
@@ -658,7 +658,7 @@
     align-items: center;
     gap: 0.7rem;
     padding: 0.9rem 1rem;
-    border-radius: 0.65rem;
+    border-radius: 0.35rem;
     border: 1px solid color-mix(in oklab, var(--contact-panel-foreground) 14%, transparent);
     background: color-mix(in oklab, var(--contact-panel-foreground) 9%, transparent);
     color: var(--contact-panel-foreground);
@@ -718,6 +718,11 @@
       padding-inline: 1.25rem;
     }
 
+    .qa-intro::after {
+      width: 42%;
+      opacity: 0.22;
+    }
+
     .qa-about-card {
       grid-template-columns: 1fr;
       padding: 1.25rem;
@@ -726,6 +731,21 @@
 
     .qa-timeline-shell {
       max-height: 34rem;
+    }
+
+    .qa-project-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .qa-project-item,
+    .qa-project-item:nth-child(2n),
+    .qa-project-item:nth-last-child(-n + 2) {
+      border-right: 0;
+      border-bottom: 1px solid color-mix(in oklab, var(--color-border) 64%, transparent);
+    }
+
+    .qa-project-item:last-child {
+      border-bottom: 0;
     }
 
     .qa-timeline-item {
