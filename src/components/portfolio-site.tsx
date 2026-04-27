@@ -31,7 +31,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
-type SectionKey = "about" | "skills" | "tools" | "journey" | "education" | "awards" | "contact";
+type SectionKey = "about" | "skills" | "tools" | "journey" | "projects" | "education" | "awards" | "contact";
 
 type IconType = React.ComponentType<React.SVGProps<SVGSVGElement>>;
 
@@ -40,6 +40,7 @@ const navItems: ReadonlyArray<{ id: SectionKey; label: string }> = [
   { id: "skills", label: "Skills" },
   { id: "tools", label: "Tools" },
   { id: "journey", label: "Experience" },
+  { id: "projects", label: "Projects" },
   { id: "education", label: "Education" },
   { id: "awards", label: "Awards" },
   { id: "contact", label: "Contact" },
@@ -76,9 +77,12 @@ const experienceSteps = [
     role: "QA Engineer",
     company: "Current Role",
     points: [
-      "Owns quality processes for reliable product delivery.",
-      "Performs manual, API, database, and regression testing.",
-      "Contributes to automation and performance testing improvements.",
+      "Owned and maintained quality assurance processes for reliable product delivery.",
+      "Performed manual, API, database, and regression testing.",
+      "Conducted API testing using Postman and load testing using JMeter.",
+      "Performed UI load testing and basic automation using Playwright.",
+      "Collaborated with developers to ensure timely issue resolution.",
+      "Worked with RJSF / JSON Forms and JSON Workflow Definitions.",
     ],
   },
   {
@@ -86,9 +90,11 @@ const experienceSteps = [
     role: "Associate QA Engineer",
     company: "Professional QA Experience",
     points: [
-      "Tested functional, regression, smoke, and API workflows.",
-      "Collaborated closely with developers to identify and verify fixes.",
-      "Improved test coverage and defect reporting quality across projects.",
+      "Performed functional, regression, smoke, and API testing.",
+      "Conducted API testing using Postman and load testing using JMeter.",
+      "Executed UI load testing and basic automation testing using Playwright.",
+      "Improved test coverage and enhanced defect reporting quality.",
+      "Worked with RJSF, JSON Workflow Definitions, WordPress, and Adobe Photoshop basics.",
     ],
   },
   {
@@ -96,10 +102,44 @@ const experienceSteps = [
     role: "QA Intern",
     company: "Internship",
     points: [
-      "Learned software testing fundamentals in a real project environment.",
-      "Supported test case execution, bug tracking, and QA documentation.",
-      "Built a strong foundation in product quality and structured testing.",
+      "Gained hands-on experience with the Software Development Life Cycle (SDLC).",
+      "Prepared and maintained test cases, test plans, and user manuals.",
+      "Performed manual testing to validate application functionality.",
+      "Built a strong foundation in product quality and structured documentation.",
     ],
+  },
+] as const;
+
+const projectInvolvement = [
+  {
+    title: "Online Account Opening & eKYC Application",
+    detail: "Tested user onboarding, identity verification, and workflow processes.",
+    icon: ShieldCheck,
+  },
+  {
+    title: "BPM (Business ProcessMaker) System",
+    detail: "Validated workflow automation and business process execution.",
+    icon: GitBranch,
+  },
+  {
+    title: "Online News Portal / CMS",
+    detail: "Tested content publishing, user roles, and admin functionalities.",
+    icon: FileJson,
+  },
+  {
+    title: "Customer Registration Application",
+    detail: "Verified user registration flows and data validation processes.",
+    icon: Users,
+  },
+  {
+    title: "Content Management Systems",
+    detail: "Ensured content handling, updates, and user access control.",
+    icon: DatabaseZap,
+  },
+  {
+    title: "In-house Products",
+    detail: "Worked on multiple internal systems focusing on quality, usability, and performance.",
+    icon: BriefcaseBusiness,
   },
 ] as const;
 
