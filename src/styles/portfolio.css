@@ -804,19 +804,9 @@
       max-height: 34rem;
     }
 
-    .qa-project-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .qa-project-item,
-    .qa-project-item:nth-child(2n),
-    .qa-project-item:nth-last-child(-n + 2) {
-      border-right: 0;
-      border-bottom: 1px solid color-mix(in oklab, var(--color-border) 64%, transparent);
-    }
-
-    .qa-project-item:last-child {
-      border-bottom: 0;
+    .qa-project-item {
+      width: min(82vw, 18.5rem);
+      min-height: 13rem;
     }
 
     .qa-timeline-item {
@@ -832,6 +822,7 @@
     .qa-section,
     .qa-card,
     .qa-contact-link,
+    .qa-project-item,
     .qa-timeline-track,
     .qa-timeline-dot,
     .qa-timeline-item {
