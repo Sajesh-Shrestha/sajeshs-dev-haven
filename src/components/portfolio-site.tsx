@@ -30,9 +30,6 @@ import {
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import aboveAndBeyondAwardPhoto from "@/assets/above-and-beyond-award.jpg";
-import extremeOwnershipAwardPhoto from "@/assets/extreme-ownership-award.jpg";
-import sajeshPortrait from "@/assets/sajesh-portrait.jpg";
 
 type SectionKey = "about" | "skills" | "tools" | "journey" | "education" | "awards" | "contact";
 
@@ -112,14 +109,12 @@ const awards = [
     year: "2024",
     description: "Recognized for taking full responsibility and driving quality work with consistency.",
     icon: Trophy,
-    image: extremeOwnershipAwardPhoto,
   },
   {
     title: "Above and Beyond Award",
     year: "2025",
     description: "Awarded for dedication, reliability, and making a strong impact beyond expectations.",
     icon: Award,
-    image: aboveAndBeyondAwardPhoto,
   },
 ] as const;
 
@@ -199,9 +194,6 @@ export function SinglePagePortfolio() {
               <span><Mail aria-hidden="true" /> sajesh.shrestha04@gmail.com</span>
             </div>
           </div>
-          <div className="qa-intro-photo-wrap" aria-label="Portrait of Sajesh Shrestha">
-            <img src={sajeshPortrait} alt="Sajesh Shrestha in professional attire" className="qa-intro-photo" />
-          </div>
         </section>
 
         <section className="qa-section qa-about-card" aria-label="About Me">
@@ -240,9 +232,8 @@ export function SinglePagePortfolio() {
         <section id="awards" className="qa-section">
           <SectionHeading eyebrow="Awards" title="Recognition I'm proud of" />
           <div className="qa-awards-grid-v2">
-            {awards.map(({ title, year, description, icon: Icon, image }) => (
+            {awards.map(({ title, year, description, icon: Icon }) => (
               <Card key={title} className="qa-card qa-award-card-v2">
-                <img src={image} alt={`${title} ceremony photo`} className="qa-award-photo" loading="lazy" />
                 <CardContent className="qa-card-pad">
                   <div className="qa-award-head-v2">
                     <div className="qa-award-icon">
