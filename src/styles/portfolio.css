@@ -47,6 +47,15 @@
   }
 }
 
+@keyframes qaProjectAutoScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-50% - 0.5rem));
+  }
+}
+
 @layer components {
   .qa-page {
     min-height: 100vh;
@@ -259,16 +268,18 @@
   }
 
   .qa-hero-contact-button {
-    background: color-mix(in oklab, var(--color-card) 94%, transparent) !important;
+    background: var(--color-card) !important;
     color: var(--color-foreground) !important;
-    border-color: color-mix(in oklab, var(--color-primary-foreground) 42%, transparent) !important;
+    border: 1px solid color-mix(in oklab, var(--color-primary) 46%, var(--color-border)) !important;
     box-shadow: 0 10px 24px color-mix(in oklab, var(--color-foreground) 16%, transparent);
+    opacity: 1 !important;
   }
 
   .dark .qa-hero-contact-button {
-    background: var(--color-primary-foreground) !important;
-    color: var(--color-background) !important;
-    border-color: color-mix(in oklab, var(--color-primary) 42%, transparent) !important;
+    background: color-mix(in oklab, var(--color-card) 92%, var(--color-primary)) !important;
+    color: var(--color-foreground) !important;
+    border-color: color-mix(in oklab, var(--color-primary) 64%, var(--color-border)) !important;
+    box-shadow: 0 0 0 1px color-mix(in oklab, var(--color-primary) 25%, transparent), 0 14px 30px color-mix(in oklab, var(--color-background) 42%, transparent);
   }
 
   .qa-hero-contact-button:hover {
@@ -524,11 +535,15 @@
 
   .qa-project-timeline {
     position: relative;
-    overflow-x: auto;
+    overflow-x: hidden;
     overflow-y: hidden;
-    padding: 0.5rem 0 1.35rem;
-    scrollbar-width: thin;
-    scrollbar-color: var(--color-primary) color-mix(in oklab, var(--color-card) 84%, transparent);
+    padding: 0.5rem 0 1.15rem;
+    mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+    scrollbar-width: none;
+  }
+
+  .qa-project-timeline::-webkit-scrollbar {
+    display: none;
   }
 
   .qa-project-timeline::before {
@@ -546,6 +561,13 @@
     display: flex;
     gap: 1rem;
     min-width: max-content;
+    width: max-content;
+    animation: qaProjectAutoScroll 34s linear infinite;
+    will-change: transform;
+  }
+
+  .qa-project-timeline:hover .qa-project-track {
+    animation-play-state: paused;
   }
 
   .qa-project-item {

@@ -269,12 +269,16 @@ export function SinglePagePortfolio() {
 
         <section id="projects" className="qa-section qa-projects-band">
           <SectionHeading eyebrow="Project Involvement" title="Products and systems tested" />
-          <div className="qa-project-timeline" aria-label="Horizontally scrollable project timeline">
+          <div className="qa-project-timeline" aria-label="Auto-scrolling project timeline">
             <div className="qa-project-track">
-              {projectInvolvement.map(({ title, detail, icon: Icon }, index) => (
-                <article key={title} className="qa-project-item">
+              {[...projectInvolvement, ...projectInvolvement].map(({ title, detail, icon: Icon }, index) => (
+                <article
+                  key={`${title}-${index}`}
+                  className="qa-project-item"
+                  aria-hidden={index >= projectInvolvement.length}
+                >
                   <div className="qa-project-marker" aria-hidden="true">
-                    <span>{String(index + 1).padStart(2, "0")}</span>
+                    <span>{String((index % projectInvolvement.length) + 1).padStart(2, "0")}</span>
                   </div>
                   <div className="qa-project-icon">
                     <Icon aria-hidden="true" />
