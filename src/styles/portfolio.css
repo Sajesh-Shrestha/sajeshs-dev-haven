@@ -191,31 +191,37 @@
   }
 
   .qa-intro {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
+    margin-top: 1.25rem;
     text-align: left;
     position: relative;
-    border-radius: 1rem;
-    padding: 4rem 2.25rem;
+    border-radius: 0.45rem;
+    padding: 4.5rem 2.5rem;
     background:
-      linear-gradient(135deg, color-mix(in oklab, var(--color-primary) 12%, transparent), transparent 46%),
-      linear-gradient(315deg, color-mix(in oklab, var(--color-accent) 10%, transparent), transparent 42%),
-      color-mix(in oklab, var(--color-card) 88%, var(--color-secondary));
-    border: 1px solid color-mix(in oklab, var(--color-primary) 16%, var(--color-border));
-    box-shadow: var(--shadow-card);
+      linear-gradient(90deg, color-mix(in oklab, var(--color-foreground) 94%, var(--color-primary)), color-mix(in oklab, var(--color-foreground) 82%, var(--color-accent))),
+      var(--color-card);
+    color: var(--color-primary-foreground);
+    border: 1px solid color-mix(in oklab, var(--color-foreground) 72%, transparent);
+    box-shadow: 0 28px 70px color-mix(in oklab, var(--color-foreground) 20%, transparent);
     overflow: hidden;
   }
 
   .qa-intro::after {
     content: "";
     position: absolute;
-    right: 2rem;
-    bottom: 2rem;
-    width: 9rem;
-    height: 9rem;
-    border: 1px solid color-mix(in oklab, var(--color-primary) 22%, transparent);
-    border-radius: 999px;
-    opacity: 0.38;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 34%;
+    height: auto;
+    border: 0;
+    border-left: 1px solid color-mix(in oklab, var(--color-primary-foreground) 18%, transparent);
+    border-radius: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      color-mix(in oklab, var(--color-primary-foreground) 12%, transparent) 0 1px,
+      transparent 1px 12px
+    );
+    opacity: 0.55;
     pointer-events: none;
   }
 
@@ -225,12 +231,13 @@
     line-height: 1.05;
     font-weight: 700;
     margin: 0.4rem 0 1.2rem;
-    max-width: 18ch;
+    max-width: 17ch;
+    color: var(--color-primary-foreground);
   }
 
   .qa-intro-text {
     max-width: 44rem;
-    color: var(--color-muted-foreground);
+    color: color-mix(in oklab, var(--color-primary-foreground) 78%, transparent);
     line-height: 1.7;
     font-size: 1.05rem;
   }
@@ -247,7 +254,7 @@
     flex-wrap: wrap;
     gap: 1.25rem;
     margin-top: 1.5rem;
-    color: var(--color-muted-foreground);
+    color: color-mix(in oklab, var(--color-primary-foreground) 74%, transparent);
     font-size: 0.9rem;
   }
 
@@ -260,7 +267,11 @@
   .qa-intro-meta svg {
     width: 1rem;
     height: 1rem;
-    color: var(--color-primary);
+    color: var(--color-accent);
+  }
+
+  .qa-intro .qa-eyebrow {
+    color: var(--color-accent);
   }
 
   .qa-about-card {
@@ -271,7 +282,7 @@
     padding: 2rem;
     margin-bottom: 2rem;
     border: 1px solid color-mix(in oklab, var(--color-primary) 16%, var(--color-border));
-    border-radius: 1rem;
+    border-radius: 0.45rem;
     background:
       linear-gradient(135deg, color-mix(in oklab, var(--color-primary) 8%, transparent), transparent 45%),
       color-mix(in oklab, var(--color-card) 86%, var(--color-secondary));
