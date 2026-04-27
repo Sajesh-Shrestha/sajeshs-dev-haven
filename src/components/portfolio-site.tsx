@@ -224,7 +224,7 @@ export function SinglePagePortfolio() {
                   Download CV
                 </a>
               </Button>
-              <Button type="button" variant="outline" onClick={() => scrollTo("contact")}>
+              <Button type="button" variant="outline" className="qa-hero-contact-button" onClick={() => scrollTo("contact")}>
                 <Mail aria-hidden="true" />
                 Get in touch
               </Button>
@@ -269,18 +269,23 @@ export function SinglePagePortfolio() {
 
         <section id="projects" className="qa-section qa-projects-band">
           <SectionHeading eyebrow="Project Involvement" title="Products and systems tested" />
-          <div className="qa-project-grid">
-            {projectInvolvement.map(({ title, detail, icon: Icon }) => (
-              <article key={title} className="qa-project-item">
-                <div className="qa-project-icon">
-                  <Icon aria-hidden="true" />
-                </div>
-                <div>
-                  <h3 className="qa-card-title">{title}</h3>
-                  <p className="qa-card-text">{detail}</p>
-                </div>
-              </article>
-            ))}
+          <div className="qa-project-timeline" aria-label="Horizontally scrollable project timeline">
+            <div className="qa-project-track">
+              {projectInvolvement.map(({ title, detail, icon: Icon }, index) => (
+                <article key={title} className="qa-project-item">
+                  <div className="qa-project-marker" aria-hidden="true">
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+                  </div>
+                  <div className="qa-project-icon">
+                    <Icon aria-hidden="true" />
+                  </div>
+                  <div>
+                    <h3 className="qa-card-title">{title}</h3>
+                    <p className="qa-card-text">{detail}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
           </div>
         </section>
 
