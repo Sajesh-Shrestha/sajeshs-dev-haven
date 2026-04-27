@@ -38,6 +38,15 @@
   }
 }
 
+@keyframes qaFloatCard {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
 @layer components {
   .qa-page {
     min-height: 100vh;
@@ -249,6 +258,24 @@
     margin-top: 1.75rem;
   }
 
+  .qa-hero-contact-button {
+    background: color-mix(in oklab, var(--color-card) 94%, transparent) !important;
+    color: var(--color-foreground) !important;
+    border-color: color-mix(in oklab, var(--color-primary-foreground) 42%, transparent) !important;
+    box-shadow: 0 10px 24px color-mix(in oklab, var(--color-foreground) 16%, transparent);
+  }
+
+  .dark .qa-hero-contact-button {
+    background: var(--color-primary-foreground) !important;
+    color: var(--color-background) !important;
+    border-color: color-mix(in oklab, var(--color-primary) 42%, transparent) !important;
+  }
+
+  .qa-hero-contact-button:hover {
+    background: var(--color-primary) !important;
+    color: var(--color-primary-foreground) !important;
+  }
+
   .qa-intro-meta {
     display: flex;
     flex-wrap: wrap;
@@ -329,24 +356,33 @@
 
   .qa-skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
-    gap: 0.8rem;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 0.75rem;
   }
 
   .qa-skills-grid-compact {
-    grid-template-columns: repeat(auto-fit, minmax(205px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
   }
 
   .qa-skill-card {
     min-height: 100%;
+    animation: qaFloatCard 6s ease-in-out infinite;
+  }
+
+  .qa-skill-card:nth-child(2n) {
+    animation-delay: -1.5s;
+  }
+
+  .qa-skill-card:nth-child(3n) {
+    animation-delay: -3s;
   }
 
   .qa-skill-icon,
   .qa-education-icon {
     display: inline-grid;
     place-items: center;
-    width: 2.6rem;
-    height: 2.6rem;
+    width: 2.25rem;
+    height: 2.25rem;
     border-radius: 0.35rem;
     background: color-mix(in oklab, var(--color-accent) 14%, var(--color-card));
     color: var(--color-primary);
@@ -486,42 +522,77 @@
     position: relative;
   }
 
-  .qa-project-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0;
-    border: 1px solid color-mix(in oklab, var(--color-border) 78%, transparent);
-    border-radius: 0.45rem;
-    overflow: hidden;
-    background: var(--color-card);
+  .qa-project-timeline {
+    position: relative;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.5rem 0 1.35rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-primary) color-mix(in oklab, var(--color-card) 84%, transparent);
+  }
+
+  .qa-project-timeline::before {
+    content: "";
+    position: absolute;
+    left: 1.8rem;
+    right: 1.8rem;
+    top: 2.05rem;
+    height: 2px;
+    background: linear-gradient(90deg, var(--color-accent), var(--color-primary), var(--color-accent));
+    opacity: 0.55;
+  }
+
+  .qa-project-track {
+    display: flex;
+    gap: 1rem;
+    min-width: max-content;
   }
 
   .qa-project-item {
+    position: relative;
+    width: min(78vw, 20rem);
     display: grid;
-    grid-template-columns: auto minmax(0, 1fr);
-    gap: 1rem;
-    padding: 1.35rem;
-    min-height: 9.25rem;
-    border-right: 1px solid color-mix(in oklab, var(--color-border) 64%, transparent);
-    border-bottom: 1px solid color-mix(in oklab, var(--color-border) 64%, transparent);
+    gap: 0.75rem;
+    padding: 3.8rem 1.15rem 1.15rem;
+    min-height: 14rem;
+    border: 1px solid color-mix(in oklab, var(--color-border) 72%, transparent);
+    border-radius: 0.45rem;
     background:
-      linear-gradient(135deg, color-mix(in oklab, var(--color-accent) 7%, transparent), transparent 42%),
+      linear-gradient(135deg, color-mix(in oklab, var(--color-primary) 9%, transparent), transparent 38%),
       color-mix(in oklab, var(--color-card) 96%, var(--color-secondary));
+    box-shadow: 0 12px 28px color-mix(in oklab, var(--color-foreground) 7%, transparent);
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
   }
 
-  .qa-project-item:nth-child(2n) {
-    border-right: 0;
+  .qa-project-item:hover {
+    transform: translateY(-6px);
+    border-color: color-mix(in oklab, var(--color-primary) 40%, transparent);
+    box-shadow: 0 20px 42px color-mix(in oklab, var(--color-primary) 13%, transparent);
   }
 
-  .qa-project-item:nth-last-child(-n + 2) {
-    border-bottom: 0;
+  .qa-project-marker {
+    position: absolute;
+    top: 0.72rem;
+    left: 1rem;
+    display: grid;
+    place-items: center;
+    width: 2.65rem;
+    height: 2.65rem;
+    border-radius: 999px;
+    background: var(--color-card);
+    border: 2px solid var(--color-primary);
+    color: var(--color-primary);
+    font-size: 0.72rem;
+    font-weight: 800;
+    box-shadow: 0 0 0 6px color-mix(in oklab, var(--color-primary) 12%, transparent);
+    z-index: 1;
   }
 
   .qa-project-icon {
     display: inline-grid;
     place-items: center;
-    width: 2.35rem;
-    height: 2.35rem;
+    width: 2.2rem;
+    height: 2.2rem;
     border-radius: 0.35rem;
     background: var(--color-foreground);
     color: var(--color-background);
