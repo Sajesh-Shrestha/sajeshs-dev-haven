@@ -178,36 +178,29 @@
     padding-top: 5rem;
     padding-bottom: 5rem;
     text-align: left;
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(220px, 0.42fr);
-    gap: 2.5rem;
-    align-items: center;
-  }
-
-  .qa-intro-copy {
-    min-width: 0;
-  }
-
-  .qa-intro-photo-wrap {
     position: relative;
-    width: min(100%, 300px);
-    justify-self: end;
     border-radius: 1rem;
-    padding: 0.55rem;
+    padding: 4rem 2.25rem;
     background:
-      linear-gradient(135deg, color-mix(in oklab, var(--color-primary) 28%, transparent), transparent 54%),
+      linear-gradient(135deg, color-mix(in oklab, var(--color-primary) 12%, transparent), transparent 46%),
+      linear-gradient(315deg, color-mix(in oklab, var(--color-accent) 10%, transparent), transparent 42%),
       color-mix(in oklab, var(--color-card) 88%, var(--color-secondary));
-    box-shadow: var(--shadow-soft);
+    border: 1px solid color-mix(in oklab, var(--color-primary) 16%, var(--color-border));
+    box-shadow: var(--shadow-card);
     overflow: hidden;
   }
 
-  .qa-intro-photo {
-    display: block;
-    width: 100%;
-    aspect-ratio: 4 / 5;
-    object-fit: cover;
-    object-position: center 22%;
-    border-radius: 0.7rem;
+  .qa-intro::after {
+    content: "";
+    position: absolute;
+    right: 2rem;
+    bottom: 2rem;
+    width: 9rem;
+    height: 9rem;
+    border: 1px solid color-mix(in oklab, var(--color-primary) 22%, transparent);
+    border-radius: 999px;
+    opacity: 0.38;
+    pointer-events: none;
   }
 
   .qa-intro-title {
@@ -473,15 +466,7 @@
   .qa-award-card-v2 {
     position: relative;
     overflow: hidden;
-  }
-
-  .qa-award-photo {
-    display: block;
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    object-position: center;
-    border-bottom: 1px solid color-mix(in oklab, var(--color-border) 70%, transparent);
+    min-height: 100%;
   }
 
   .qa-award-card-v2::before {
@@ -655,17 +640,7 @@
 
     .qa-intro {
       padding-top: 3rem;
-      grid-template-columns: 1fr;
-      gap: 1.5rem;
-    }
-
-    .qa-intro-photo-wrap {
-      width: min(100%, 17rem);
-      justify-self: center;
-    }
-
-    .qa-award-photo {
-      height: 150px;
+      padding-inline: 1.25rem;
     }
 
     .qa-about-card {
