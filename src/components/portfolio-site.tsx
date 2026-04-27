@@ -263,8 +263,25 @@ export function SinglePagePortfolio() {
         </section>
 
         <section id="journey" className="qa-section">
-          <SectionHeading eyebrow="Experience" title="Professional history" />
+          <SectionHeading eyebrow="Job History" title="Responsibilities across QA roles" />
           <AutoTimeline steps={experienceSteps} />
+        </section>
+
+        <section id="projects" className="qa-section qa-projects-band">
+          <SectionHeading eyebrow="Project Involvement" title="Products and systems tested" />
+          <div className="qa-project-grid">
+            {projectInvolvement.map(({ title, detail, icon: Icon }) => (
+              <article key={title} className="qa-project-item">
+                <div className="qa-project-icon">
+                  <Icon aria-hidden="true" />
+                </div>
+                <div>
+                  <h3 className="qa-card-title">{title}</h3>
+                  <p className="qa-card-text">{detail}</p>
+                </div>
+              </article>
+            ))}
+          </div>
         </section>
 
         <EducationSection />
