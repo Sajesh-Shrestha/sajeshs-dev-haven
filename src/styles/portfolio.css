@@ -179,7 +179,7 @@
     padding-bottom: 5rem;
     text-align: left;
     display: grid;
-    grid-template-columns: minmax(0, 1.05fr) minmax(280px, 0.7fr);
+    grid-template-columns: minmax(0, 1fr) minmax(220px, 0.42fr);
     gap: 2.5rem;
     align-items: center;
   }
@@ -190,6 +190,8 @@
 
   .qa-intro-photo-wrap {
     position: relative;
+    width: min(100%, 300px);
+    justify-self: end;
     border-radius: 1rem;
     padding: 0.55rem;
     background:
@@ -476,7 +478,7 @@
   .qa-award-photo {
     display: block;
     width: 100%;
-    aspect-ratio: 16 / 10;
+    height: 180px;
     object-fit: cover;
     object-position: center;
     border-bottom: 1px solid color-mix(in oklab, var(--color-border) 70%, transparent);
@@ -658,8 +660,12 @@
     }
 
     .qa-intro-photo-wrap {
-      max-width: 21rem;
+      width: min(100%, 17rem);
       justify-self: center;
+    }
+
+    .qa-award-photo {
+      height: 150px;
     }
 
     .qa-about-card {
