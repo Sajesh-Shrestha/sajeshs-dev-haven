@@ -178,7 +178,7 @@
   }
 
   .qa-section {
-    padding: 4rem 0;
+    padding: 2.8rem 0;
     scroll-margin-top: 5rem;
     animation: qaRise 0.5s ease-out both;
   }
@@ -188,23 +188,36 @@
   }
 
   .qa-section-heading {
-    margin-bottom: 2rem;
+    position: relative;
+    margin-bottom: 1.2rem;
+    padding-left: 1rem;
+    border-left: 3px solid var(--color-primary);
+  }
+
+  .qa-section-heading::after {
+    content: "";
+    display: block;
+    width: 3.25rem;
+    height: 2px;
+    margin-top: 0.55rem;
+    background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+    border-radius: 999px;
   }
 
   .qa-eyebrow {
     display: inline-block;
-    font-size: 0.78rem;
+    font-size: 0.7rem;
     font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.06em;
     color: var(--color-primary);
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.35rem;
   }
 
   .qa-section-title-v2 {
     font-family: var(--font-display);
-    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
-    line-height: 1.15;
+    font-size: clamp(1.22rem, 2.4vw, 1.68rem);
+    line-height: 1.2;
     font-weight: 700;
   }
 
@@ -213,7 +226,7 @@
     text-align: left;
     position: relative;
     border-radius: 0.45rem;
-    padding: 4.5rem 2.5rem;
+    padding: 3.6rem 2.2rem;
     background:
       linear-gradient(90deg, color-mix(in oklab, var(--color-foreground) 94%, var(--color-primary)), color-mix(in oklab, var(--color-foreground) 82%, var(--color-accent))),
       var(--color-card);
@@ -314,14 +327,15 @@
 
   .qa-about-card {
     display: grid;
-    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
-    gap: 2rem;
+    grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
+    gap: 1.4rem;
     align-items: center;
-    padding: 2rem;
-    margin-bottom: 2rem;
+    padding: 1.55rem;
+    margin-bottom: 1rem;
     border: 1px solid color-mix(in oklab, var(--color-primary) 16%, var(--color-border));
     border-radius: 0.45rem;
     background:
+      linear-gradient(90deg, color-mix(in oklab, var(--color-primary) 14%, transparent) 0 4px, transparent 4px),
       linear-gradient(135deg, color-mix(in oklab, var(--color-primary) 8%, transparent), transparent 45%),
       color-mix(in oklab, var(--color-card) 86%, var(--color-secondary));
     box-shadow: var(--shadow-card);
