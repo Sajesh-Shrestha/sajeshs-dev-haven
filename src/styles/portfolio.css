@@ -856,19 +856,11 @@
     }
 
     .qa-intro {
-      grid-template-columns: 1fr;
-      gap: 0.8rem;
-      padding: 1.55rem 1.05rem;
+      padding: 2.3rem 0 2.6rem;
     }
 
     .qa-intro::after {
-      width: 42%;
-      opacity: 0.22;
-    }
-
-    .qa-intro-panel {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      padding: 0.55rem;
+      content: none;
     }
 
     .qa-about-card {
