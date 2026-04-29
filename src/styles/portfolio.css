@@ -363,43 +363,52 @@
   }
 
   .qa-card-pad {
-    padding: 1.5rem !important;
+    padding: 1.1rem !important;
   }
 
   .qa-card-title {
     font-family: var(--font-display);
-    font-size: 1.1rem;
+    font-size: 0.98rem;
     font-weight: 700;
-    margin: 0.45rem 0;
+    margin: 0.35rem 0;
   }
 
   .qa-card-text {
     color: var(--color-muted-foreground);
-    line-height: 1.6;
-    font-size: 0.95rem;
+    line-height: 1.5;
+    font-size: 0.86rem;
   }
 
   .qa-skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-    gap: 0.75rem;
+    display: flex;
+    gap: 0.65rem;
+    overflow-x: auto;
+    padding: 0.2rem 0 0.6rem;
+    scrollbar-width: thin;
+  }
+
+  .qa-skills-grid:first-of-type .qa-skill-card,
+  #skills .qa-skill-card {
+    flex: 1 0 10.8rem;
   }
 
   .qa-skills-grid-compact {
-    grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+    flex-wrap: wrap;
+    overflow-x: visible;
+  }
+
+  .qa-skills-grid-compact .qa-skill-card {
+    flex: 1 1 10.5rem;
   }
 
   .qa-skill-card {
     min-height: 100%;
-    animation: qaFloatCard 6s ease-in-out infinite;
+    animation: none;
   }
 
-  .qa-skill-card:nth-child(2n) {
-    animation-delay: -1.5s;
-  }
-
-  .qa-skill-card:nth-child(3n) {
-    animation-delay: -3s;
+  .qa-skill-card:hover .qa-skill-icon {
+    transform: translateY(-3px) rotate(-4deg);
+    background: color-mix(in oklab, var(--color-primary) 16%, var(--color-card));
   }
 
   .qa-skill-icon,
@@ -413,6 +422,7 @@
     color: var(--color-primary);
     border: 1px solid color-mix(in oklab, var(--color-accent) 24%, transparent);
     margin-bottom: 0.45rem;
+    transition: transform 0.2s ease, background 0.2s ease;
   }
 
   .qa-skill-icon svg,
