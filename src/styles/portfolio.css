@@ -178,7 +178,7 @@
   }
 
   .qa-section {
-    padding: 2.8rem 0;
+    padding: 2.2rem 0;
     scroll-margin-top: 5rem;
     animation: qaRise 0.5s ease-out both;
   }
@@ -189,7 +189,7 @@
 
   .qa-section-heading {
     position: relative;
-    margin-bottom: 1.2rem;
+    margin-bottom: 1rem;
     padding-left: 1rem;
     border-left: 3px solid var(--color-primary);
   }
@@ -223,10 +223,13 @@
 
   .qa-intro {
     margin-top: 1.25rem;
-    text-align: left;
     position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1.45fr) minmax(15rem, 0.55fr);
+    gap: 1.4rem;
+    align-items: stretch;
     border-radius: 0.45rem;
-    padding: 3.6rem 2.2rem;
+    padding: 2.7rem;
     background:
       linear-gradient(90deg, color-mix(in oklab, var(--color-foreground) 94%, var(--color-primary)), color-mix(in oklab, var(--color-foreground) 82%, var(--color-accent))),
       var(--color-card);
@@ -256,10 +259,10 @@
   .qa-intro::after {
     content: "";
     position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    width: 34%;
+    right: 1rem;
+    top: 1rem;
+    bottom: 1rem;
+    width: 28%;
     height: auto;
     border: 0;
     border-left: 1px solid color-mix(in oklab, var(--color-primary-foreground) 18%, transparent);
@@ -271,6 +274,12 @@
     );
     opacity: 0.55;
     pointer-events: none;
+  }
+
+  .qa-intro-copy,
+  .qa-intro-panel {
+    position: relative;
+    z-index: 1;
   }
 
   .qa-intro-title {
