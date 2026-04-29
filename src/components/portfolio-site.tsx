@@ -234,12 +234,6 @@ export function SinglePagePortfolio() {
               <span><Mail aria-hidden="true" /> sajesh.shrestha04@gmail.com</span>
             </div>
           </div>
-          <div className="qa-intro-panel" aria-label="QA focus areas">
-            <span className="qa-intro-chip">Manual Testing</span>
-            <span className="qa-intro-chip">API Validation</span>
-            <span className="qa-intro-chip">Database Checks</span>
-            <span className="qa-intro-chip">Playwright Basics</span>
-          </div>
         </section>
 
         <section className="qa-section qa-about-card" aria-label="About Me">
