@@ -222,30 +222,21 @@
   }
 
   .qa-intro {
-    margin-top: 0.9rem;
+    margin-top: 0.8rem;
     position: relative;
-    display: grid;
-    grid-template-columns: minmax(0, 1.55fr) minmax(13.5rem, 0.45fr);
-    gap: 1rem;
-    align-items: stretch;
-    border-radius: 0.45rem;
-    padding: 2.35rem;
-    background:
-      linear-gradient(90deg, color-mix(in oklab, var(--color-foreground) 94%, var(--color-primary)), color-mix(in oklab, var(--color-foreground) 82%, var(--color-accent))),
-      var(--color-card);
-    color: var(--color-primary-foreground);
-    border: 1px solid color-mix(in oklab, var(--color-foreground) 72%, transparent);
-    box-shadow: 0 28px 70px color-mix(in oklab, var(--color-foreground) 20%, transparent);
-    overflow: hidden;
+    display: block;
+    padding: 3.2rem 0 3.6rem;
+    background: transparent;
+    color: var(--color-foreground);
+    border: 0;
+    box-shadow: none;
   }
 
   .dark .qa-intro {
-    background:
-      linear-gradient(110deg, color-mix(in oklab, var(--color-card) 82%, var(--color-background)), color-mix(in oklab, var(--color-primary) 16%, var(--color-card)) 58%, color-mix(in oklab, var(--color-accent) 13%, var(--color-card))),
-      var(--color-card);
+    background: transparent;
     color: var(--color-foreground);
-    border-color: color-mix(in oklab, var(--color-primary) 44%, var(--color-border));
-    box-shadow: 0 24px 56px color-mix(in oklab, var(--color-background) 64%, transparent);
+    border-color: transparent;
+    box-shadow: none;
   }
 
   .dark .qa-intro-title {
@@ -258,33 +249,11 @@
   }
 
   .qa-intro::after {
-    content: "";
-    position: absolute;
-    right: 1.2rem;
-    top: 1.2rem;
-    bottom: 1.2rem;
-    width: 27%;
-    height: auto;
-    border: 0;
-    border-left: 1px solid color-mix(in oklab, var(--color-primary-foreground) 18%, transparent);
-    border-radius: 0;
-    background: repeating-linear-gradient(
-      -45deg,
-      color-mix(in oklab, var(--color-primary-foreground) 12%, transparent) 0 1px,
-      transparent 1px 12px
-    );
-    opacity: 0.55;
-    pointer-events: none;
+    content: none;
   }
 
   .dark .qa-intro::after {
-    border-left-color: color-mix(in oklab, var(--color-primary) 24%, transparent);
-    background: repeating-linear-gradient(
-      -45deg,
-      color-mix(in oklab, var(--color-primary) 12%, transparent) 0 1px,
-      transparent 1px 12px
-    );
-    opacity: 0.26;
+    content: none;
   }
 
   .qa-intro-copy,
@@ -295,19 +264,19 @@
 
   .qa-intro-title {
     font-family: var(--font-display);
-    font-size: clamp(2rem, 5vw, 3.35rem);
+    font-size: clamp(2.8rem, 6vw, 4.6rem);
     line-height: 1.05;
     font-weight: 700;
-    margin: 0.35rem 0 0.95rem;
-    max-width: 17ch;
-    color: var(--color-primary-foreground);
+    margin: 0.5rem 0 1.25rem;
+    max-width: 22ch;
+    color: var(--color-foreground);
   }
 
   .qa-intro-text {
-    max-width: 44rem;
-    color: color-mix(in oklab, var(--color-primary-foreground) 78%, transparent);
-    line-height: 1.55;
-    font-size: 0.98rem;
+    max-width: 54rem;
+    color: var(--color-muted-foreground);
+    line-height: 1.65;
+    font-size: 1.05rem;
   }
 
   .qa-intro-actions {
@@ -342,7 +311,7 @@
     flex-wrap: wrap;
     gap: 0.9rem;
     margin-top: 1.15rem;
-    color: color-mix(in oklab, var(--color-primary-foreground) 74%, transparent);
+    color: var(--color-muted-foreground);
     font-size: 0.9rem;
   }
 
