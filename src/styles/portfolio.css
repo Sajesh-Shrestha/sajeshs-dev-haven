@@ -385,10 +385,10 @@
   .qa-about-card {
     display: grid;
     grid-template-columns: minmax(0, 0.78fr) minmax(0, 1.22fr);
-    gap: 1.4rem;
+    gap: 1.1rem;
     align-items: center;
-    padding: 1.55rem;
-    margin-bottom: 1rem;
+    padding: 1.25rem;
+    margin-bottom: 0.35rem;
     border: 1px solid color-mix(in oklab, var(--color-primary) 16%, var(--color-border));
     border-radius: 0.45rem;
     background:
@@ -400,8 +400,8 @@
 
   .qa-about-card p {
     color: var(--color-muted-foreground);
-    line-height: 1.75;
-    font-size: 1rem;
+    line-height: 1.55;
+    font-size: 0.94rem;
   }
 
   .qa-card {
