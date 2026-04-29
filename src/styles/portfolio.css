@@ -837,11 +837,11 @@
     }
 
     .qa-section {
-      padding: 3rem 0;
+      padding: 2.15rem 0;
     }
 
     .qa-intro {
-      padding-top: 3rem;
+      padding-top: 2.6rem;
       padding-inline: 1.25rem;
     }
 
@@ -857,7 +857,7 @@
     }
 
     .qa-timeline-shell {
-      max-height: 34rem;
+      max-height: 29rem;
     }
 
     .qa-project-item {
@@ -874,11 +874,25 @@
     }
   }
 
+  @media (min-width: 1024px) {
+    #skills .qa-skills-grid {
+      overflow-x: visible;
+    }
+
+    #skills .qa-skill-card {
+      flex-basis: 0;
+      min-width: 0;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .qa-section,
     .qa-card,
     .qa-contact-link,
     .qa-project-item,
+    .qa-award-card-v2,
+    .qa-skill-icon,
+    .qa-award-icon,
     .qa-timeline-track,
     .qa-timeline-dot,
     .qa-timeline-item {
