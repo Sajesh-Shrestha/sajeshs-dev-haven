@@ -236,6 +236,23 @@
     overflow: hidden;
   }
 
+  .dark .qa-intro {
+    background:
+      linear-gradient(90deg, color-mix(in oklab, var(--color-card) 90%, var(--color-primary)), color-mix(in oklab, var(--color-card) 82%, var(--color-accent))),
+      var(--color-card);
+    color: var(--color-foreground);
+    border-color: color-mix(in oklab, var(--color-primary) 30%, var(--color-border));
+  }
+
+  .dark .qa-intro-title {
+    color: var(--color-foreground);
+  }
+
+  .dark .qa-intro-text,
+  .dark .qa-intro-meta {
+    color: color-mix(in oklab, var(--color-foreground) 72%, transparent);
+  }
+
   .qa-intro::after {
     content: "";
     position: absolute;
@@ -313,6 +330,8 @@
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
+    min-width: 0;
+    overflow-wrap: anywhere;
   }
 
   .qa-intro-meta svg {
