@@ -8,7 +8,8 @@
 
 @theme inline {
   --font-sans: "Manrope", system-ui, sans-serif;
-  --font-display: "Space Grotesk", "Manrope", system-ui, sans-serif;
+  --font-display: "Fraunces", "Space Grotesk", "Manrope", Georgia, serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
