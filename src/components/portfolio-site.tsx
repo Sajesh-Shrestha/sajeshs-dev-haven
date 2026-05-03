@@ -480,10 +480,19 @@ function EducationSection() {
   );
 }
 
+let __sectionCounter = 0;
 function SectionHeading({ eyebrow, title }: { eyebrow: string; title: string }) {
+  // numbering is purely visual; reset on each render of the page tree
+  const num = React.useMemo(() => {
+    __sectionCounter = (__sectionCounter % 99) + 1;
+    return String(__sectionCounter).padStart(2, "0");
+  }, [eyebrow]);
   return (
     <div className="qa-section-heading">
-      <span className="qa-eyebrow">{eyebrow}</span>
+      <div className="qa-section-head-row">
+        <span className="qa-section-num" aria-hidden="true">{num}</span>
+        <span className="qa-eyebrow">— {eyebrow}</span>
+      </div>
       <h2 className="qa-section-title-v2">{title}</h2>
     </div>
   );
