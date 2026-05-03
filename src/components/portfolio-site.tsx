@@ -210,35 +210,63 @@ export function SinglePagePortfolio() {
 
       <main className="qa-main-flow">
         <section id="about" className="qa-section qa-intro">
-          <div className="qa-intro-copy">
-            <span className="qa-eyebrow">QA Engineer</span>
-            <h1 className="qa-intro-title">Hi, I'm Sajesh Shrestha.</h1>
-            <p className="qa-intro-text">
-              QA Engineer passionate about quality. I like exploring how systems work and finding ways to make
-              them better, with a focus on creating reliable and user-friendly experiences.
-            </p>
-            <div className="qa-intro-actions">
-              <Button asChild>
-                <a href="/Sajesh-Shrestha-QA-Engineer-CV.txt" download>
-                  <Download aria-hidden="true" />
-                  Download CV
-                </a>
-              </Button>
-              <Button type="button" variant="outline" className="qa-hero-contact-button" onClick={() => scrollTo("contact")}>
-                <Mail aria-hidden="true" />
-                Get in touch
-              </Button>
+          <div className="qa-masthead" aria-hidden="true">
+            <span>Vol. 01</span>
+            <span className="qa-masthead-rule" />
+            <span>Quality Assurance · Portfolio · MMXXVI</span>
+            <span className="qa-masthead-rule" />
+            <span>Kathmandu</span>
+          </div>
+          <div className="qa-intro-grid">
+            <div className="qa-intro-copy">
+              <span className="qa-eyebrow">— A QA Engineer's Notebook</span>
+              <h1 className="qa-intro-title">
+                Hi, I'm <em>Sajesh</em><br /> Shrestha.
+              </h1>
+              <p className="qa-intro-text">
+                QA Engineer passionate about quality. I like exploring how systems work and finding ways
+                to make them better, with a focus on creating reliable and user-friendly experiences.
+              </p>
+              <div className="qa-intro-actions">
+                <Button asChild>
+                  <a href="/Sajesh-Shrestha-QA-Engineer-CV.txt" download>
+                    <Download aria-hidden="true" />
+                    Download CV
+                  </a>
+                </Button>
+                <Button type="button" variant="outline" className="qa-hero-contact-button" onClick={() => scrollTo("contact")}>
+                  <Mail aria-hidden="true" />
+                  Get in touch
+                </Button>
+              </div>
+              <div className="qa-intro-meta">
+                <span><MapPin aria-hidden="true" /> Narayantar, Kathmandu</span>
+                <span><Mail aria-hidden="true" /> sajesh.shrestha04@gmail.com</span>
+              </div>
             </div>
-            <div className="qa-intro-meta">
-              <span><MapPin aria-hidden="true" /> Narayantar, Kathmandu</span>
-              <span><Mail aria-hidden="true" /> sajesh.shrestha04@gmail.com</span>
-            </div>
+            <aside className="qa-intro-aside" aria-hidden="true">
+              <div className="qa-intro-stat">
+                <span className="qa-intro-stat-num">3+</span>
+                <span className="qa-intro-stat-label">Years in QA</span>
+              </div>
+              <div className="qa-intro-stat">
+                <span className="qa-intro-stat-num">6+</span>
+                <span className="qa-intro-stat-label">Products tested</span>
+              </div>
+              <div className="qa-intro-stat">
+                <span className="qa-intro-stat-num">2</span>
+                <span className="qa-intro-stat-label">Awards earned</span>
+              </div>
+              <p className="qa-intro-pullquote">
+                <span aria-hidden="true">“</span>Quality is never an accident; it is always the result of intelligent effort.<span aria-hidden="true">”</span>
+              </p>
+            </aside>
           </div>
         </section>
 
         <section className="qa-section qa-about-card" aria-label="About Me">
           <div>
-            <span className="qa-eyebrow">About Me</span>
+            <span className="qa-eyebrow">— About Me</span>
             <h2 className="qa-section-title-v2">Quality-focused, practical, and detail-oriented.</h2>
           </div>
           <p>
@@ -248,27 +276,27 @@ export function SinglePagePortfolio() {
         </section>
 
         <section id="skills" className="qa-section">
-          <SectionHeading eyebrow="Technical Skills" title="Core QA strengths" />
+          <SectionHeading num="01" eyebrow="Technical Skills" title="Core QA strengths" />
           <IconCardGrid items={technicalSkills} />
         </section>
 
         <section className="qa-section">
-          <SectionHeading eyebrow="Soft Skills" title="How I work with teams" />
+          <SectionHeading num="02" eyebrow="Soft Skills" title="How I work with teams" />
           <IconCardGrid items={softSkills} compact />
         </section>
 
         <section id="tools" className="qa-section">
-          <SectionHeading eyebrow="Tools & Platforms" title="Tools I use for testing workflows" />
+          <SectionHeading num="03" eyebrow="Tools & Platforms" title="Tools I use for testing workflows" />
           <IconCardGrid items={tools} compact />
         </section>
 
         <section id="journey" className="qa-section">
-          <SectionHeading eyebrow="Job History" title="Responsibilities across QA roles" />
+          <SectionHeading num="04" eyebrow="Job History" title="Responsibilities across QA roles" />
           <AutoTimeline steps={experienceSteps} />
         </section>
 
         <section id="projects" className="qa-section qa-projects-band">
-          <SectionHeading eyebrow="Project Involvement" title="Products and systems tested" />
+          <SectionHeading num="05" eyebrow="Project Involvement" title="Products and systems tested" />
           <div className="qa-project-timeline" aria-label="Auto-scrolling project timeline">
             <div className="qa-project-track">
               {[...projectInvolvement, ...projectInvolvement].map(({ title, detail, icon: Icon }, index) => (
@@ -296,7 +324,7 @@ export function SinglePagePortfolio() {
         <EducationSection />
 
         <section id="awards" className="qa-section">
-          <SectionHeading eyebrow="Awards" title="Recognition I'm proud of" />
+          <SectionHeading num="07" eyebrow="Awards" title="Recognition I'm proud of" />
           <div className="qa-awards-grid-v2">
             {awards.map(({ title, year, description, icon: Icon }) => (
               <Card key={title} className="qa-card qa-award-card-v2">
@@ -316,7 +344,7 @@ export function SinglePagePortfolio() {
         </section>
 
         <section id="contact" className="qa-section qa-contact-v2">
-          <SectionHeading eyebrow="Contact" title="Let's connect" />
+          <SectionHeading num="08" eyebrow="Contact" title="Let's connect" />
           <p className="qa-contact-lead">
             <Mail aria-hidden="true" className="qa-contact-lead-icon" />
             <span>
@@ -431,7 +459,7 @@ function EducationSection() {
 
   return (
     <section id="education" className="qa-section">
-      <SectionHeading eyebrow="Education" title="Academic background" />
+      <SectionHeading num="06" eyebrow="Education" title="Academic background" />
       <div className="qa-education-list">
         {educationItems.map((item) => (
           <Card key={item.title} className="qa-card qa-education-card">
@@ -452,10 +480,13 @@ function EducationSection() {
   );
 }
 
-function SectionHeading({ eyebrow, title }: { eyebrow: string; title: string }) {
+function SectionHeading({ eyebrow, title, num }: { eyebrow: string; title: string; num: string }) {
   return (
     <div className="qa-section-heading">
-      <span className="qa-eyebrow">{eyebrow}</span>
+      <div className="qa-section-head-row">
+        <span className="qa-section-num" aria-hidden="true">{num}</span>
+        <span className="qa-eyebrow">— {eyebrow}</span>
+      </div>
       <h2 className="qa-section-title-v2">{title}</h2>
     </div>
   );
