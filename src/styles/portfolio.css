@@ -119,13 +119,17 @@
 
   .qa-brand-name {
     font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 0.98rem;
+    font-weight: 600;
+    font-size: 1.02rem;
     line-height: 1.1;
+    letter-spacing: -0.01em;
   }
 
   .qa-brand-role {
-    font-size: 0.78rem;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
     color: var(--color-muted-foreground);
   }
 
