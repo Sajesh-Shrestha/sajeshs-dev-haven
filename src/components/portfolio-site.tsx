@@ -210,35 +210,63 @@ export function SinglePagePortfolio() {
 
       <main className="qa-main-flow">
         <section id="about" className="qa-section qa-intro">
-          <div className="qa-intro-copy">
-            <span className="qa-eyebrow">QA Engineer</span>
-            <h1 className="qa-intro-title">Hi, I'm Sajesh Shrestha.</h1>
-            <p className="qa-intro-text">
-              QA Engineer passionate about quality. I like exploring how systems work and finding ways to make
-              them better, with a focus on creating reliable and user-friendly experiences.
-            </p>
-            <div className="qa-intro-actions">
-              <Button asChild>
-                <a href="/Sajesh-Shrestha-QA-Engineer-CV.txt" download>
-                  <Download aria-hidden="true" />
-                  Download CV
-                </a>
-              </Button>
-              <Button type="button" variant="outline" className="qa-hero-contact-button" onClick={() => scrollTo("contact")}>
-                <Mail aria-hidden="true" />
-                Get in touch
-              </Button>
+          <div className="qa-masthead" aria-hidden="true">
+            <span>Vol. 01</span>
+            <span className="qa-masthead-rule" />
+            <span>Quality Assurance · Portfolio · MMXXVI</span>
+            <span className="qa-masthead-rule" />
+            <span>Kathmandu</span>
+          </div>
+          <div className="qa-intro-grid">
+            <div className="qa-intro-copy">
+              <span className="qa-eyebrow">— A QA Engineer's Notebook</span>
+              <h1 className="qa-intro-title">
+                Hi, I'm <em>Sajesh</em><br /> Shrestha.
+              </h1>
+              <p className="qa-intro-text">
+                QA Engineer passionate about quality. I like exploring how systems work and finding ways
+                to make them better, with a focus on creating reliable and user-friendly experiences.
+              </p>
+              <div className="qa-intro-actions">
+                <Button asChild>
+                  <a href="/Sajesh-Shrestha-QA-Engineer-CV.txt" download>
+                    <Download aria-hidden="true" />
+                    Download CV
+                  </a>
+                </Button>
+                <Button type="button" variant="outline" className="qa-hero-contact-button" onClick={() => scrollTo("contact")}>
+                  <Mail aria-hidden="true" />
+                  Get in touch
+                </Button>
+              </div>
+              <div className="qa-intro-meta">
+                <span><MapPin aria-hidden="true" /> Narayantar, Kathmandu</span>
+                <span><Mail aria-hidden="true" /> sajesh.shrestha04@gmail.com</span>
+              </div>
             </div>
-            <div className="qa-intro-meta">
-              <span><MapPin aria-hidden="true" /> Narayantar, Kathmandu</span>
-              <span><Mail aria-hidden="true" /> sajesh.shrestha04@gmail.com</span>
-            </div>
+            <aside className="qa-intro-aside" aria-hidden="true">
+              <div className="qa-intro-stat">
+                <span className="qa-intro-stat-num">3+</span>
+                <span className="qa-intro-stat-label">Years in QA</span>
+              </div>
+              <div className="qa-intro-stat">
+                <span className="qa-intro-stat-num">6+</span>
+                <span className="qa-intro-stat-label">Products tested</span>
+              </div>
+              <div className="qa-intro-stat">
+                <span className="qa-intro-stat-num">2</span>
+                <span className="qa-intro-stat-label">Awards earned</span>
+              </div>
+              <p className="qa-intro-pullquote">
+                <span aria-hidden="true">“</span>Quality is never an accident; it is always the result of intelligent effort.<span aria-hidden="true">”</span>
+              </p>
+            </aside>
           </div>
         </section>
 
         <section className="qa-section qa-about-card" aria-label="About Me">
           <div>
-            <span className="qa-eyebrow">About Me</span>
+            <span className="qa-eyebrow">— About Me</span>
             <h2 className="qa-section-title-v2">Quality-focused, practical, and detail-oriented.</h2>
           </div>
           <p>
