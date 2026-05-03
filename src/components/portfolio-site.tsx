@@ -276,27 +276,27 @@ export function SinglePagePortfolio() {
         </section>
 
         <section id="skills" className="qa-section">
-          <SectionHeading eyebrow="Technical Skills" title="Core QA strengths" />
+          <SectionHeading num="01" eyebrow="Technical Skills" title="Core QA strengths" />
           <IconCardGrid items={technicalSkills} />
         </section>
 
         <section className="qa-section">
-          <SectionHeading eyebrow="Soft Skills" title="How I work with teams" />
+          <SectionHeading num="02" eyebrow="Soft Skills" title="How I work with teams" />
           <IconCardGrid items={softSkills} compact />
         </section>
 
         <section id="tools" className="qa-section">
-          <SectionHeading eyebrow="Tools & Platforms" title="Tools I use for testing workflows" />
+          <SectionHeading num="03" eyebrow="Tools &amp; Platforms" title="Tools I use for testing workflows" />
           <IconCardGrid items={tools} compact />
         </section>
 
         <section id="journey" className="qa-section">
-          <SectionHeading eyebrow="Job History" title="Responsibilities across QA roles" />
+          <SectionHeading num="04" eyebrow="Job History" title="Responsibilities across QA roles" />
           <AutoTimeline steps={experienceSteps} />
         </section>
 
         <section id="projects" className="qa-section qa-projects-band">
-          <SectionHeading eyebrow="Project Involvement" title="Products and systems tested" />
+          <SectionHeading num="05" eyebrow="Project Involvement" title="Products and systems tested" />
           <div className="qa-project-timeline" aria-label="Auto-scrolling project timeline">
             <div className="qa-project-track">
               {[...projectInvolvement, ...projectInvolvement].map(({ title, detail, icon: Icon }, index) => (
@@ -324,7 +324,7 @@ export function SinglePagePortfolio() {
         <EducationSection />
 
         <section id="awards" className="qa-section">
-          <SectionHeading eyebrow="Awards" title="Recognition I'm proud of" />
+          <SectionHeading num="07" eyebrow="Awards" title="Recognition I'm proud of" />
           <div className="qa-awards-grid-v2">
             {awards.map(({ title, year, description, icon: Icon }) => (
               <Card key={title} className="qa-card qa-award-card-v2">
@@ -344,7 +344,7 @@ export function SinglePagePortfolio() {
         </section>
 
         <section id="contact" className="qa-section qa-contact-v2">
-          <SectionHeading eyebrow="Contact" title="Let's connect" />
+          <SectionHeading num="08" eyebrow="Contact" title="Let's connect" />
           <p className="qa-contact-lead">
             <Mail aria-hidden="true" className="qa-contact-lead-icon" />
             <span>
@@ -459,7 +459,7 @@ function EducationSection() {
 
   return (
     <section id="education" className="qa-section">
-      <SectionHeading eyebrow="Education" title="Academic background" />
+      <SectionHeading num="06" eyebrow="Education" title="Academic background" />
       <div className="qa-education-list">
         {educationItems.map((item) => (
           <Card key={item.title} className="qa-card qa-education-card">
