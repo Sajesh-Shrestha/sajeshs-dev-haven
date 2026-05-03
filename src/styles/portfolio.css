@@ -72,11 +72,10 @@
     z-index: -1;
     pointer-events: none;
     background-image:
-      linear-gradient(color-mix(in oklab, var(--color-border) 46%, transparent) 1px, transparent 1px),
-      linear-gradient(90deg, color-mix(in oklab, var(--color-border) 46%, transparent) 1px, transparent 1px);
-    background-size: 44px 44px;
-    mask-image: linear-gradient(to bottom, black, transparent 72%);
-    opacity: 0.42;
+      linear-gradient(color-mix(in oklab, var(--color-border) 30%, transparent) 1px, transparent 1px);
+    background-size: 100% 44px;
+    mask-image: linear-gradient(to bottom, black, transparent 78%);
+    opacity: 0.35;
   }
 
   .qa-topbar {
