@@ -286,7 +286,7 @@ export function SinglePagePortfolio() {
         </section>
 
         <section id="tools" className="qa-section">
-          <SectionHeading num="03" eyebrow="Tools &amp; Platforms" title="Tools I use for testing workflows" />
+          <SectionHeading num="03" eyebrow="Tools & Platforms" title="Tools I use for testing workflows" />
           <IconCardGrid items={tools} compact />
         </section>
 
