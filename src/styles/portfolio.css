@@ -243,85 +243,83 @@
   .qa-intro {
     margin-top: 0.5rem;
     position: relative;
-    padding: 1.4rem 0 3.2rem;
+    padding: 3.5rem 0 3.5rem;
     background: transparent;
     border: 0;
     box-shadow: none;
-    border-bottom: 1px solid color-mix(in oklab, var(--color-foreground) 14%, transparent);
+    text-align: center;
   }
 
-  .qa-masthead {
+  .qa-intro-center {
+    max-width: 56rem;
+    margin: 0 auto;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 0.85rem;
-    padding: 0.55rem 0;
-    border-top: 1px solid color-mix(in oklab, var(--color-foreground) 22%, transparent);
-    border-bottom: 1px solid color-mix(in oklab, var(--color-foreground) 22%, transparent);
+    gap: 1.4rem;
+    animation: qaRise 0.7s ease both;
+  }
+
+  .qa-intro-pill {
+    display: inline-block;
     font-family: var(--font-mono);
     font-size: 0.72rem;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: var(--color-muted-foreground);
-    margin-bottom: 2.6rem;
-    flex-wrap: wrap;
-  }
-
-  .qa-masthead-rule {
-    flex: 1;
-    height: 1px;
-    background: color-mix(in oklab, var(--color-foreground) 22%, transparent);
-    min-width: 1.5rem;
-  }
-
-  .qa-intro-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1.6fr) minmax(0, 0.85fr);
-    gap: 2.5rem;
-    align-items: start;
-  }
-
-  .qa-intro-copy {
-    position: relative;
-    z-index: 1;
-  }
-
-  .qa-intro .qa-eyebrow {
-    color: var(--color-muted-foreground);
-    margin-bottom: 1rem;
+    letter-spacing: 0.22em;
+    color: var(--color-primary);
+    padding: 0.45rem 1.1rem;
+    border: 1px solid color-mix(in oklab, var(--color-primary) 45%, transparent);
+    border-radius: 999px;
+    background: color-mix(in oklab, var(--color-primary) 8%, transparent);
   }
 
   .qa-intro-title {
     font-family: var(--font-display);
-    font-size: clamp(2.6rem, 7vw, 5.6rem);
-    line-height: 0.98;
+    font-size: clamp(2.4rem, 7vw, 5.4rem);
+    line-height: 1.02;
     font-weight: 600;
     letter-spacing: -0.025em;
-    margin: 0.4rem 0 1.6rem;
+    margin: 0;
     color: var(--color-foreground);
   }
 
-  .qa-intro-title em {
+  .qa-intro-underline {
+    position: relative;
+    display: inline-block;
     font-style: italic;
-    font-weight: 600;
-    color: var(--color-primary);
   }
 
-  .qa-intro-text {
-    max-width: 38rem;
+  .qa-intro-underline::after {
+    content: "";
+    position: absolute;
+    left: 2%;
+    right: -2%;
+    bottom: 0.05em;
+    height: 0.32em;
+    background: color-mix(in oklab, var(--color-accent, #f5d27a) 75%, transparent);
+    z-index: -1;
+    border-radius: 2px;
+  }
+
+  .qa-intro-tag {
+    margin: 0;
+    font-family: var(--font-sans);
+    font-size: clamp(1rem, 1.4vw, 1.15rem);
     color: var(--color-muted-foreground);
-    line-height: 1.7;
-    font-size: 1.08rem;
-    font-family: var(--font-display);
-    font-weight: 400;
-    border-left: 2px solid color-mix(in oklab, var(--color-primary) 50%, transparent);
-    padding-left: 1.1rem;
+  }
+
+  .qa-intro-accent {
+    color: var(--color-primary);
+    font-weight: 600;
   }
 
   .qa-intro-actions {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 0.75rem;
-    margin-top: 1.6rem;
+    margin-top: 0.6rem;
   }
 
   .qa-hero-contact-button {
@@ -346,8 +344,9 @@
   .qa-intro-meta {
     display: flex;
     flex-wrap: wrap;
-    gap: 1.2rem;
-    margin-top: 1.5rem;
+    justify-content: center;
+    gap: 1.4rem;
+    margin-top: 0.4rem;
     color: var(--color-muted-foreground);
     font-family: var(--font-mono);
     font-size: 0.78rem;
@@ -358,7 +357,6 @@
     display: inline-flex;
     align-items: center;
     gap: 0.4rem;
-    min-width: 0;
     overflow-wrap: anywhere;
   }
 
@@ -368,99 +366,100 @@
     color: var(--color-primary);
   }
 
-  .qa-intro-aside {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.85rem;
-    padding-top: 0.6rem;
-    border-top: 2px solid var(--color-foreground);
-  }
-
-  .qa-intro-stat {
-    padding: 1rem 0.25rem;
-    border-bottom: 1px solid color-mix(in oklab, var(--color-foreground) 18%, transparent);
-    transition: transform 0.25s ease, border-color 0.25s ease;
-  }
-
-  .qa-intro-stat:hover {
-    transform: translateY(-3px);
-    border-color: var(--color-primary);
-  }
-
-  .qa-intro-stat-num {
-    display: block;
-    font-family: var(--font-display);
-    font-size: 2.4rem;
-    font-weight: 600;
-    line-height: 1;
-    color: var(--color-foreground);
-    letter-spacing: -0.03em;
-  }
-
-  .qa-intro-stat-label {
-    display: block;
-    margin-top: 0.4rem;
-    font-family: var(--font-mono);
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--color-muted-foreground);
-  }
-
-  .qa-intro-pullquote {
-    grid-column: 1 / -1;
-    margin: 0.8rem 0 0;
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: 1rem;
-    line-height: 1.5;
-    color: var(--color-foreground);
-    padding-top: 1rem;
-    border-top: 1px solid color-mix(in oklab, var(--color-foreground) 18%, transparent);
-  }
-
-  @media (max-width: 860px) {
-    .qa-intro-grid {
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-  }
-
+  /* About Me — centered editorial */
   .qa-about-card {
-    display: grid;
-    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
-    gap: 2rem;
-    align-items: start;
-    padding: 2rem 0 0;
-    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.2rem;
+    padding: 3rem 1rem 1rem;
+    margin: 0 auto;
+    max-width: 56rem;
     border: 0;
-    border-top: 2px solid var(--color-foreground);
+    border-top: 1px solid color-mix(in oklab, var(--color-foreground) 14%, transparent);
     background: transparent;
     border-radius: 0;
     box-shadow: none;
+    animation: qaRise 0.7s ease both;
   }
 
   .dark .qa-about-card {
     background: transparent;
-    border-top-color: var(--color-foreground);
+    border-top-color: color-mix(in oklab, var(--color-foreground) 18%, transparent);
   }
 
-  .qa-about-card p {
-    color: var(--color-foreground);
-    line-height: 1.7;
-    font-size: 1.02rem;
-    font-family: var(--font-display);
-    font-weight: 400;
-  }
-
-  .qa-about-card p::first-letter {
-    font-family: var(--font-display);
-    font-size: 3.4rem;
-    font-weight: 600;
-    float: left;
-    line-height: 0.9;
-    padding: 0.3rem 0.5rem 0 0;
+  .qa-about-pill {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.22em;
     color: var(--color-primary);
+    padding: 0.4rem 1rem;
+    border: 1px solid color-mix(in oklab, var(--color-primary) 45%, transparent);
+    border-radius: 999px;
+    background: color-mix(in oklab, var(--color-primary) 8%, transparent);
+  }
+
+  .qa-about-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    line-height: 1.1;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin: 0;
+    color: var(--color-foreground);
+  }
+
+  .qa-about-lead {
+    max-width: 44rem;
+    margin: 0 auto;
+    color: var(--color-muted-foreground);
+    line-height: 1.75;
+    font-size: 1.05rem;
+    font-family: var(--font-sans);
+  }
+
+  .qa-about-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    width: 100%;
+    max-width: 36rem;
+    margin-top: 1.4rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid color-mix(in oklab, var(--color-foreground) 14%, transparent);
+  }
+
+  .qa-about-stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    transition: transform 0.25s ease;
+  }
+
+  .qa-about-stat:hover {
+    transform: translateY(-3px);
+  }
+
+  .qa-about-stat-num {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+    font-weight: 600;
+    color: var(--color-primary);
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  .qa-about-stat-label {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--color-muted-foreground);
   }
 
   .qa-card {
