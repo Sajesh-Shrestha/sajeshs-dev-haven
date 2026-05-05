@@ -251,20 +251,6 @@ export function SinglePagePortfolio() {
             API, database, and basic automation testing, I focus on shipping experiences that feel
             steady, intentional, and well-considered.
           </p>
-          <div className="qa-about-stats">
-            <div className="qa-about-stat">
-              <span className="qa-about-stat-num">3+</span>
-              <span className="qa-about-stat-label">Years in QA</span>
-            </div>
-            <div className="qa-about-stat">
-              <span className="qa-about-stat-num">6+</span>
-              <span className="qa-about-stat-label">Products tested</span>
-            </div>
-            <div className="qa-about-stat">
-              <span className="qa-about-stat-num">2</span>
-              <span className="qa-about-stat-label">Awards earned</span>
-            </div>
-          </div>
         </section>
 
         <section id="skills" className="qa-section">
