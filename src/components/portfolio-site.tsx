@@ -211,12 +211,13 @@ export function SinglePagePortfolio() {
       <main className="qa-main-flow">
         <section id="about" className="qa-section qa-intro">
           <div className="qa-intro-center">
-            <span className="qa-intro-pill">PORTFOLIO</span>
             <h1 className="qa-intro-title">
-              Hi, I'm<br />
-              Sajesh <span className="qa-intro-underline">Shrestha</span>
+              <span className="qa-intro-line qa-intro-line-1">Hi, I'm</span>
+              <span className="qa-intro-line qa-intro-line-2">
+                Sajesh <span className="qa-intro-underline">Shrestha</span>
+              </span>
             </h1>
-            <p className="qa-intro-tag">
+            <p className="qa-intro-tag qa-intro-line qa-intro-line-3">
               I'm a <span className="qa-intro-accent">QA Engineer</span>
             </p>
             <div className="qa-intro-actions">
