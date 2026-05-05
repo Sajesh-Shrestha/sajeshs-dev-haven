@@ -257,7 +257,36 @@
     flex-direction: column;
     align-items: center;
     gap: 1.4rem;
-    animation: qaRise 0.7s ease both;
+  }
+
+  .qa-intro-line {
+    opacity: 0;
+    animation: qaRise 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .qa-intro-line-1 { animation-delay: 0.05s; display: block; }
+  .qa-intro-line-2 { animation-delay: 0.22s; display: block; }
+  .qa-intro-line-3 { animation-delay: 0.40s; }
+  .qa-intro-line-4 { animation-delay: 0.55s; }
+  .qa-intro-line-5 { animation-delay: 0.70s; }
+
+  .qa-intro-underline {
+    display: inline-block;
+    animation: qaUnderlineIn 1s cubic-bezier(0.22, 1, 0.36, 1) 0.6s both;
+  }
+
+  @keyframes qaUnderlineIn {
+    from { transform: translateY(0.4em); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  .qa-intro-underline::after {
+    transform-origin: left center;
+    animation: qaUnderlineGrow 0.9s cubic-bezier(0.22, 1, 0.36, 1) 1.1s both;
+  }
+
+  @keyframes qaUnderlineGrow {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
   }
 
   .qa-intro-pill {
