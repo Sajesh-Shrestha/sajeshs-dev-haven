@@ -211,15 +211,16 @@ export function SinglePagePortfolio() {
       <main className="qa-main-flow">
         <section id="about" className="qa-section qa-intro">
           <div className="qa-intro-center">
-            <span className="qa-intro-pill">PORTFOLIO</span>
             <h1 className="qa-intro-title">
-              Hi, I'm<br />
-              Sajesh <span className="qa-intro-underline">Shrestha</span>
+              <span className="qa-intro-line qa-intro-line-1">Hi, I'm</span>
+              <span className="qa-intro-line qa-intro-line-2">
+                Sajesh <span className="qa-intro-underline">Shrestha</span>
+              </span>
             </h1>
-            <p className="qa-intro-tag">
+            <p className="qa-intro-tag qa-intro-line qa-intro-line-3">
               I'm a <span className="qa-intro-accent">QA Engineer</span>
             </p>
-            <div className="qa-intro-actions">
+            <div className="qa-intro-actions qa-intro-line qa-intro-line-4">
               <Button asChild>
                 <a href="/Sajesh-Shrestha-QA-Engineer-CV.txt" download>
                   <Download aria-hidden="true" />
@@ -231,7 +232,7 @@ export function SinglePagePortfolio() {
                 Get in touch
               </Button>
             </div>
-            <div className="qa-intro-meta">
+            <div className="qa-intro-meta qa-intro-line qa-intro-line-5">
               <span><MapPin aria-hidden="true" /> Narayantar, Kathmandu</span>
               <span><Mail aria-hidden="true" /> sajesh.shrestha04@gmail.com</span>
             </div>
@@ -250,20 +251,6 @@ export function SinglePagePortfolio() {
             API, database, and basic automation testing, I focus on shipping experiences that feel
             steady, intentional, and well-considered.
           </p>
-          <div className="qa-about-stats">
-            <div className="qa-about-stat">
-              <span className="qa-about-stat-num">3+</span>
-              <span className="qa-about-stat-label">Years in QA</span>
-            </div>
-            <div className="qa-about-stat">
-              <span className="qa-about-stat-num">6+</span>
-              <span className="qa-about-stat-label">Products tested</span>
-            </div>
-            <div className="qa-about-stat">
-              <span className="qa-about-stat-num">2</span>
-              <span className="qa-about-stat-label">Awards earned</span>
-            </div>
-          </div>
         </section>
 
         <section id="skills" className="qa-section">
@@ -471,11 +458,10 @@ function EducationSection() {
   );
 }
 
-function SectionHeading({ eyebrow, title, num }: { eyebrow: string; title: string; num: string }) {
+function SectionHeading({ eyebrow, title, num: _num }: { eyebrow: string; title: string; num?: string }) {
   return (
     <div className="qa-section-heading">
       <div className="qa-section-head-row">
-        <span className="qa-section-num" aria-hidden="true">{num}</span>
         <span className="qa-eyebrow">— {eyebrow}</span>
       </div>
       <h2 className="qa-section-title-v2">{title}</h2>
