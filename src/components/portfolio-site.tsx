@@ -220,7 +220,7 @@ export function SinglePagePortfolio() {
             <p className="qa-intro-tag qa-intro-line qa-intro-line-3">
               I'm a <span className="qa-intro-accent">QA Engineer</span>
             </p>
-            <div className="qa-intro-actions">
+            <div className="qa-intro-actions qa-intro-line qa-intro-line-4">
               <Button asChild>
                 <a href="/Sajesh-Shrestha-QA-Engineer-CV.txt" download>
                   <Download aria-hidden="true" />
@@ -232,7 +232,7 @@ export function SinglePagePortfolio() {
                 Get in touch
               </Button>
             </div>
-            <div className="qa-intro-meta">
+            <div className="qa-intro-meta qa-intro-line qa-intro-line-5">
               <span><MapPin aria-hidden="true" /> Narayantar, Kathmandu</span>
               <span><Mail aria-hidden="true" /> sajesh.shrestha04@gmail.com</span>
             </div>
