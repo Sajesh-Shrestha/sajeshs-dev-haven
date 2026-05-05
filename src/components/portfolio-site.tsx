@@ -458,11 +458,10 @@ function EducationSection() {
   );
 }
 
-function SectionHeading({ eyebrow, title, num }: { eyebrow: string; title: string; num: string }) {
+function SectionHeading({ eyebrow, title, num: _num }: { eyebrow: string; title: string; num?: string }) {
   return (
     <div className="qa-section-heading">
       <div className="qa-section-head-row">
-        <span className="qa-section-num" aria-hidden="true">{num}</span>
         <span className="qa-eyebrow">— {eyebrow}</span>
       </div>
       <h2 className="qa-section-title-v2">{title}</h2>
