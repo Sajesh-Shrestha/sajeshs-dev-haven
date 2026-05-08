@@ -5,6 +5,7 @@ import {
   Brain,
   BriefcaseBusiness,
   Bug,
+  ChevronDown,
   Code2,
   DatabaseZap,
   Download,
@@ -392,30 +393,50 @@ function AutoTimeline({
 }: {
   steps: ReadonlyArray<{ period: string; role: string; company: string; points: readonly string[] }>;
 }) {
-  const timelineItems = [...steps, ...steps];
+  const [openIndex, setOpenIndex] = React.useState<number | null>(0);
 
   return (
-    <div className="qa-timeline-shell" aria-label="Auto-scrolling experience timeline">
+    <div className="qa-timeline-shell" aria-label="QA experience timeline">
       <ol className="qa-timeline-track">
-        {timelineItems.map((step, index) => (
-          <li key={`${step.period}-${index}`} className="qa-timeline-item" aria-hidden={index >= steps.length}>
-            <div className="qa-timeline-dot" aria-hidden="true">
-              <BriefcaseBusiness />
-            </div>
-            <Card className="qa-card qa-timeline-card-v2">
-              <CardContent className="qa-card-pad">
-                <p className="qa-timeline-period">{step.period}</p>
-                <h3 className="qa-card-title">{step.role}</h3>
-                <p className="qa-timeline-company">{step.company}</p>
-                <ul className="qa-timeline-points">
-                  {step.points.map((point) => (
-                    <li key={point}>{point}</li>
-                  ))}
-                </ul>
-              </CardContent>
-            </Card>
-          </li>
-        ))}
+        {steps.map((step, index) => {
+          const isOpen = openIndex === index;
+          const panelId = `qa-journey-panel-${index}`;
+          return (
+            <li key={step.period} className="qa-timeline-item">
+              <div className="qa-timeline-dot" aria-hidden="true">
+                <BriefcaseBusiness />
+              </div>
+              <Card className="qa-card qa-timeline-card-v2">
+                <button
+                  type="button"
+                  className="qa-timeline-toggle"
+                  aria-expanded={isOpen}
+                  aria-controls={panelId}
+                  onClick={() => setOpenIndex(isOpen ? null : index)}
+                >
+                  <div className="qa-timeline-toggle-text">
+                    <p className="qa-timeline-period">{step.period}</p>
+                    <h3 className="qa-card-title">{step.role}</h3>
+                  </div>
+                  <ChevronDown
+                    aria-hidden="true"
+                    className={`qa-timeline-chevron${isOpen ? " is-open" : ""}`}
+                  />
+                </button>
+                {isOpen ? (
+                  <CardContent id={panelId} className="qa-card-pad qa-timeline-details">
+                    <p className="qa-timeline-company">{step.company}</p>
+                    <ul className="qa-timeline-points">
+                      {step.points.map((point) => (
+                        <li key={point}>{point}</li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                ) : null}
+              </Card>
+            </li>
+          );
+        })}
       </ol>
     </div>
   );
