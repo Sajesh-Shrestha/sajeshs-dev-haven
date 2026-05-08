@@ -5,6 +5,7 @@ import {
   Brain,
   BriefcaseBusiness,
   Bug,
+  ChevronDown,
   Code2,
   DatabaseZap,
   Download,
