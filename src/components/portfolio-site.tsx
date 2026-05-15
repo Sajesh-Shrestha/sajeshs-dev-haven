@@ -180,6 +180,31 @@ export function SinglePagePortfolio() {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
+  const introRef = React.useRef<HTMLElement | null>(null);
+  const [introVisible, setIntroVisible] = React.useState(false);
+  React.useEffect(() => {
+    const el = introRef.current;
+    if (!el) return;
+    // Trigger once on mount so animations play immediately on page load
+    const t = window.setTimeout(() => setIntroVisible(true), 50);
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            setIntroVisible(false);
+            requestAnimationFrame(() => setIntroVisible(true));
+          }
+        });
+      },
+      { threshold: 0.25 },
+    );
+    io.observe(el);
+    return () => {
+      window.clearTimeout(t);
+      io.disconnect();
+    };
+  }, []);
+
   return (
     <div className="qa-page">
       <header className="qa-topbar">
