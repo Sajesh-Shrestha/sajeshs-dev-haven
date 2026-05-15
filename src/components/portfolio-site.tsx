@@ -109,7 +109,7 @@ const experienceSteps = [
       "Built a strong foundation in product quality and structured documentation.",
     ],
   },
-] as const;
+].reverse() as ReadonlyArray<{ period: string; role: string; company: string; points: readonly string[] }>;
 
 const projectInvolvement = [
   {
