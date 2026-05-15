@@ -185,24 +185,17 @@ export function SinglePagePortfolio() {
   React.useEffect(() => {
     const el = introRef.current;
     if (!el) return;
-    // Trigger once on mount so animations play immediately on page load
-    const t = window.setTimeout(() => setIntroVisible(true), 50);
+    const trigger = () => {
+      setIntroVisible(false);
+      requestAnimationFrame(() => requestAnimationFrame(() => setIntroVisible(true)));
+    };
+    trigger();
     const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            setIntroVisible(false);
-            requestAnimationFrame(() => setIntroVisible(true));
-          }
-        });
-      },
-      { threshold: 0.25 },
+      (entries) => entries.forEach((e) => e.isIntersecting && trigger()),
+      { threshold: 0.3 },
     );
     io.observe(el);
-    return () => {
-      window.clearTimeout(t);
-      io.disconnect();
-    };
+    return () => io.disconnect();
   }, []);
 
   return (
