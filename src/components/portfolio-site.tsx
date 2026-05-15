@@ -368,6 +368,42 @@ export function SinglePagePortfolio() {
   );
 }
 
+function SplitWord({ text, baseDelay = 0, italic = false }: { text: string; baseDelay?: number; italic?: boolean }) {
+  const chars = Array.from(text);
+  return (
+    <span className={`qa-split${italic ? " qa-split-italic" : ""}`} aria-label={text}>
+      {chars.map((ch, i) => (
+        <span
+          key={i}
+          className="qa-split-char"
+          style={{ animationDelay: `${baseDelay + i * 0.045}s` }}
+          aria-hidden="true"
+        >
+          {ch === " " ? "\u00A0" : ch}
+        </span>
+      ))}
+    </span>
+  );
+}
+
+function SplitLine({ text, className = "", baseDelay = 0 }: { text: string; className?: string; baseDelay?: number }) {
+  const chars = Array.from(text);
+  return (
+    <span className={`qa-split ${className}`} aria-label={text}>
+      {chars.map((ch, i) => (
+        <span
+          key={i}
+          className="qa-split-char"
+          style={{ animationDelay: `${baseDelay + i * 0.04}s` }}
+          aria-hidden="true"
+        >
+          {ch === " " ? "\u00A0" : ch}
+        </span>
+      ))}
+    </span>
+  );
+}
+
 function IconCardGrid({
   items,
   compact = false,
