@@ -270,8 +270,10 @@
     transform: translateY(0.6em) rotateX(-60deg);
     filter: blur(8px);
     transform-origin: 50% 100%;
-    animation: qaCharIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
     will-change: transform, opacity, filter;
+  }
+  .qa-intro.is-visible .qa-split-char {
+    animation: qaCharIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
   }
 
   @keyframes qaCharIn {
@@ -284,6 +286,9 @@
 
   .qa-intro-underline::after {
     transform-origin: left center;
+    transform: scaleX(0);
+  }
+  .qa-intro.is-visible .qa-intro-underline::after {
     animation: qaUnderlineGrow 0.9s cubic-bezier(0.22, 1, 0.36, 1) 1.7s both;
   }
 
@@ -292,8 +297,8 @@
     to { transform: scaleX(1); }
   }
 
-  .qa-intro-typer {
-    opacity: 0;
+  .qa-intro-typer { opacity: 0; }
+  .qa-intro.is-visible .qa-intro-typer {
     animation: qaFadeIn 0.5s ease 1.5s forwards;
   }
   @keyframes qaFadeIn { to { opacity: 1; } }
@@ -304,6 +309,8 @@
     white-space: nowrap;
     vertical-align: bottom;
     width: 0;
+  }
+  .qa-intro.is-visible .qa-intro-typing {
     animation: qaType 1.1s steps(11, end) 1.7s forwards;
   }
   @keyframes qaType { to { width: 6.6em; } }
@@ -316,10 +323,20 @@
     vertical-align: -0.12em;
     background: var(--color-primary);
     opacity: 0;
+  }
+  .qa-intro.is-visible .qa-intro-caret {
     animation: qaCaretShow 0.01s linear 1.7s forwards, qaCaretBlink 0.9s steps(2) 1.7s infinite;
   }
   @keyframes qaCaretShow { to { opacity: 1; } }
   @keyframes qaCaretBlink { 50% { opacity: 0; } }
+
+  .qa-intro-line { opacity: 0; transform: translateY(14px); }
+  .qa-intro.is-visible .qa-intro-line-4 {
+    animation: qaRise 0.7s cubic-bezier(0.22, 1, 0.36, 1) 2.0s both;
+  }
+  .qa-intro.is-visible .qa-intro-line-5 {
+    animation: qaRise 0.7s cubic-bezier(0.22, 1, 0.36, 1) 2.2s both;
+  }
 
   .qa-intro-pill {
     display: inline-block;

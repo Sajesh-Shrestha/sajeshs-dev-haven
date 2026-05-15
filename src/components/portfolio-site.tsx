@@ -109,7 +109,7 @@ const experienceSteps = [
       "Built a strong foundation in product quality and structured documentation.",
     ],
   },
-] as const;
+].reverse() as ReadonlyArray<{ period: string; role: string; company: string; points: readonly string[] }>;
 
 const projectInvolvement = [
   {
@@ -180,6 +180,24 @@ export function SinglePagePortfolio() {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
+  const introRef = React.useRef<HTMLElement | null>(null);
+  const [introVisible, setIntroVisible] = React.useState(false);
+  React.useEffect(() => {
+    const el = introRef.current;
+    if (!el) return;
+    const trigger = () => {
+      setIntroVisible(false);
+      requestAnimationFrame(() => requestAnimationFrame(() => setIntroVisible(true)));
+    };
+    trigger();
+    const io = new IntersectionObserver(
+      (entries) => entries.forEach((e) => e.isIntersecting && trigger()),
+      { threshold: 0.3 },
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
   return (
     <div className="qa-page">
       <header className="qa-topbar">
@@ -210,7 +228,7 @@ export function SinglePagePortfolio() {
       </header>
 
       <main className="qa-main-flow">
-        <section id="about" className="qa-section qa-intro">
+        <section id="about" ref={introRef} className={`qa-section qa-intro${introVisible ? " is-visible" : ""}`}>
           <div className="qa-intro-center">
             <h1 className="qa-intro-title">
               <SplitLine text="Hi, I'm" className="qa-intro-line-block" baseDelay={0.05} />
