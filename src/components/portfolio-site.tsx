@@ -228,7 +228,7 @@ export function SinglePagePortfolio() {
       </header>
 
       <main className="qa-main-flow">
-        <section id="about" ref={introRef} className={`qa-section qa-intro${introVisible ? " is-visible" : ""}`} key={introVisible ? "v" : "h"}>
+        <section id="about" ref={introRef} className={`qa-section qa-intro${introVisible ? " is-visible" : ""}`}>
           <div className="qa-intro-center">
             <h1 className="qa-intro-title">
               <SplitLine text="Hi, I'm" className="qa-intro-line-block" baseDelay={0.05} />
