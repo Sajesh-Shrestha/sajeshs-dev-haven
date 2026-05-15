@@ -213,13 +213,17 @@ export function SinglePagePortfolio() {
         <section id="about" className="qa-section qa-intro">
           <div className="qa-intro-center">
             <h1 className="qa-intro-title">
-              <span className="qa-intro-line qa-intro-line-1">Hi, I'm</span>
-              <span className="qa-intro-line qa-intro-line-2">
-                Sajesh <span className="qa-intro-underline">Shrestha</span>
+              <SplitLine text="Hi, I'm" className="qa-intro-line-block" baseDelay={0.05} />
+              <span className="qa-intro-line-block">
+                <SplitWord text="Sajesh" baseDelay={0.45} />{" "}
+                <span className="qa-intro-underline">
+                  <SplitWord text="Shrestha" baseDelay={0.85} italic />
+                </span>
               </span>
             </h1>
-            <p className="qa-intro-tag qa-intro-line qa-intro-line-3">
-              I'm a <span className="qa-intro-accent">QA Engineer</span>
+            <p className="qa-intro-tag qa-intro-typer">
+              I'm a <span className="qa-intro-accent qa-intro-typing">QA Engineer</span>
+              <span className="qa-intro-caret" aria-hidden="true" />
             </p>
             <div className="qa-intro-actions qa-intro-line qa-intro-line-4">
               <Button asChild>
@@ -361,6 +365,42 @@ export function SinglePagePortfolio() {
         </footer>
       </main>
     </div>
+  );
+}
+
+function SplitWord({ text, baseDelay = 0, italic = false }: { text: string; baseDelay?: number; italic?: boolean }) {
+  const chars = Array.from(text);
+  return (
+    <span className={`qa-split${italic ? " qa-split-italic" : ""}`} aria-label={text}>
+      {chars.map((ch, i) => (
+        <span
+          key={i}
+          className="qa-split-char"
+          style={{ animationDelay: `${baseDelay + i * 0.045}s` }}
+          aria-hidden="true"
+        >
+          {ch === " " ? "\u00A0" : ch}
+        </span>
+      ))}
+    </span>
+  );
+}
+
+function SplitLine({ text, className = "", baseDelay = 0 }: { text: string; className?: string; baseDelay?: number }) {
+  const chars = Array.from(text);
+  return (
+    <span className={`qa-split ${className}`} aria-label={text}>
+      {chars.map((ch, i) => (
+        <span
+          key={i}
+          className="qa-split-char"
+          style={{ animationDelay: `${baseDelay + i * 0.04}s` }}
+          aria-hidden="true"
+        >
+          {ch === " " ? "\u00A0" : ch}
+        </span>
+      ))}
+    </span>
   );
 }
 
