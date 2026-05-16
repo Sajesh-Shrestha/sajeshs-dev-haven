@@ -240,7 +240,7 @@ export function SinglePagePortfolio() {
               </span>
             </h1>
             <p className="qa-intro-tag qa-intro-typer">
-              I'm a <span className="qa-intro-accent qa-intro-typing">QA Engineer</span>
+              <span className="qa-intro-accent qa-intro-typing">QA Engineer</span>
               <span className="qa-intro-caret" aria-hidden="true" />
             </p>
             <div className="qa-intro-actions qa-intro-line qa-intro-line-4">
