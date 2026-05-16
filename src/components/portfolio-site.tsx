@@ -398,6 +398,10 @@ export function SinglePagePortfolio() {
             {`\u00A9 ${new Date().getFullYear()} — Sajesh Shrestha`}
           </p>
         </section>
+      </main>
+    </div>
+  );
+}
 
 function SplitWord({ text, baseDelay = 0, italic = false }: { text: string; baseDelay?: number; italic?: boolean }) {
   const chars = Array.from(text);
