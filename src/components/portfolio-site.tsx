@@ -5,6 +5,7 @@ import {
   Brain,
   BriefcaseBusiness,
   Bug,
+  Instagram,
   ChevronDown,
   Code2,
   DatabaseZap,
