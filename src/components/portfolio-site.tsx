@@ -347,7 +347,7 @@ export function SinglePagePortfolio() {
 
         <section id="contact" className="qa-section qa-contact-v2">
           <SectionHeading num="08" eyebrow="Contact" title="Let's connect" />
-          <p className="qa-contact-lead">
+          <p className="qa-contact-lead qa-reveal">
             <Mail aria-hidden="true" className="qa-contact-lead-icon" />
             <span>
               Feel free to reach out:{" "}
@@ -355,73 +355,49 @@ export function SinglePagePortfolio() {
             </span>
           </p>
           <div className="qa-contact-grid-v2">
-            <a href="mailto:sajesh.shrestha04@gmail.com" className="qa-contact-link">
-              <Mail aria-hidden="true" />
-              <span>sajesh.shrestha04@gmail.com</span>
-            </a>
-            <a href="tel:+9779860437025" className="qa-contact-link">
-              <Phone aria-hidden="true" />
-              <span>+977 9860437025</span>
-            </a>
-            <a href="https://wa.me/9779860437025" target="_blank" rel="noreferrer" className="qa-contact-link">
-              <MessageCircleMore aria-hidden="true" />
-              <span>WhatsApp</span>
-            </a>
-            <a
-              href="https://www.linkedin.com/in/sajesh-shrestha13/"
-              target="_blank"
-              rel="noreferrer"
-              className="qa-contact-link"
-            >
-              <Linkedin aria-hidden="true" />
-              <span>LinkedIn</span>
-            </a>
+            {[
+              { href: "mailto:sajesh.shrestha04@gmail.com", icon: Mail, label: "sajesh.shrestha04@gmail.com" },
+              { href: "tel:+9779860437025", icon: Phone, label: "+977 9860437025" },
+              { href: "https://wa.me/9779860437025", icon: MessageCircleMore, label: "WhatsApp", external: true },
+              { href: "https://www.linkedin.com/in/sajesh-shrestha13/", icon: Linkedin, label: "LinkedIn", external: true },
+              { href: "https://www.instagram.com/sajesh_shrestha13?igsh=d2UzYXR5Z3g3cjFl", icon: Instagram, label: "Instagram", external: true },
+            ].map(({ href, icon: Icon, label, external }, i) => (
+              <a
+                key={label}
+                href={href}
+                {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
+                className="qa-contact-link qa-reveal"
+                style={{ animationDelay: `${0.1 + i * 0.08}s` }}
+              >
+                <Icon aria-hidden="true" />
+                <span>{label}</span>
+              </a>
+            ))}
           </div>
+          <div className="qa-contact-socials qa-reveal" aria-label="Social media" style={{ animationDelay: "0.6s" }}>
+            {[
+              { href: "https://www.instagram.com/sajesh_shrestha13?igsh=d2UzYXR5Z3g3cjFl", icon: Instagram, label: "Instagram" },
+              { href: "https://www.linkedin.com/in/sajesh-shrestha13/", icon: Linkedin, label: "LinkedIn" },
+              { href: "mailto:sajesh.shrestha04@gmail.com", icon: Mail, label: "Email" },
+              { href: "https://wa.me/9779860437025", icon: MessageCircleMore, label: "WhatsApp" },
+            ].map(({ href, icon: Icon, label }, i) => (
+              <a
+                key={label}
+                href={href}
+                target={href.startsWith("http") ? "_blank" : undefined}
+                rel={href.startsWith("http") ? "noreferrer" : undefined}
+                aria-label={label}
+                className="qa-footer-social qa-social-pop"
+                style={{ animationDelay: `${0.7 + i * 0.1}s` }}
+              >
+                <Icon aria-hidden="true" />
+              </a>
+            ))}
+          </div>
+          <p className="qa-contact-copy qa-reveal" style={{ animationDelay: "1.1s" }}>
+            {`\u00A9 ${new Date().getFullYear()} — Sajesh Shrestha`}
+          </p>
         </section>
-
-        <footer className="qa-footer">
-          <div className="qa-footer-socials" aria-label="Social media">
-            <a
-              href="https://www.instagram.com/sajesh_shrestha13?igsh=d2UzYXR5Z3g3cjFl"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Instagram"
-              className="qa-footer-social"
-            >
-              <Instagram aria-hidden="true" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/sajesh-shrestha13/"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="LinkedIn"
-              className="qa-footer-social"
-            >
-              <Linkedin aria-hidden="true" />
-            </a>
-            <a
-              href="mailto:sajesh.shrestha04@gmail.com"
-              aria-label="Email"
-              className="qa-footer-social"
-            >
-              <Mail aria-hidden="true" />
-            </a>
-            <a
-              href="https://wa.me/9779860437025"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="WhatsApp"
-              className="qa-footer-social"
-            >
-              <MessageCircleMore aria-hidden="true" />
-            </a>
-          </div>
-          <p className="qa-footer-copy">© {new Date().getFullYear()}</p>
-        </footer>
-      </main>
-    </div>
-  );
-}
 
 function SplitWord({ text, baseDelay = 0, italic = false }: { text: string; baseDelay?: number; italic?: boolean }) {
   const chars = Array.from(text);
