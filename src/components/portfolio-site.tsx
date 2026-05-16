@@ -5,6 +5,7 @@ import {
   Brain,
   BriefcaseBusiness,
   Bug,
+  Instagram,
   ChevronDown,
   Code2,
   DatabaseZap,
@@ -240,7 +241,7 @@ export function SinglePagePortfolio() {
               </span>
             </h1>
             <p className="qa-intro-tag qa-intro-typer">
-              I'm a <span className="qa-intro-accent qa-intro-typing">QA Engineer</span>
+              <span className="qa-intro-accent qa-intro-typing">QA Engineer</span>
               <span className="qa-intro-caret" aria-hidden="true" />
             </p>
             <div className="qa-intro-actions qa-intro-line qa-intro-line-4">
@@ -379,7 +380,43 @@ export function SinglePagePortfolio() {
         </section>
 
         <footer className="qa-footer">
-          <p>© {new Date().getFullYear()} Sajesh Shrestha — QA Engineer</p>
+          <div className="qa-footer-socials" aria-label="Social media">
+            <a
+              href="https://www.instagram.com/sajesh_shrestha13?igsh=d2UzYXR5Z3g3cjFl"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram"
+              className="qa-footer-social"
+            >
+              <Instagram aria-hidden="true" />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/sajesh-shrestha13/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn"
+              className="qa-footer-social"
+            >
+              <Linkedin aria-hidden="true" />
+            </a>
+            <a
+              href="mailto:sajesh.shrestha04@gmail.com"
+              aria-label="Email"
+              className="qa-footer-social"
+            >
+              <Mail aria-hidden="true" />
+            </a>
+            <a
+              href="https://wa.me/9779860437025"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="WhatsApp"
+              className="qa-footer-social"
+            >
+              <MessageCircleMore aria-hidden="true" />
+            </a>
+          </div>
+          <p className="qa-footer-copy">© {new Date().getFullYear()}</p>
         </footer>
       </main>
     </div>
