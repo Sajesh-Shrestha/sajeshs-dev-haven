@@ -345,65 +345,71 @@ export function SinglePagePortfolio() {
           </div>
         </section>
 
-        <section id="contact" className="qa-section qa-contact-v2">
-          <SectionHeading num="08" eyebrow="Contact" title="Let's connect" />
-          <p className="qa-contact-lead qa-reveal">
-            <Mail aria-hidden="true" className="qa-contact-lead-icon" />
-            <span>
-              Feel free to reach out:{" "}
-              <a href="mailto:sajesh.shrestha04@gmail.com">sajesh.shrestha04@gmail.com</a>
-            </span>
-          </p>
-          <div className="qa-contact-grid-v2">
+      </main>
+
+      <aside id="contact" className="qa-dock" aria-label="Contact details">
+        <div className="qa-dock-inner">
+          <div className="qa-dock-head">
+            <span className="qa-dock-eyebrow">— CONTACT DETAILS</span>
+            <h2 className="qa-dock-title">Let's connect</h2>
+          </div>
+
+          <div className="qa-dock-grid">
             {[
-              { href: "mailto:sajesh.shrestha04@gmail.com", icon: Mail, label: "sajesh.shrestha04@gmail.com" },
-              { href: "tel:+9779860437025", icon: Phone, label: "+977 9860437025" },
-              { href: "https://wa.me/9779860437025", icon: MessageCircleMore, label: "WhatsApp", external: true },
+              { href: "mailto:sajesh.shrestha04@gmail.com", icon: Mail, label: "Email", value: "sajesh.shrestha04@gmail.com" },
+              { href: "tel:+9779860437025", icon: Phone, label: "Phone", value: "+977 9860437025" },
+              { href: "https://wa.me/9779860437025", icon: MessageCircleMore, label: "WhatsApp", value: "Chat on WhatsApp", external: true },
+              { href: "#", icon: MapPin, label: "Location", value: "Narayantar, Kathmandu", isStatic: true },
+            ].map(({ href, icon: Icon, label, value, external, isStatic }, i) => {
+              const Tag = isStatic ? "div" : "a";
+              const props = isStatic
+                ? {}
+                : { href, ...(external ? { target: "_blank", rel: "noreferrer" } : {}) };
+              return (
+                <Tag
+                  key={label}
+                  {...(props as any)}
+                  className="qa-dock-row qa-reveal"
+                  style={{ animationDelay: `${0.1 + i * 0.07}s` }}
+                >
+                  <span className="qa-dock-row-icon"><Icon aria-hidden="true" /></span>
+                  <span className="qa-dock-row-text">
+                    <span className="qa-dock-row-label">{label}</span>
+                    <span className="qa-dock-row-value">{value}</span>
+                  </span>
+                </Tag>
+              );
+            })}
+          </div>
+
+          <div className="qa-dock-socials">
+            {[
               { href: "https://www.linkedin.com/in/sajesh-shrestha13/", icon: Linkedin, label: "LinkedIn", external: true },
+              { href: "https://wa.me/9779860437025", icon: MessageCircleMore, label: "WhatsApp", external: true },
               { href: "https://www.instagram.com/sajesh_shrestha13?igsh=d2UzYXR5Z3g3cjFl", icon: Instagram, label: "Instagram", external: true },
-            ].map(({ href, icon: Icon, label, external }, i) => (
+              { href: "mailto:sajesh.shrestha04@gmail.com", icon: Mail, label: "Email" },
+              { href: "/Sajesh-Shrestha-QA-Engineer-CV.txt", icon: Download, label: "Download CV", download: true },
+            ].map(({ href, icon: Icon, label, external, download }, i) => (
               <a
                 key={label}
                 href={href}
                 {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
-                className="qa-contact-link qa-reveal"
-                style={{ animationDelay: `${0.1 + i * 0.08}s` }}
+                {...(download ? { download: true } : {})}
+                aria-label={label}
+                className="qa-dock-item"
+                style={{ animationDelay: `${0.45 + i * 0.08}s` }}
               >
                 <Icon aria-hidden="true" />
-                <span>{label}</span>
+                <span className="qa-dock-tip">{label}</span>
               </a>
             ))}
           </div>
-          <p className="qa-contact-copy qa-reveal" style={{ animationDelay: "1.1s" }}>
+
+          <p className="qa-dock-copy">
             {`\u00A9 ${new Date().getFullYear()} — Sajesh Shrestha`}
           </p>
-        </section>
-      </main>
-
-      <nav className="qa-dock" aria-label="Social links">
-        <div className="qa-dock-inner">
-          {[
-            { href: "https://www.linkedin.com/in/sajesh-shrestha13/", icon: Linkedin, label: "LinkedIn", external: true },
-            { href: "https://wa.me/9779860437025", icon: MessageCircleMore, label: "WhatsApp", external: true },
-            { href: "https://www.instagram.com/sajesh_shrestha13?igsh=d2UzYXR5Z3g3cjFl", icon: Instagram, label: "Instagram", external: true },
-            { href: "mailto:sajesh.shrestha04@gmail.com", icon: Mail, label: "Email" },
-            { href: "/Sajesh-Shrestha-QA-Engineer-CV.txt", icon: Download, label: "Download CV", download: true },
-          ].map(({ href, icon: Icon, label, external, download }, i) => (
-            <a
-              key={label}
-              href={href}
-              {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
-              {...(download ? { download: true } : {})}
-              aria-label={label}
-              className="qa-dock-item"
-              style={{ animationDelay: `${0.1 + i * 0.08}s` }}
-            >
-              <Icon aria-hidden="true" />
-              <span className="qa-dock-tip">{label}</span>
-            </a>
-          ))}
         </div>
-      </nav>
+      </aside>
     </div>
   );
 }
