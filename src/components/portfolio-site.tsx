@@ -374,31 +374,36 @@ export function SinglePagePortfolio() {
               </a>
             ))}
           </div>
-          <div className="qa-contact-socials qa-reveal" aria-label="Social media" style={{ animationDelay: "0.6s" }}>
-            {[
-              { href: "https://www.instagram.com/sajesh_shrestha13?igsh=d2UzYXR5Z3g3cjFl", icon: Instagram, label: "Instagram" },
-              { href: "https://www.linkedin.com/in/sajesh-shrestha13/", icon: Linkedin, label: "LinkedIn" },
-              { href: "mailto:sajesh.shrestha04@gmail.com", icon: Mail, label: "Email" },
-              { href: "https://wa.me/9779860437025", icon: MessageCircleMore, label: "WhatsApp" },
-            ].map(({ href, icon: Icon, label }, i) => (
-              <a
-                key={label}
-                href={href}
-                target={href.startsWith("http") ? "_blank" : undefined}
-                rel={href.startsWith("http") ? "noreferrer" : undefined}
-                aria-label={label}
-                className="qa-footer-social qa-social-pop"
-                style={{ animationDelay: `${0.7 + i * 0.1}s` }}
-              >
-                <Icon aria-hidden="true" />
-              </a>
-            ))}
-          </div>
           <p className="qa-contact-copy qa-reveal" style={{ animationDelay: "1.1s" }}>
             {`\u00A9 ${new Date().getFullYear()} — Sajesh Shrestha`}
           </p>
         </section>
       </main>
+
+      <nav className="qa-dock" aria-label="Social links">
+        <div className="qa-dock-inner">
+          {[
+            { href: "https://www.linkedin.com/in/sajesh-shrestha13/", icon: Linkedin, label: "LinkedIn", external: true },
+            { href: "https://wa.me/9779860437025", icon: MessageCircleMore, label: "WhatsApp", external: true },
+            { href: "https://www.instagram.com/sajesh_shrestha13?igsh=d2UzYXR5Z3g3cjFl", icon: Instagram, label: "Instagram", external: true },
+            { href: "mailto:sajesh.shrestha04@gmail.com", icon: Mail, label: "Email" },
+            { href: "/Sajesh-Shrestha-QA-Engineer-CV.txt", icon: Download, label: "Download CV", download: true },
+          ].map(({ href, icon: Icon, label, external, download }, i) => (
+            <a
+              key={label}
+              href={href}
+              {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
+              {...(download ? { download: true } : {})}
+              aria-label={label}
+              className="qa-dock-item"
+              style={{ animationDelay: `${0.1 + i * 0.08}s` }}
+            >
+              <Icon aria-hidden="true" />
+              <span className="qa-dock-tip">{label}</span>
+            </a>
+          ))}
+        </div>
+      </nav>
     </div>
   );
 }
