@@ -1373,3 +1373,603 @@
   .qa-dock-item { width: 2.2rem; height: 2.2rem; }
   .qa-main-flow { padding-bottom: clamp(28rem, 60vh, 36rem); }
 }
+
+/* ============================================================
+   Redesign additions — hero backdrop, bento skills, soft accordion,
+   tools row, split timeline, project wireframes/tags, awards
+   ============================================================ */
+@layer components {
+  /* Hero backdrop wireframe */
+  .qa-intro { position: relative; isolation: isolate; }
+  .qa-hero-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    color: color-mix(in oklab, var(--color-primary) 38%, transparent);
+    pointer-events: none;
+  }
+  .dark .qa-hero-bg {
+    color: color-mix(in oklab, var(--color-primary) 55%, transparent);
+  }
+
+  /* Hero CTA primary glow */
+  .qa-hero-cta-primary {
+    background: linear-gradient(135deg,
+      var(--color-primary),
+      color-mix(in oklab, var(--color-primary) 70%, var(--color-accent))) !important;
+    color: var(--color-primary-foreground) !important;
+    border: 0 !important;
+    box-shadow:
+      0 8px 24px color-mix(in oklab, var(--color-primary) 35%, transparent),
+      inset 0 1px 0 color-mix(in oklab, white 35%, transparent);
+    backdrop-filter: blur(6px);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .qa-hero-cta-primary:hover {
+    transform: translateY(-1px);
+    box-shadow:
+      0 12px 32px color-mix(in oklab, var(--color-primary) 45%, transparent),
+      inset 0 1px 0 color-mix(in oklab, white 40%, transparent);
+  }
+
+  /* Underline upgrade — accent baseline anchor with end caps */
+  .qa-intro-underline::after {
+    height: 0.42em;
+    border-radius: 3px;
+    background: linear-gradient(90deg,
+      color-mix(in oklab, var(--color-accent) 90%, transparent),
+      color-mix(in oklab, var(--color-primary) 80%, transparent));
+    box-shadow:
+      -3px 0 0 currentColor,
+      3px 0 0 currentColor;
+  }
+
+  /* ---------- Skills split layout ---------- */
+  .qa-skills-split {
+    display: grid;
+    grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+    gap: 1.25rem;
+    align-items: start;
+  }
+  @media (max-width: 960px) {
+    .qa-skills-split { grid-template-columns: 1fr; }
+  }
+
+  /* Bento */
+  .qa-bento {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+  }
+  .qa-bento-card {
+    grid-column: span 2;
+    position: relative;
+    background:
+      linear-gradient(150deg, color-mix(in oklab, var(--color-primary) 6%, transparent), transparent 60%),
+      var(--color-card);
+    border: 1px solid color-mix(in oklab, var(--color-border) 80%, transparent);
+    border-radius: 14px;
+    padding: 1rem 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    min-height: 8.5rem;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+  .qa-bento-card:hover {
+    transform: translateY(-2px);
+    border-color: color-mix(in oklab, var(--color-primary) 35%, transparent);
+    box-shadow: 0 14px 30px color-mix(in oklab, var(--color-primary) 12%, transparent);
+  }
+  .qa-bento-tall { grid-row: span 2; min-height: 17.5rem; }
+  .qa-bento-wide { grid-column: span 4; }
+  @media (max-width: 720px) {
+    .qa-bento { grid-template-columns: repeat(2, 1fr); }
+    .qa-bento-tall { grid-row: auto; min-height: 8.5rem; }
+    .qa-bento-wide { grid-column: span 2; }
+  }
+  .qa-bento-head { display: flex; align-items: center; gap: 0.6rem; }
+  .qa-bento-icon {
+    display: inline-grid; place-items: center;
+    width: 2rem; height: 2rem;
+    border-radius: 8px;
+    background: color-mix(in oklab, var(--color-primary) 14%, var(--color-card));
+    color: var(--color-primary);
+    border: 1px solid color-mix(in oklab, var(--color-primary) 25%, transparent);
+  }
+  .qa-bento-icon svg { width: 1.05rem; height: 1.05rem; }
+  .qa-bento-title {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin: 0;
+    color: var(--color-foreground);
+  }
+  .qa-bento-text {
+    margin: 0;
+    color: var(--color-muted-foreground);
+    font-size: 0.86rem;
+    line-height: 1.5;
+  }
+  .qa-bento-list {
+    list-style: none;
+    margin: auto 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    font-size: 0.82rem;
+    color: var(--color-muted-foreground);
+  }
+  .qa-bento-list li {
+    padding-left: 1rem;
+    position: relative;
+  }
+  .qa-bento-list li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0.55em;
+    width: 0.4rem; height: 0.4rem;
+    border-radius: 999px;
+    background: var(--color-primary);
+    box-shadow: 0 0 8px color-mix(in oklab, var(--color-primary) 60%, transparent);
+  }
+
+  /* API micro-flow */
+  .qa-api-flow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: auto;
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+  }
+  .qa-api-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.65rem;
+    border-radius: 999px;
+    border: 1px solid color-mix(in oklab, var(--color-border) 90%, transparent);
+    background: color-mix(in oklab, var(--color-card) 85%, var(--color-secondary));
+    color: var(--color-foreground);
+  }
+  .qa-api-pill-req { color: var(--color-primary); border-color: color-mix(in oklab, var(--color-primary) 35%, transparent); }
+  .qa-api-pill-res { color: oklch(0.72 0.18 150); border-color: color-mix(in oklab, oklch(0.72 0.18 150) 35%, transparent); }
+  .qa-api-dot { width: 0.5rem; height: 0.5rem; border-radius: 999px; background: currentColor; }
+  .qa-api-dot-ok { background: oklch(0.72 0.18 150); }
+  .qa-api-arrow { color: var(--color-muted-foreground); font-weight: 700; }
+
+  /* IDE preview */
+  .qa-bento-ide { padding-bottom: 0.75rem; }
+  .qa-ide {
+    margin-top: 0.5rem;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid color-mix(in oklab, var(--color-border) 90%, transparent);
+    background: oklch(0.18 0.02 250);
+    color: oklch(0.92 0.02 250);
+    font-family: var(--font-mono);
+  }
+  .qa-ide-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 0.7rem;
+    background: oklch(0.22 0.02 250);
+    border-bottom: 1px solid oklch(0.28 0.02 250);
+  }
+  .qa-ide-dot { width: 0.55rem; height: 0.55rem; border-radius: 999px; display: inline-block; }
+  .qa-ide-dot-r { background: #ff5f56; }
+  .qa-ide-dot-y { background: #ffbd2e; }
+  .qa-ide-dot-g { background: #27c93f; }
+  .qa-ide-tab {
+    margin-left: 0.65rem;
+    font-size: 0.7rem;
+    color: oklch(0.7 0.02 250);
+    letter-spacing: 0.04em;
+  }
+  .qa-ide-body {
+    margin: 0;
+    padding: 0.7rem 0.9rem;
+    font-size: 0.72rem;
+    line-height: 1.55;
+    white-space: pre;
+    overflow-x: auto;
+    color: oklch(0.85 0.02 250);
+  }
+
+  /* ---------- Soft skills accordion ---------- */
+  .qa-soft-panel {
+    background: var(--color-card);
+    border: 1px solid color-mix(in oklab, var(--color-border) 80%, transparent);
+    border-radius: 14px;
+    padding: 1rem 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+  .qa-soft-head { display: flex; flex-direction: column; gap: 0.25rem; }
+  .qa-soft-title {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0;
+  }
+  .qa-soft-accordion { display: flex; flex-direction: column; gap: 0.4rem; }
+  .qa-soft-item {
+    border: 1px solid color-mix(in oklab, var(--color-border) 70%, transparent);
+    border-radius: 10px;
+    background: color-mix(in oklab, var(--color-card) 85%, var(--color-secondary));
+    overflow: hidden;
+    transition: border-color 0.25s ease, background 0.25s ease;
+  }
+  .qa-soft-item[data-state="open"] {
+    border-color: color-mix(in oklab, var(--color-primary) 45%, transparent);
+    background: color-mix(in oklab, var(--color-primary) 8%, var(--color-card));
+  }
+  .qa-soft-trigger {
+    padding: 0.7rem 0.85rem !important;
+    width: 100%;
+  }
+  .qa-soft-trigger:hover { text-decoration: none !important; }
+  .qa-soft-trigger-inner {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    width: 100%;
+  }
+  .qa-soft-icon {
+    display: inline-grid; place-items: center;
+    width: 1.85rem; height: 1.85rem;
+    border-radius: 8px;
+    background: color-mix(in oklab, var(--color-primary) 14%, var(--color-card));
+    color: var(--color-primary);
+    flex-shrink: 0;
+  }
+  .qa-soft-icon svg { width: 1rem; height: 1rem; }
+  .qa-soft-trigger-text { display: flex; flex-direction: column; gap: 0.1rem; text-align: left; }
+  .qa-soft-name { font-weight: 600; color: var(--color-foreground); font-size: 0.92rem; }
+  .qa-soft-detail { font-size: 0.78rem; color: var(--color-muted-foreground); }
+  .qa-soft-content { padding: 0 0.85rem 0.85rem !important; }
+  .qa-soft-points {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    font-size: 0.82rem;
+    color: var(--color-muted-foreground);
+  }
+  .qa-soft-points li {
+    position: relative;
+    padding-left: 1.1rem;
+    line-height: 1.5;
+  }
+  .qa-soft-points li::before {
+    content: "";
+    position: absolute;
+    left: 0; top: 0.55em;
+    width: 0.45rem; height: 0.45rem;
+    border-radius: 999px;
+    background: var(--color-primary);
+    box-shadow: 0 0 8px color-mix(in oklab, var(--color-primary) 55%, transparent);
+  }
+
+  /* ---------- Tools row ---------- */
+  .qa-tool-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.4rem;
+    padding: 1.25rem 0.5rem 2rem;
+  }
+  .qa-tool-chip {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.8rem 1rem;
+    background: transparent;
+    border: 0;
+    color: color-mix(in oklab, var(--color-muted-foreground) 90%, transparent);
+    cursor: pointer;
+    transition: color 0.25s ease, transform 0.25s ease;
+  }
+  .qa-tool-chip svg { width: 2rem; height: 2rem; transition: filter 0.25s ease; }
+  .qa-tool-name {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .qa-tool-glow {
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    background: radial-gradient(circle at 50% 38%,
+      color-mix(in oklab, var(--color-primary) 28%, transparent), transparent 65%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+  .qa-tool-chip:hover, .qa-tool-chip:focus-visible {
+    color: var(--color-primary);
+    transform: translateY(-3px);
+    outline: none;
+  }
+  .qa-tool-chip:hover svg, .qa-tool-chip:focus-visible svg {
+    filter: drop-shadow(0 0 10px color-mix(in oklab, var(--color-primary) 60%, transparent));
+  }
+  .qa-tool-chip:hover .qa-tool-glow, .qa-tool-chip:focus-visible .qa-tool-glow { opacity: 1; }
+  .qa-tool-tip {
+    position: absolute;
+    bottom: calc(100% + 0.55rem);
+    left: 50%;
+    transform: translate(-50%, 4px);
+    min-width: 12rem;
+    padding: 0.6rem 0.75rem;
+    background: var(--color-popover);
+    color: var(--color-popover-foreground);
+    border: 1px solid color-mix(in oklab, var(--color-border) 90%, transparent);
+    border-radius: 10px;
+    box-shadow: 0 18px 40px color-mix(in oklab, var(--color-foreground) 18%, transparent);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    z-index: 4;
+  }
+  .qa-tool-tip::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%) rotate(45deg);
+    width: 10px; height: 10px;
+    background: var(--color-popover);
+    border-right: 1px solid color-mix(in oklab, var(--color-border) 90%, transparent);
+    border-bottom: 1px solid color-mix(in oklab, var(--color-border) 90%, transparent);
+  }
+  .qa-tool-tip-title {
+    font-family: var(--font-display);
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+  }
+  .qa-tool-tip-text {
+    font-size: 0.74rem;
+    color: var(--color-muted-foreground);
+    line-height: 1.4;
+  }
+  .qa-tool-chip:hover .qa-tool-tip, .qa-tool-chip:focus-visible .qa-tool-tip {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+
+  /* ---------- Split timeline ---------- */
+  .qa-split-timeline {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 0.6rem;
+  }
+  .qa-stl-item {
+    display: grid;
+    grid-template-columns: minmax(8rem, 11rem) 2.4rem 1fr;
+    gap: 0.75rem;
+    align-items: stretch;
+    animation: qaSlideIn 0.55s ease-out both;
+  }
+  .qa-stl-date {
+    text-align: right;
+    padding-top: 0.95rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .qa-stl-period {
+    margin: 0;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-muted-foreground);
+  }
+  .qa-stl-company {
+    margin: 0;
+    font-size: 0.78rem;
+    color: color-mix(in oklab, var(--color-foreground) 75%, transparent);
+  }
+  .qa-stl-rail {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+  .qa-stl-rail::before {
+    content: "";
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg,
+      transparent,
+      color-mix(in oklab, var(--color-primary) 70%, transparent),
+      transparent);
+    box-shadow: 0 0 12px color-mix(in oklab, var(--color-primary) 35%, transparent);
+  }
+  .qa-stl-node {
+    position: relative;
+    z-index: 1;
+    margin-top: 1.1rem;
+    width: 0.85rem; height: 0.85rem;
+    border-radius: 999px;
+    background: var(--color-primary);
+    box-shadow:
+      0 0 0 4px color-mix(in oklab, var(--color-primary) 22%, transparent),
+      0 0 14px color-mix(in oklab, var(--color-primary) 55%, transparent);
+  }
+  .qa-stl-item.is-open .qa-stl-node {
+    box-shadow:
+      0 0 0 5px color-mix(in oklab, var(--color-primary) 30%, transparent),
+      0 0 20px color-mix(in oklab, var(--color-primary) 70%, transparent);
+  }
+  .qa-stl-body {
+    background: var(--color-card);
+    border: 1px solid color-mix(in oklab, var(--color-border) 75%, transparent);
+    border-radius: 12px;
+    padding: 0.25rem 0.95rem 0.25rem;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+  .qa-stl-item.is-open .qa-stl-body {
+    border-color: color-mix(in oklab, var(--color-primary) 40%, transparent);
+    box-shadow: 0 10px 30px color-mix(in oklab, var(--color-primary) 14%, transparent);
+  }
+  .qa-stl-toggle {
+    width: 100%;
+    background: transparent;
+    border: 0;
+    padding: 0.85rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    cursor: pointer;
+    color: inherit;
+    font: inherit;
+    text-align: left;
+  }
+  .qa-stl-role {
+    font-family: var(--font-display);
+    font-size: 1.02rem;
+    font-weight: 600;
+  }
+  .qa-stl-chev {
+    width: 1.05rem; height: 1.05rem;
+    color: var(--color-muted-foreground);
+    transition: transform 0.25s ease, color 0.25s ease;
+  }
+  .qa-stl-chev.is-open { transform: rotate(180deg); color: var(--color-primary); }
+  .qa-stl-panel {
+    padding: 0 0 0.85rem;
+    border-top: 1px dashed color-mix(in oklab, var(--color-border) 70%, transparent);
+    animation: qaRise 0.35s ease-out both;
+  }
+  .qa-stl-points {
+    margin: 0.75rem 0 0;
+    padding-left: 1.05rem;
+    color: var(--color-muted-foreground);
+    font-size: 0.84rem;
+    line-height: 1.55;
+  }
+  .qa-stl-points li + li { margin-top: 0.3rem; }
+  @media (max-width: 640px) {
+    .qa-stl-item {
+      grid-template-columns: 1.8rem 1fr;
+    }
+    .qa-stl-date {
+      grid-column: 2;
+      text-align: left;
+      padding-top: 0;
+      padding-bottom: 0.25rem;
+    }
+    .qa-stl-rail { grid-row: 1 / span 2; }
+    .qa-stl-body { grid-column: 2; }
+    .qa-stl-node { margin-top: 0.25rem; }
+  }
+
+  /* ---------- Project grid with wireframes ---------- */
+  .qa-project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+    gap: 1rem;
+  }
+  .qa-project-card {
+    position: relative;
+    background: var(--color-card);
+    border: 1px solid color-mix(in oklab, var(--color-border) 80%, transparent);
+    border-radius: 14px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+  .qa-project-card:hover {
+    transform: translateY(-4px);
+    border-color: color-mix(in oklab, var(--color-primary) 35%, transparent);
+    box-shadow: 0 18px 36px color-mix(in oklab, var(--color-primary) 12%, transparent);
+  }
+  .qa-project-frame {
+    background:
+      linear-gradient(135deg,
+        color-mix(in oklab, var(--color-primary) 10%, transparent),
+        color-mix(in oklab, var(--color-accent) 8%, transparent));
+    padding: 0.85rem 1rem;
+    border-bottom: 1px dashed color-mix(in oklab, var(--color-border) 70%, transparent);
+  }
+  .qa-wire {
+    width: 100%;
+    height: 92px;
+    color: color-mix(in oklab, var(--color-primary) 70%, var(--color-foreground));
+    stroke: currentColor;
+    stroke-width: 1.2;
+    fill: none;
+  }
+  .qa-wire [fill="currentColor"] { fill: currentColor; stroke: none; }
+  .qa-project-tag {
+    position: absolute;
+    top: 0.65rem;
+    right: 0.7rem;
+    padding: 0.25rem 0.55rem;
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    background: color-mix(in oklab, var(--color-primary) 14%, var(--color-card));
+    border: 1px solid color-mix(in oklab, var(--color-primary) 40%, transparent);
+    border-radius: 999px;
+    backdrop-filter: blur(6px);
+  }
+  .qa-project-body {
+    padding: 0.95rem 1.05rem 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+  }
+  .qa-project-head { display: flex; align-items: center; gap: 0.55rem; }
+  .qa-project-badge {
+    display: inline-grid; place-items: center;
+    width: 1.85rem; height: 1.85rem;
+    border-radius: 8px;
+    background: color-mix(in oklab, var(--color-primary) 14%, var(--color-card));
+    color: var(--color-primary);
+    border: 1px solid color-mix(in oklab, var(--color-primary) 28%, transparent);
+  }
+  .qa-project-badge svg { width: 1rem; height: 1rem; }
+
+  /* ---------- Award category badge ---------- */
+  .qa-award-category {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-primary);
+    padding: 0.3rem 0.6rem;
+    border-radius: 999px;
+    background: color-mix(in oklab, var(--color-primary) 12%, var(--color-card));
+    border: 1px solid color-mix(in oklab, var(--color-primary) 35%, transparent);
+  }
+  .qa-award-year {
+    margin-top: 0.6rem;
+    display: inline-block;
+    align-self: flex-start;
+  }
+}
