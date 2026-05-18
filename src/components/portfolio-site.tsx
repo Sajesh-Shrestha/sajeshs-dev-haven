@@ -30,6 +30,12 @@ import {
   Users,
 } from "lucide-react";
 
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -39,30 +45,66 @@ type IconType = React.ComponentType<React.SVGProps<SVGSVGElement>>;
 
 const navItems: ReadonlyArray<{ id: SectionKey; label: string }> = [
   { id: "about", label: "About" },
+  { id: "journey", label: "Experience" },
   { id: "skills", label: "Skills" },
   { id: "tools", label: "Tools" },
-  { id: "journey", label: "Experience" },
   { id: "projects", label: "Projects" },
   { id: "education", label: "Education" },
   { id: "awards", label: "Awards" },
   { id: "contact", label: "Contact" },
 ];
 
-const technicalSkills = [
-  { title: "Manual Testing", detail: "Functional, regression, smoke, and exploratory testing", icon: TestTube2 },
-  { title: "API Testing", detail: "Request/response validation and backend workflow checks", icon: FlaskConical },
-  { title: "SQL (Database Testing)", detail: "Data validation, integrity checks, and query-based testing", icon: DatabaseZap },
-  { title: "Basic Automation Testing", detail: "Playwright UI flow automation fundamentals", icon: Bug },
-  { title: "Load Testing", detail: "JMeter basics for performance and traffic validation", icon: TimerReset },
-  { title: "Basic Security Testing", detail: "Security awareness with basic vulnerability checks", icon: ShieldCheck },
-] as const;
-
 const softSkills = [
-  { title: "Team Player", detail: "Collaborates clearly across QA, product, and engineering", icon: Users },
-  { title: "Critical Thinking", detail: "Breaks down issues and validates edge cases carefully", icon: Brain },
-  { title: "Communication Skills", detail: "Writes clear defects, test notes, and status updates", icon: MessageCircleMore },
-  { title: "Problem Solving", detail: "Finds practical paths to isolate and resolve quality risks", icon: Puzzle },
-  { title: "Adaptability", detail: "Adjusts quickly to changing requirements and priorities", icon: RefreshCw },
+  {
+    title: "Critical Thinking",
+    detail: "Breaks down issues and validates edge cases carefully",
+    icon: Brain,
+    points: [
+      "Builds edge-case matrices before regression cycles begin.",
+      "Challenges assumptions with data-led test scenarios.",
+      "Isolates root causes instead of patching symptoms.",
+    ],
+  },
+  {
+    title: "Team Player",
+    detail: "Collaborates clearly across QA, product, and engineering",
+    icon: Users,
+    points: [
+      "Pairs with developers during defect triage and fix verification.",
+      "Aligns QA priorities with product and design rhythm.",
+      "Shares context openly across remote squads.",
+    ],
+  },
+  {
+    title: "Communication Skills",
+    detail: "Writes clear defects, test notes, and status updates",
+    icon: MessageCircleMore,
+    points: [
+      "Files reproducible bug reports with crisp expected vs. actual.",
+      "Maintains living test documentation teams actually read.",
+      "Surfaces risk early with structured release notes.",
+    ],
+  },
+  {
+    title: "Problem Solving",
+    detail: "Finds practical paths to isolate and resolve quality risks",
+    icon: Puzzle,
+    points: [
+      "Designs targeted probes to narrow down flaky failures.",
+      "Builds lightweight harnesses to reproduce intermittent issues.",
+      "Balances depth of investigation against ship pressure.",
+    ],
+  },
+  {
+    title: "Adaptability",
+    detail: "Adjusts quickly to changing requirements and priorities",
+    icon: RefreshCw,
+    points: [
+      "Re-scopes test coverage as requirements shift mid-sprint.",
+      "Picks up new tools and domains without losing momentum.",
+      "Stays calm under release pressure and tight cycles.",
+    ],
+  },
 ] as const;
 
 const tools = [
@@ -110,38 +152,52 @@ const experienceSteps = [
       "Built a strong foundation in product quality and structured documentation.",
     ],
   },
-].reverse() as ReadonlyArray<{ period: string; role: string; company: string; points: readonly string[] }>;
+] as ReadonlyArray<{ period: string; role: string; company: string; points: readonly string[] }>;
+
+type WireframeKind = "id" | "flow" | "news" | "form" | "cms" | "stack";
 
 const projectInvolvement = [
   {
     title: "Online Account Opening & eKYC Application",
     detail: "Tested user onboarding, identity verification, and workflow processes.",
     icon: ShieldCheck,
+    tag: "Auth-Heavy",
+    wireframe: "id" as WireframeKind,
   },
   {
     title: "BPM (Business ProcessMaker) System",
     detail: "Validated workflow automation and business process execution.",
     icon: GitBranch,
+    tag: "Workflow",
+    wireframe: "flow" as WireframeKind,
   },
   {
     title: "Online News Portal / CMS",
     detail: "Tested content publishing, user roles, and admin functionalities.",
     icon: FileJson,
+    tag: "Content-Heavy",
+    wireframe: "news" as WireframeKind,
   },
   {
     title: "Customer Registration Application",
     detail: "Verified user registration flows and data validation processes.",
     icon: Users,
+    tag: "Form-Heavy",
+    wireframe: "form" as WireframeKind,
   },
   {
     title: "Content Management Systems",
     detail: "Ensured content handling, updates, and user access control.",
     icon: DatabaseZap,
+    tag: "API-Dense",
+    wireframe: "cms" as WireframeKind,
   },
   {
     title: "In-house Products",
     detail: "Worked on multiple internal systems focusing on quality, usability, and performance.",
     icon: BriefcaseBusiness,
+    tag: "Multi-System",
+    wireframe: "stack" as WireframeKind,
   },
 ] as const;
 
@@ -149,12 +205,14 @@ const awards = [
   {
     title: "Extreme Ownership Award",
     year: "2024",
+    category: "Ownership",
     description: "Recognized for taking full responsibility and driving quality work with consistency.",
     icon: Trophy,
   },
   {
     title: "Above and Beyond Award",
     year: "2025",
+    category: "Impact",
     description: "Awarded for dedication, reliability, and making a strong impact beyond expectations.",
     icon: Award,
   },
@@ -230,6 +288,7 @@ export function SinglePagePortfolio() {
 
       <main className="qa-main-flow">
         <section id="about" ref={introRef} className={`qa-section qa-intro${introVisible ? " is-visible" : ""}`}>
+          <HeroWireframeBackdrop />
           <div className="qa-intro-center">
             <h1 className="qa-intro-title">
               <SplitLine text="Hi, I'm" className="qa-intro-line-block" baseDelay={0.05} />
@@ -245,7 +304,7 @@ export function SinglePagePortfolio() {
               <span className="qa-intro-caret" aria-hidden="true" />
             </p>
             <div className="qa-intro-actions qa-intro-line qa-intro-line-4">
-              <Button asChild>
+              <Button asChild className="qa-hero-cta-primary">
                 <a href="/Sajesh-Shrestha-QA-Engineer-CV.txt" download>
                   <Download aria-hidden="true" />
                   Download CV
@@ -277,68 +336,199 @@ export function SinglePagePortfolio() {
           </p>
         </section>
 
-        <section id="skills" className="qa-section">
-          <SectionHeading num="01" eyebrow="Technical Skills" title="Core QA strengths" />
-          <IconCardGrid items={technicalSkills} />
+        <section id="journey" className="qa-section">
+          <SectionHeading num="01" eyebrow="Job History" title="Responsibilities across QA roles" />
+          <SplitTimeline steps={experienceSteps} />
         </section>
 
-        <section className="qa-section">
-          <SectionHeading num="02" eyebrow="Soft Skills" title="How I work with teams" />
-          <IconCardGrid items={softSkills} compact />
+        <section id="skills" className="qa-section">
+          <SectionHeading num="02" eyebrow="Skills" title="Technical depth, human range" />
+          <div className="qa-skills-split">
+            <div className="qa-bento">
+              <article className="qa-bento-card qa-bento-tall">
+                <div className="qa-bento-head">
+                  <span className="qa-bento-icon"><TestTube2 aria-hidden="true" /></span>
+                  <h3 className="qa-bento-title">Manual Testing</h3>
+                </div>
+                <p className="qa-bento-text">
+                  Functional, regression, smoke, and exploratory testing across web platforms and
+                  internal tooling.
+                </p>
+                <ul className="qa-bento-list">
+                  <li>Risk-based test design</li>
+                  <li>Exploratory charters</li>
+                  <li>Reproducible defect trails</li>
+                </ul>
+              </article>
+
+              <article className="qa-bento-card qa-bento-wide">
+                <div className="qa-bento-head">
+                  <span className="qa-bento-icon"><FlaskConical aria-hidden="true" /></span>
+                  <h3 className="qa-bento-title">API Testing</h3>
+                </div>
+                <p className="qa-bento-text">
+                  Request/response validation across REST endpoints with status, schema, and
+                  backend workflow checks.
+                </p>
+                <div className="qa-api-flow" aria-hidden="true">
+                  <span className="qa-api-pill qa-api-pill-req">
+                    <span className="qa-api-dot" />
+                    GET /users
+                  </span>
+                  <span className="qa-api-arrow">→</span>
+                  <span className="qa-api-pill qa-api-pill-srv">Backend</span>
+                  <span className="qa-api-arrow">→</span>
+                  <span className="qa-api-pill qa-api-pill-res">
+                    <span className="qa-api-dot qa-api-dot-ok" />
+                    200 OK
+                  </span>
+                </div>
+              </article>
+
+              <article className="qa-bento-card qa-bento-wide qa-bento-ide">
+                <div className="qa-bento-head">
+                  <span className="qa-bento-icon"><Bug aria-hidden="true" /></span>
+                  <h3 className="qa-bento-title">Automation Testing</h3>
+                </div>
+                <div className="qa-ide" aria-hidden="true">
+                  <div className="qa-ide-bar">
+                    <span className="qa-ide-dot qa-ide-dot-r" />
+                    <span className="qa-ide-dot qa-ide-dot-y" />
+                    <span className="qa-ide-dot qa-ide-dot-g" />
+                    <span className="qa-ide-tab">login.spec.ts</span>
+                  </div>
+                  <pre className="qa-ide-body">
+{`import { test, expect } from '@playwright/test';
+
+test('user can sign in', async ({ page }) => {
+  await page.goto('/login');
+  await page.getByLabel('Email').fill('qa@demo.io');
+  await expect(page).toHaveURL(/dashboard/);
+});`}
+                  </pre>
+                </div>
+              </article>
+
+              <article className="qa-bento-card">
+                <div className="qa-bento-head">
+                  <span className="qa-bento-icon"><DatabaseZap aria-hidden="true" /></span>
+                  <h3 className="qa-bento-title">SQL & Database</h3>
+                </div>
+                <p className="qa-bento-text">
+                  Data validation, integrity checks, and query-based verification across
+                  transactional schemas.
+                </p>
+              </article>
+
+              <article className="qa-bento-card">
+                <div className="qa-bento-head">
+                  <span className="qa-bento-icon"><TimerReset aria-hidden="true" /></span>
+                  <h3 className="qa-bento-title">Load Testing</h3>
+                </div>
+                <p className="qa-bento-text">
+                  JMeter fundamentals for traffic shaping and performance baselines.
+                </p>
+              </article>
+
+              <article className="qa-bento-card">
+                <div className="qa-bento-head">
+                  <span className="qa-bento-icon"><ShieldCheck aria-hidden="true" /></span>
+                  <h3 className="qa-bento-title">Security Awareness</h3>
+                </div>
+                <p className="qa-bento-text">
+                  Basic vulnerability checks, input fuzzing, and request inspection workflows.
+                </p>
+              </article>
+            </div>
+
+            <aside className="qa-soft-panel" aria-label="Soft skills">
+              <div className="qa-soft-head">
+                <span className="qa-eyebrow">— Soft Skills</span>
+                <h3 className="qa-soft-title">How I work with teams</h3>
+              </div>
+              <Accordion type="single" collapsible defaultValue={softSkills[0].title} className="qa-soft-accordion">
+                {softSkills.map(({ title, detail, icon: Icon, points }) => (
+                  <AccordionItem key={title} value={title} className="qa-soft-item">
+                    <AccordionTrigger className="qa-soft-trigger">
+                      <span className="qa-soft-trigger-inner">
+                        <span className="qa-soft-icon"><Icon aria-hidden="true" /></span>
+                        <span className="qa-soft-trigger-text">
+                          <span className="qa-soft-name">{title}</span>
+                          <span className="qa-soft-detail">{detail}</span>
+                        </span>
+                      </span>
+                    </AccordionTrigger>
+                    <AccordionContent className="qa-soft-content">
+                      <ul className="qa-soft-points">
+                        {points.map((p) => (
+                          <li key={p}>{p}</li>
+                        ))}
+                      </ul>
+                    </AccordionContent>
+                  </AccordionItem>
+                ))}
+              </Accordion>
+            </aside>
+          </div>
         </section>
 
         <section id="tools" className="qa-section">
           <SectionHeading num="03" eyebrow="Tools & Platforms" title="Tools I use for testing workflows" />
-          <IconCardGrid items={tools} compact />
-        </section>
-
-        <section id="journey" className="qa-section">
-          <SectionHeading num="04" eyebrow="Job History" title="Responsibilities across QA roles" />
-          <AutoTimeline steps={experienceSteps} />
+          <div className="qa-tool-row" role="list">
+            {tools.map(({ title, detail, icon: Icon }) => (
+              <button key={title} type="button" className="qa-tool-chip" role="listitem" aria-label={title}>
+                <span className="qa-tool-glow" aria-hidden="true" />
+                <Icon aria-hidden="true" />
+                <span className="qa-tool-name">{title}</span>
+                <span className="qa-tool-tip" role="tooltip">
+                  <span className="qa-tool-tip-title">{title}</span>
+                  <span className="qa-tool-tip-text">{detail}</span>
+                </span>
+              </button>
+            ))}
+          </div>
         </section>
 
         <section id="projects" className="qa-section qa-projects-band">
-          <SectionHeading num="05" eyebrow="Project Involvement" title="Products and systems tested" />
-          <div className="qa-project-timeline" aria-label="Auto-scrolling project timeline">
-            <div className="qa-project-track">
-              {[...projectInvolvement, ...projectInvolvement].map(({ title, detail, icon: Icon }, index) => (
-                <article
-                  key={`${title}-${index}`}
-                  className="qa-project-item"
-                  aria-hidden={index >= projectInvolvement.length}
-                >
-                  <div className="qa-project-marker" aria-hidden="true">
-                    <span>{String((index % projectInvolvement.length) + 1).padStart(2, "0")}</span>
-                  </div>
-                  <div className="qa-project-icon">
-                    <Icon aria-hidden="true" />
-                  </div>
-                  <div>
+          <SectionHeading num="04" eyebrow="Project Involvement" title="Products and systems tested" />
+          <div className="qa-project-grid">
+            {projectInvolvement.map(({ title, detail, icon: Icon, tag, wireframe }) => (
+              <article key={title} className="qa-project-card">
+                <div className="qa-project-frame">
+                  <Wireframe kind={wireframe} />
+                </div>
+                <span className="qa-project-tag">{tag}</span>
+                <div className="qa-project-body">
+                  <div className="qa-project-head">
+                    <span className="qa-project-badge">
+                      <Icon aria-hidden="true" />
+                    </span>
                     <h3 className="qa-card-title">{title}</h3>
-                    <p className="qa-card-text">{detail}</p>
                   </div>
-                </article>
-              ))}
-            </div>
+                  <p className="qa-card-text">{detail}</p>
+                </div>
+              </article>
+            ))}
           </div>
         </section>
 
         <EducationSection />
 
         <section id="awards" className="qa-section">
-          <SectionHeading num="07" eyebrow="Awards" title="Recognition I'm proud of" />
+          <SectionHeading num="06" eyebrow="Awards" title="Recognition I'm proud of" />
           <div className="qa-awards-grid-v2">
-            {awards.map(({ title, year, description, icon: Icon }) => (
+            {awards.map(({ title, year, category, description, icon: Icon }) => (
               <Card key={title} className="qa-card qa-award-card-v2">
                 <CardContent className="qa-card-pad">
                   <div className="qa-award-head-v2">
                     <div className="qa-award-icon">
                       <Icon aria-hidden="true" />
                     </div>
-                    <span className="qa-year-badge">{year}</span>
+                    <span className="qa-award-category">Category: {category}</span>
                   </div>
                   <h3 className="qa-card-title">{title}</h3>
                   <p className="qa-card-text">{description}</p>
+                  <span className="qa-year-badge qa-award-year">{year}</span>
                 </CardContent>
               </Card>
             ))}
@@ -414,6 +604,130 @@ export function SinglePagePortfolio() {
   );
 }
 
+function HeroWireframeBackdrop() {
+  return (
+    <svg
+      className="qa-hero-bg"
+      viewBox="0 0 1200 700"
+      preserveAspectRatio="xMidYMid slice"
+      aria-hidden="true"
+    >
+      <defs>
+        <pattern id="qaGrid" width="48" height="48" patternUnits="userSpaceOnUse">
+          <path d="M48 0H0V48" fill="none" stroke="currentColor" strokeWidth="0.6" />
+        </pattern>
+        <radialGradient id="qaFade" cx="50%" cy="50%" r="60%">
+          <stop offset="0%" stopColor="white" stopOpacity="1" />
+          <stop offset="100%" stopColor="white" stopOpacity="0" />
+        </radialGradient>
+        <mask id="qaMask">
+          <rect width="1200" height="700" fill="url(#qaFade)" />
+        </mask>
+      </defs>
+      <g mask="url(#qaMask)" opacity="0.5">
+        <rect width="1200" height="700" fill="url(#qaGrid)" />
+        <g fill="none" stroke="currentColor" strokeWidth="1.1" opacity="0.85">
+          <g transform="translate(140 130) rotate(-12)">
+            <rect x="0" y="0" width="120" height="120" />
+            <rect x="28" y="-28" width="120" height="120" />
+            <path d="M0 0 L28 -28 M120 0 L148 -28 M120 120 L148 92 M0 120 L28 92" />
+          </g>
+          <g transform="translate(960 110) rotate(14)">
+            <rect x="0" y="0" width="90" height="90" />
+            <rect x="22" y="-22" width="90" height="90" />
+            <path d="M0 0 L22 -22 M90 0 L112 -22 M90 90 L112 68 M0 90 L22 68" />
+          </g>
+          <g transform="translate(880 470) rotate(-6)">
+            <rect x="0" y="0" width="150" height="150" />
+            <rect x="34" y="-34" width="150" height="150" />
+            <path d="M0 0 L34 -34 M150 0 L184 -34 M150 150 L184 116 M0 150 L34 116" />
+          </g>
+          <g transform="translate(120 470) rotate(8)">
+            <rect x="0" y="0" width="80" height="80" />
+            <rect x="20" y="-20" width="80" height="80" />
+            <path d="M0 0 L20 -20 M80 0 L100 -20 M80 80 L100 60 M0 80 L20 60" />
+          </g>
+        </g>
+      </g>
+    </svg>
+  );
+}
+
+function Wireframe({ kind }: { kind: WireframeKind }) {
+  const common = {
+    viewBox: "0 0 200 90",
+    className: "qa-wire",
+    "aria-hidden": true as const,
+  };
+  switch (kind) {
+    case "id":
+      return (
+        <svg {...common}>
+          <rect x="10" y="14" width="180" height="62" rx="6" />
+          <circle cx="34" cy="45" r="14" />
+          <rect x="60" y="28" width="100" height="6" rx="2" />
+          <rect x="60" y="42" width="80" height="4" rx="2" />
+          <rect x="60" y="52" width="110" height="4" rx="2" />
+          <rect x="60" y="62" width="60" height="4" rx="2" />
+        </svg>
+      );
+    case "flow":
+      return (
+        <svg {...common}>
+          <rect x="14" y="34" width="38" height="22" rx="4" />
+          <rect x="82" y="34" width="38" height="22" rx="4" />
+          <rect x="150" y="34" width="38" height="22" rx="4" />
+          <path d="M52 45 L82 45 M120 45 L150 45" />
+          <circle cx="101" cy="20" r="6" />
+          <path d="M101 26 L101 34" />
+        </svg>
+      );
+    case "news":
+      return (
+        <svg {...common}>
+          <rect x="10" y="10" width="180" height="10" rx="2" />
+          <rect x="10" y="26" width="80" height="50" rx="3" />
+          <rect x="98" y="26" width="92" height="6" rx="2" />
+          <rect x="98" y="38" width="80" height="4" rx="2" />
+          <rect x="98" y="46" width="84" height="4" rx="2" />
+          <rect x="98" y="56" width="40" height="20" rx="3" />
+          <rect x="144" y="56" width="40" height="20" rx="3" />
+        </svg>
+      );
+    case "form":
+      return (
+        <svg {...common}>
+          <rect x="36" y="12" width="128" height="66" rx="6" />
+          <rect x="46" y="22" width="60" height="6" rx="2" />
+          <rect x="46" y="34" width="108" height="10" rx="3" />
+          <rect x="46" y="50" width="108" height="10" rx="3" />
+          <rect x="46" y="66" width="40" height="8" rx="3" fill="currentColor" opacity="0.35" />
+        </svg>
+      );
+    case "cms":
+      return (
+        <svg {...common}>
+          <rect x="10" y="10" width="40" height="70" rx="3" />
+          <rect x="58" y="10" width="132" height="14" rx="3" />
+          <rect x="58" y="30" width="40" height="22" rx="3" />
+          <rect x="104" y="30" width="40" height="22" rx="3" />
+          <rect x="150" y="30" width="40" height="22" rx="3" />
+          <rect x="58" y="58" width="132" height="22" rx="3" />
+        </svg>
+      );
+    case "stack":
+    default:
+      return (
+        <svg {...common}>
+          <rect x="20" y="14" width="160" height="14" rx="3" />
+          <rect x="20" y="32" width="160" height="14" rx="3" />
+          <rect x="20" y="50" width="160" height="14" rx="3" />
+          <rect x="20" y="68" width="100" height="10" rx="3" />
+        </svg>
+      );
+  }
+}
+
 function SplitWord({ text, baseDelay = 0, italic = false }: { text: string; baseDelay?: number; italic?: boolean }) {
   const chars = Array.from(text);
   return (
@@ -450,81 +764,51 @@ function SplitLine({ text, className = "", baseDelay = 0 }: { text: string; clas
   );
 }
 
-function IconCardGrid({
-  items,
-  compact = false,
-}: {
-  items: ReadonlyArray<{ title: string; detail: string; icon: IconType }>;
-  compact?: boolean;
-}) {
-  return (
-    <div className={compact ? "qa-skills-grid qa-skills-grid-compact" : "qa-skills-grid"}>
-      {items.map(({ title, detail, icon: Icon }) => (
-        <Card key={title} className="qa-card qa-skill-card">
-          <CardContent className="qa-card-pad">
-            <div className="qa-skill-icon">
-              <Icon aria-hidden="true" />
-            </div>
-            <h3 className="qa-card-title">{title}</h3>
-            <p className="qa-card-text">{detail}</p>
-          </CardContent>
-        </Card>
-      ))}
-    </div>
-  );
-}
-
-function AutoTimeline({
+function SplitTimeline({
   steps,
 }: {
   steps: ReadonlyArray<{ period: string; role: string; company: string; points: readonly string[] }>;
 }) {
   const [openIndex, setOpenIndex] = React.useState<number | null>(0);
-
   return (
-    <div className="qa-timeline-shell" aria-label="QA experience timeline">
-      <ol className="qa-timeline-track">
-        {steps.map((step, index) => {
-          const isOpen = openIndex === index;
-          const panelId = `qa-journey-panel-${index}`;
-          return (
-            <li key={step.period} className="qa-timeline-item">
-              <div className="qa-timeline-dot" aria-hidden="true">
-                <BriefcaseBusiness />
-              </div>
-              <Card className="qa-card qa-timeline-card-v2">
-                <button
-                  type="button"
-                  className="qa-timeline-toggle"
-                  aria-expanded={isOpen}
-                  aria-controls={panelId}
-                  onClick={() => setOpenIndex(isOpen ? null : index)}
-                >
-                  <div className="qa-timeline-toggle-text">
-                    <p className="qa-timeline-period">{step.period}</p>
-                    <h3 className="qa-card-title">{step.role}</h3>
-                  </div>
-                  <ChevronDown
-                    aria-hidden="true"
-                    className={`qa-timeline-chevron${isOpen ? " is-open" : ""}`}
-                  />
-                </button>
-                {isOpen ? (
-                  <CardContent id={panelId} className="qa-card-pad qa-timeline-details">
-                    <p className="qa-timeline-company">{step.company}</p>
-                    <ul className="qa-timeline-points">
-                      {step.points.map((point) => (
-                        <li key={point}>{point}</li>
-                      ))}
-                    </ul>
-                  </CardContent>
-                ) : null}
-              </Card>
-            </li>
-          );
-        })}
-      </ol>
-    </div>
+    <ol className="qa-split-timeline" aria-label="QA experience timeline">
+      {steps.map((step, index) => {
+        const isOpen = openIndex === index;
+        const panelId = `qa-split-journey-${index}`;
+        return (
+          <li key={step.period} className={`qa-stl-item${isOpen ? " is-open" : ""}`}>
+            <div className="qa-stl-date">
+              <p className="qa-stl-period">{step.period}</p>
+              <p className="qa-stl-company">{step.company}</p>
+            </div>
+            <div className="qa-stl-rail" aria-hidden="true">
+              <span className="qa-stl-node" />
+            </div>
+            <div className="qa-stl-body">
+              <button
+                type="button"
+                className="qa-stl-toggle"
+                aria-expanded={isOpen}
+                aria-controls={panelId}
+                onClick={() => setOpenIndex(isOpen ? null : index)}
+              >
+                <span className="qa-stl-role">{step.role}</span>
+                <ChevronDown aria-hidden="true" className={`qa-stl-chev${isOpen ? " is-open" : ""}`} />
+              </button>
+              {isOpen ? (
+                <div id={panelId} className="qa-stl-panel">
+                  <ul className="qa-stl-points">
+                    {step.points.map((point) => (
+                      <li key={point}>{point}</li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+            </div>
+          </li>
+        );
+      })}
+    </ol>
   );
 }
 
@@ -544,7 +828,7 @@ function EducationSection() {
 
   return (
     <section id="education" className="qa-section">
-      <SectionHeading num="06" eyebrow="Education" title="Academic background" />
+      <SectionHeading num="05" eyebrow="Education" title="Academic background" />
       <div className="qa-education-list">
         {educationItems.map((item) => (
           <Card key={item.title} className="qa-card qa-education-card">
