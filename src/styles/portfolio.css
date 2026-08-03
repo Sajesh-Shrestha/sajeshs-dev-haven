@@ -1216,139 +1216,62 @@
 
 /* Floating sticky contact dock — compact bottom-center */
 .qa-main-flow {
-  padding-bottom: clamp(14rem, 24vh, 18rem);
+  padding-bottom: clamp(7rem, 14vh, 9rem);
 }
 
 .qa-dock {
   position: fixed;
   left: 50%;
-  bottom: 1rem;
+  bottom: 1.25rem;
   transform: translateX(-50%);
   z-index: 60;
-  width: min(92vw, 520px);
   pointer-events: none;
   animation: qaRise 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.4s both;
 }
 .qa-dock-inner {
   pointer-events: auto;
   display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  padding: 0.95rem 1.1rem 0.85rem;
-  border-radius: 1.1rem;
-  background: color-mix(in oklab, var(--color-background) 82%, transparent);
+  flex-direction: row;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.5rem 0.9rem;
+  border-radius: 999px;
+  background: color-mix(in oklab, var(--color-background) 80%, transparent);
   backdrop-filter: blur(20px) saturate(150%);
   -webkit-backdrop-filter: blur(20px) saturate(150%);
-  border: 1px solid color-mix(in oklab, var(--color-foreground) 12%, transparent);
+  border: 1px solid color-mix(in oklab, var(--color-foreground) 14%, transparent);
   box-shadow:
-    0 18px 44px -16px color-mix(in oklab, var(--color-foreground) 32%, transparent),
-    inset 0 1px 0 color-mix(in oklab, var(--color-background) 80%, transparent);
-}
-.qa-dock-head {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-  text-align: center;
-}
-.qa-dock-eyebrow {
-  font-size: 0.6rem;
-  letter-spacing: 0.2em;
-  font-weight: 600;
-  text-transform: uppercase;
-  color: color-mix(in oklab, var(--color-foreground) 55%, transparent);
-}
-.qa-dock-title {
-  font-family: var(--font-display, serif);
-  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
-  font-weight: 500;
-  line-height: 1.1;
-  margin: 0;
-  color: var(--color-foreground);
-}
-.qa-dock-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.45rem;
-}
-.qa-dock-row {
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-  padding: 0.45rem 0.6rem;
-  border-radius: 0.7rem;
-  border: 1px solid color-mix(in oklab, var(--color-foreground) 8%, transparent);
-  background: color-mix(in oklab, var(--color-foreground) 2.5%, transparent);
-  color: var(--color-foreground);
-  text-decoration: none;
-  transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
-}
-.qa-dock-row:hover {
-  transform: translateY(-2px);
-  background: color-mix(in oklab, var(--color-foreground) 5%, transparent);
-  border-color: color-mix(in oklab, var(--color-foreground) 18%, transparent);
-}
-.qa-dock-row-icon {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 1.6rem;
-  height: 1.6rem;
-  border-radius: 0.5rem;
-  background: color-mix(in oklab, var(--color-foreground) 7%, transparent);
-  color: color-mix(in oklab, var(--color-foreground) 80%, transparent);
-  flex-shrink: 0;
-}
-.qa-dock-row-icon svg { width: 0.85rem; height: 0.85rem; }
-.qa-dock-row-text { display: flex; flex-direction: column; min-width: 0; }
-.qa-dock-row-label {
-  font-size: 0.58rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: color-mix(in oklab, var(--color-foreground) 50%, transparent);
-}
-.qa-dock-row-value {
-  font-size: 0.76rem;
-  color: var(--color-foreground);
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.qa-dock-socials {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.35rem;
-  padding-top: 0.55rem;
-  border-top: 1px solid color-mix(in oklab, var(--color-foreground) 8%, transparent);
+    0 18px 44px -18px color-mix(in oklab, var(--color-foreground) 40%, transparent),
+    inset 0 1px 0 color-mix(in oklab, var(--color-background) 70%, transparent);
 }
 .qa-dock-item {
   position: relative;
-  width: 2rem;
-  height: 2rem;
+  width: 2.6rem;
+  height: 2.6rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   border-radius: 999px;
-  color: color-mix(in oklab, var(--color-foreground) 65%, transparent);
+  color: color-mix(in oklab, var(--color-foreground) 55%, transparent);
   transition: transform 0.25s ease, color 0.25s ease, background 0.25s ease;
   opacity: 0;
   animation: qaRise 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 .qa-dock-item:hover {
   color: var(--color-foreground);
-  background: color-mix(in oklab, var(--color-foreground) 7%, transparent);
+  background: color-mix(in oklab, var(--color-foreground) 8%, transparent);
   transform: translateY(-2px) scale(1.06);
 }
-.qa-dock-item svg { width: 0.95rem; height: 0.95rem; }
+.qa-dock-item svg { width: 1.2rem; height: 1.2rem; }
 .qa-dock-tip {
   position: absolute;
-  bottom: calc(100% + 0.4rem);
+  bottom: calc(100% + 0.45rem);
   left: 50%;
   transform: translateX(-50%) translateY(4px);
-  padding: 0.22rem 0.45rem;
-  font-size: 0.62rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.64rem;
   white-space: nowrap;
-  border-radius: 0.35rem;
+  border-radius: 0.4rem;
   background: var(--color-foreground);
   color: var(--color-background);
   opacity: 0;
@@ -1359,20 +1282,11 @@
   opacity: 1;
   transform: translateX(-50%) translateY(0);
 }
-.qa-dock-copy {
-  margin: 0;
-  text-align: center;
-  font-size: 0.64rem;
-  letter-spacing: 0.08em;
-  color: color-mix(in oklab, var(--color-foreground) 45%, transparent);
-}
 @media (max-width: 640px) {
-  .qa-dock { bottom: 0.6rem; width: 94vw; }
-  .qa-dock-inner { padding: 0.85rem 0.95rem 0.75rem; gap: 0.65rem; border-radius: 1rem; }
-  .qa-dock-grid { grid-template-columns: 1fr; gap: 0.4rem; }
-  .qa-dock-row { padding: 0.45rem 0.6rem; }
-  .qa-dock-item { width: 1.85rem; height: 1.85rem; }
-  .qa-main-flow { padding-bottom: clamp(18rem, 46vh, 26rem); }
+  .qa-dock { bottom: 0.75rem; }
+  .qa-dock-inner { padding: 0.4rem 0.55rem; gap: 0.1rem; }
+  .qa-dock-item { width: 2.2rem; height: 2.2rem; }
+  .qa-dock-item svg { width: 1.05rem; height: 1.05rem; }
 }
 
 /* ============================================================
@@ -1972,5 +1886,163 @@
     margin-top: 0.6rem;
     display: inline-block;
     align-self: flex-start;
+  }
+}
+
+/* ---------- Skills explorer (rail + panel) ---------- */
+@layer components {
+  .qa-skx {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: 1rem;
+    align-items: start;
+  }
+  .qa-skx-soft { grid-column: 1 / -1; margin-top: 0.5rem; display: grid; gap: 0.6rem; }
+  @media (max-width: 860px) {
+    .qa-skx { grid-template-columns: 1fr; }
+  }
+
+  .qa-skx-rail { display: flex; flex-direction: column; gap: 0.35rem; }
+  .qa-skx-tab {
+    display: grid;
+    grid-template-columns: auto auto 1fr auto;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 0.75rem;
+    border-radius: 0.75rem;
+    border: 1px solid transparent;
+    background: transparent;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+  }
+  .qa-skx-tab:hover { background: color-mix(in oklab, var(--color-foreground) 4%, transparent); }
+  .qa-skx-tab.is-active {
+    background: color-mix(in oklab, var(--color-foreground) 6%, transparent);
+    border-color: color-mix(in oklab, var(--color-foreground) 14%, transparent);
+    transform: translateX(3px);
+  }
+  .qa-skx-num {
+    font-family: var(--font-mono, monospace);
+    font-size: 0.62rem;
+    letter-spacing: 0.1em;
+    color: color-mix(in oklab, var(--color-foreground) 40%, transparent);
+  }
+  .qa-skx-tab-icon {
+    display: inline-flex;
+    width: 1.6rem;
+    height: 1.6rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    background: color-mix(in oklab, var(--color-foreground) 6%, transparent);
+    color: color-mix(in oklab, var(--color-foreground) 75%, transparent);
+  }
+  .qa-skx-tab.is-active .qa-skx-tab-icon {
+    background: var(--color-accent);
+    color: var(--color-accent-foreground);
+  }
+  .qa-skx-tab-icon svg { width: 0.95rem; height: 0.95rem; }
+  .qa-skx-tab-title { font-size: 0.92rem; font-weight: 600; color: var(--color-foreground); }
+  .qa-skx-tab-level {
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: color-mix(in oklab, var(--color-foreground) 45%, transparent);
+  }
+
+  .qa-skx-panel {
+    display: grid;
+    gap: 0.7rem;
+    padding: 1.15rem;
+    border-radius: 1.1rem;
+    border: 1px solid color-mix(in oklab, var(--color-foreground) 10%, transparent);
+    background: color-mix(in oklab, var(--color-foreground) 3%, transparent);
+    animation: qaRise 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .qa-skx-panel-head { display: flex; align-items: center; gap: 0.7rem; }
+  .qa-skx-panel-icon {
+    display: inline-flex;
+    width: 2.2rem;
+    height: 2.2rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.7rem;
+    background: color-mix(in oklab, var(--color-accent) 22%, transparent);
+    color: var(--color-foreground);
+  }
+  .qa-skx-panel-icon svg { width: 1.1rem; height: 1.1rem; }
+  .qa-skx-panel-title {
+    margin: 0;
+    font-family: var(--font-display, serif);
+    font-size: 1.25rem;
+    font-weight: 500;
+    line-height: 1.15;
+  }
+  .qa-skx-panel-level {
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: color-mix(in oklab, var(--color-foreground) 48%, transparent);
+  }
+  .qa-skx-panel-text { margin: 0; font-size: 0.9rem; line-height: 1.6; color: var(--color-muted-foreground); }
+  .qa-skx-panel-list { display: grid; gap: 0.35rem; margin: 0; padding: 0; list-style: none; }
+  .qa-skx-panel-list li {
+    position: relative;
+    padding-left: 0.95rem;
+    font-size: 0.85rem;
+    color: var(--color-foreground);
+  }
+  .qa-skx-panel-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 0.35rem;
+    height: 0.35rem;
+    border-radius: 999px;
+    background: var(--color-accent);
+  }
+
+  .qa-skx-soft-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(9.5rem, 1fr));
+    gap: 0.55rem;
+  }
+  .qa-skx-soft-card {
+    display: grid;
+    gap: 0.25rem;
+    padding: 0.75rem;
+    border-radius: 0.85rem;
+    border: 1px solid color-mix(in oklab, var(--color-foreground) 9%, transparent);
+    background: color-mix(in oklab, var(--color-foreground) 2.5%, transparent);
+    transition: transform 0.25s ease, border-color 0.25s ease;
+  }
+  .qa-skx-soft-card:hover {
+    transform: translateY(-3px);
+    border-color: color-mix(in oklab, var(--color-accent) 45%, transparent);
+  }
+  .qa-skx-soft-icon { color: var(--color-accent); }
+  .qa-skx-soft-icon svg { width: 1rem; height: 1rem; }
+  .qa-skx-soft-name { font-size: 0.85rem; font-weight: 600; color: var(--color-foreground); }
+  .qa-skx-soft-detail { font-size: 0.72rem; line-height: 1.45; color: var(--color-muted-foreground); }
+
+  /* ---------- Minimal icon dock ---------- */
+  .qa-dock { width: auto; bottom: 1.25rem; }
+  .qa-dock-inner {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.5rem 0.9rem;
+    border-radius: 999px;
+  }
+  .qa-dock-item { width: 2.5rem; height: 2.5rem; }
+  .qa-dock-item svg { width: 1.15rem; height: 1.15rem; }
+  .qa-main-flow { padding-bottom: clamp(7rem, 14vh, 10rem); }
+  @media (max-width: 640px) {
+    .qa-dock { width: auto; bottom: 0.75rem; }
+    .qa-dock-inner { padding: 0.4rem 0.6rem; gap: 0.15rem; border-radius: 999px; }
+    .qa-dock-item { width: 2.2rem; height: 2.2rem; }
+    .qa-main-flow { padding-bottom: 8rem; }
   }
 }

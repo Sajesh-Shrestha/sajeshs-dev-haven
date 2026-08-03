@@ -30,12 +30,6 @@ import {
   Users,
 } from "lucide-react";
 
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
@@ -343,134 +337,9 @@ export function SinglePagePortfolio() {
 
         <section id="skills" className="qa-section">
           <SectionHeading num="02" eyebrow="Skills" title="Technical depth, human range" />
-          <div className="qa-skills-split">
-            <div className="qa-bento">
-              <article className="qa-bento-card qa-bento-tall">
-                <div className="qa-bento-head">
-                  <span className="qa-bento-icon"><TestTube2 aria-hidden="true" /></span>
-                  <h3 className="qa-bento-title">Manual Testing</h3>
-                </div>
-                <p className="qa-bento-text">
-                  Functional, regression, smoke, and exploratory testing across web platforms and
-                  internal tooling.
-                </p>
-                <ul className="qa-bento-list">
-                  <li>Risk-based test design</li>
-                  <li>Exploratory charters</li>
-                  <li>Reproducible defect trails</li>
-                </ul>
-              </article>
-
-              <article className="qa-bento-card qa-bento-wide">
-                <div className="qa-bento-head">
-                  <span className="qa-bento-icon"><FlaskConical aria-hidden="true" /></span>
-                  <h3 className="qa-bento-title">API Testing</h3>
-                </div>
-                <p className="qa-bento-text">
-                  Request/response validation across REST endpoints with status, schema, and
-                  backend workflow checks.
-                </p>
-                <div className="qa-api-flow" aria-hidden="true">
-                  <span className="qa-api-pill qa-api-pill-req">
-                    <span className="qa-api-dot" />
-                    GET /users
-                  </span>
-                  <span className="qa-api-arrow">→</span>
-                  <span className="qa-api-pill qa-api-pill-srv">Backend</span>
-                  <span className="qa-api-arrow">→</span>
-                  <span className="qa-api-pill qa-api-pill-res">
-                    <span className="qa-api-dot qa-api-dot-ok" />
-                    200 OK
-                  </span>
-                </div>
-              </article>
-
-              <article className="qa-bento-card qa-bento-wide qa-bento-ide">
-                <div className="qa-bento-head">
-                  <span className="qa-bento-icon"><Bug aria-hidden="true" /></span>
-                  <h3 className="qa-bento-title">Automation Testing</h3>
-                </div>
-                <div className="qa-ide" aria-hidden="true">
-                  <div className="qa-ide-bar">
-                    <span className="qa-ide-dot qa-ide-dot-r" />
-                    <span className="qa-ide-dot qa-ide-dot-y" />
-                    <span className="qa-ide-dot qa-ide-dot-g" />
-                    <span className="qa-ide-tab">login.spec.ts</span>
-                  </div>
-                  <pre className="qa-ide-body">
-{`import { test, expect } from '@playwright/test';
-
-test('user can sign in', async ({ page }) => {
-  await page.goto('/login');
-  await page.getByLabel('Email').fill('qa@demo.io');
-  await expect(page).toHaveURL(/dashboard/);
-});`}
-                  </pre>
-                </div>
-              </article>
-
-              <article className="qa-bento-card">
-                <div className="qa-bento-head">
-                  <span className="qa-bento-icon"><DatabaseZap aria-hidden="true" /></span>
-                  <h3 className="qa-bento-title">SQL & Database</h3>
-                </div>
-                <p className="qa-bento-text">
-                  Data validation, integrity checks, and query-based verification across
-                  transactional schemas.
-                </p>
-              </article>
-
-              <article className="qa-bento-card">
-                <div className="qa-bento-head">
-                  <span className="qa-bento-icon"><TimerReset aria-hidden="true" /></span>
-                  <h3 className="qa-bento-title">Load Testing</h3>
-                </div>
-                <p className="qa-bento-text">
-                  JMeter fundamentals for traffic shaping and performance baselines.
-                </p>
-              </article>
-
-              <article className="qa-bento-card">
-                <div className="qa-bento-head">
-                  <span className="qa-bento-icon"><ShieldCheck aria-hidden="true" /></span>
-                  <h3 className="qa-bento-title">Security Awareness</h3>
-                </div>
-                <p className="qa-bento-text">
-                  Basic vulnerability checks, input fuzzing, and request inspection workflows.
-                </p>
-              </article>
-            </div>
-
-            <aside className="qa-soft-panel" aria-label="Soft skills">
-              <div className="qa-soft-head">
-                <span className="qa-eyebrow">— Soft Skills</span>
-                <h3 className="qa-soft-title">How I work with teams</h3>
-              </div>
-              <Accordion type="single" collapsible defaultValue={softSkills[0].title} className="qa-soft-accordion">
-                {softSkills.map(({ title, detail, icon: Icon, points }) => (
-                  <AccordionItem key={title} value={title} className="qa-soft-item">
-                    <AccordionTrigger className="qa-soft-trigger">
-                      <span className="qa-soft-trigger-inner">
-                        <span className="qa-soft-icon"><Icon aria-hidden="true" /></span>
-                        <span className="qa-soft-trigger-text">
-                          <span className="qa-soft-name">{title}</span>
-                          <span className="qa-soft-detail">{detail}</span>
-                        </span>
-                      </span>
-                    </AccordionTrigger>
-                    <AccordionContent className="qa-soft-content">
-                      <ul className="qa-soft-points">
-                        {points.map((p) => (
-                          <li key={p}>{p}</li>
-                        ))}
-                      </ul>
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            </aside>
-          </div>
+          <SkillsExplorer />
         </section>
+
 
         <section id="tools" className="qa-section">
           <SectionHeading num="03" eyebrow="Tools & Platforms" title="Tools I use for testing workflows" />
@@ -537,69 +406,32 @@ test('user can sign in', async ({ page }) => {
 
       </main>
 
-      <aside id="contact" className="qa-dock" aria-label="Contact details">
+      <aside id="contact" className="qa-dock" aria-label="Contact links">
         <div className="qa-dock-inner">
-          <div className="qa-dock-head">
-            <span className="qa-dock-eyebrow">— CONTACT DETAILS</span>
-            <h2 className="qa-dock-title">Let's connect</h2>
-          </div>
-
-          <div className="qa-dock-grid">
-            {[
-              { href: "mailto:sajesh.shrestha04@gmail.com", icon: Mail, label: "Email", value: "sajesh.shrestha04@gmail.com" },
-              { href: "tel:+9779860437025", icon: Phone, label: "Phone", value: "+977 9860437025" },
-              { href: "https://wa.me/9779860437025", icon: MessageCircleMore, label: "WhatsApp", value: "Chat on WhatsApp", external: true },
-              { href: "#", icon: MapPin, label: "Location", value: "Narayantar, Kathmandu", isStatic: true },
-            ].map(({ href, icon: Icon, label, value, external, isStatic }, i) => {
-              const Tag = isStatic ? "div" : "a";
-              const props = isStatic
-                ? {}
-                : { href, ...(external ? { target: "_blank", rel: "noreferrer" } : {}) };
-              return (
-                <Tag
-                  key={label}
-                  {...(props as any)}
-                  className="qa-dock-row qa-reveal"
-                  style={{ animationDelay: `${0.1 + i * 0.07}s` }}
-                >
-                  <span className="qa-dock-row-icon"><Icon aria-hidden="true" /></span>
-                  <span className="qa-dock-row-text">
-                    <span className="qa-dock-row-label">{label}</span>
-                    <span className="qa-dock-row-value">{value}</span>
-                  </span>
-                </Tag>
-              );
-            })}
-          </div>
-
-          <div className="qa-dock-socials">
-            {[
-              { href: "https://www.linkedin.com/in/sajesh-shrestha13/", icon: Linkedin, label: "LinkedIn", external: true },
-              { href: "https://wa.me/9779860437025", icon: MessageCircleMore, label: "WhatsApp", external: true },
-              { href: "https://www.instagram.com/sajesh_shrestha13?igsh=d2UzYXR5Z3g3cjFl", icon: Instagram, label: "Instagram", external: true },
-              { href: "mailto:sajesh.shrestha04@gmail.com", icon: Mail, label: "Email" },
-              { href: "/Sajesh-Shrestha-QA-Engineer-CV.txt", icon: Download, label: "Download CV", download: true },
-            ].map(({ href, icon: Icon, label, external, download }, i) => (
-              <a
-                key={label}
-                href={href}
-                {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
-                {...(download ? { download: true } : {})}
-                aria-label={label}
-                className="qa-dock-item"
-                style={{ animationDelay: `${0.45 + i * 0.08}s` }}
-              >
-                <Icon aria-hidden="true" />
-                <span className="qa-dock-tip">{label}</span>
-              </a>
-            ))}
-          </div>
-
-          <p className="qa-dock-copy">
-            {`\u00A9 ${new Date().getFullYear()} — Sajesh Shrestha`}
-          </p>
+          {[
+            { href: "https://www.linkedin.com/in/sajesh-shrestha13/", icon: Linkedin, label: "LinkedIn", external: true },
+            { href: "https://wa.me/9779860437025", icon: MessageCircleMore, label: "WhatsApp", external: true },
+            { href: "https://www.instagram.com/sajesh_shrestha13?igsh=d2UzYXR5Z3g3cjFl", icon: Instagram, label: "Instagram", external: true },
+            { href: "mailto:sajesh.shrestha04@gmail.com", icon: Mail, label: "sajesh.shrestha04@gmail.com" },
+            { href: "tel:+9779860437025", icon: Phone, label: "+977 9860437025" },
+            { href: "/Sajesh-Shrestha-QA-Engineer-CV.txt", icon: Download, label: "Download CV", download: true },
+          ].map(({ href, icon: Icon, label, external, download }, i) => (
+            <a
+              key={label}
+              href={href}
+              {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
+              {...(download ? { download: true } : {})}
+              aria-label={label}
+              className="qa-dock-item"
+              style={{ animationDelay: `${0.35 + i * 0.07}s` }}
+            >
+              <Icon aria-hidden="true" />
+              <span className="qa-dock-tip">{label}</span>
+            </a>
+          ))}
         </div>
       </aside>
+
     </div>
   );
 }
@@ -862,4 +694,159 @@ function SectionHeading({ eyebrow, title, num: _num }: { eyebrow: string; title:
 
 export function RedirectToPortfolioSection({ section }: { section: SectionKey }) {
   return <Navigate to="/" hash={section} replace />;
+}
+
+const technicalTracks = [
+  {
+    id: "manual",
+    title: "Manual Testing",
+    icon: TestTube2,
+    level: "Advanced",
+    summary:
+      "Functional, regression, smoke, and exploratory testing across web platforms and internal tooling.",
+    points: ["Risk-based test design", "Exploratory charters", "Reproducible defect trails"],
+    visual: "none",
+  },
+  {
+    id: "api",
+    title: "API Testing",
+    icon: FlaskConical,
+    level: "Advanced",
+    summary:
+      "Request/response validation across REST endpoints with status, schema, and backend workflow checks.",
+    points: ["Postman collections", "Schema & status assertions", "Auth and negative flows"],
+    visual: "flow",
+  },
+  {
+    id: "automation",
+    title: "Automation",
+    icon: Bug,
+    level: "Intermediate",
+    summary: "Playwright specs for critical user journeys, wired into repeatable regression runs.",
+    points: ["Playwright end-to-end specs", "Stable selectors & fixtures", "CI-friendly reporting"],
+    visual: "code",
+  },
+  {
+    id: "sql",
+    title: "SQL & Database",
+    icon: DatabaseZap,
+    level: "Intermediate",
+    summary: "Data validation, integrity checks, and query-based verification across transactional schemas.",
+    points: ["Joins & aggregate verification", "Data integrity audits", "Backend state checks"],
+    visual: "none",
+  },
+  {
+    id: "load",
+    title: "Load Testing",
+    icon: TimerReset,
+    level: "Working",
+    summary: "JMeter fundamentals for traffic shaping and performance baselines.",
+    points: ["Thread group modelling", "UI load runs with Playwright", "Baseline comparisons"],
+    visual: "none",
+  },
+  {
+    id: "security",
+    title: "Security Awareness",
+    icon: ShieldCheck,
+    level: "Working",
+    summary: "Basic vulnerability checks, input fuzzing, and request inspection workflows.",
+    points: ["Input fuzzing", "Auth boundary checks", "Request/response inspection"],
+    visual: "none",
+  },
+] as const;
+
+function SkillsExplorer() {
+  const [active, setActive] = React.useState(technicalTracks[0].id);
+  const track = technicalTracks.find((t) => t.id === active) ?? technicalTracks[0];
+  const ActiveIcon = track.icon;
+
+  return (
+    <div className="qa-skx">
+      <div className="qa-skx-rail" role="tablist" aria-label="Technical skills">
+        {technicalTracks.map((t, i) => {
+          const Icon = t.icon;
+          const on = t.id === active;
+          return (
+            <button
+              key={t.id}
+              type="button"
+              role="tab"
+              aria-selected={on}
+              className={`qa-skx-tab${on ? " is-active" : ""}`}
+              onClick={() => setActive(t.id)}
+              onMouseEnter={() => setActive(t.id)}
+            >
+              <span className="qa-skx-num">{String(i + 1).padStart(2, "0")}</span>
+              <span className="qa-skx-tab-icon"><Icon aria-hidden="true" /></span>
+              <span className="qa-skx-tab-title">{t.title}</span>
+              <span className="qa-skx-tab-level">{t.level}</span>
+            </button>
+          );
+        })}
+      </div>
+
+      <div className="qa-skx-panel" key={track.id}>
+        <div className="qa-skx-panel-head">
+          <span className="qa-skx-panel-icon"><ActiveIcon aria-hidden="true" /></span>
+          <div>
+            <h3 className="qa-skx-panel-title">{track.title}</h3>
+            <span className="qa-skx-panel-level">{track.level}</span>
+          </div>
+        </div>
+        <p className="qa-skx-panel-text">{track.summary}</p>
+        <ul className="qa-skx-panel-list">
+          {track.points.map((p) => (
+            <li key={p}>{p}</li>
+          ))}
+        </ul>
+
+        {track.visual === "flow" ? (
+          <div className="qa-api-flow" aria-hidden="true">
+            <span className="qa-api-pill qa-api-pill-req">
+              <span className="qa-api-dot" />
+              GET /users
+            </span>
+            <span className="qa-api-arrow">→</span>
+            <span className="qa-api-pill qa-api-pill-srv">Backend</span>
+            <span className="qa-api-arrow">→</span>
+            <span className="qa-api-pill qa-api-pill-res">
+              <span className="qa-api-dot qa-api-dot-ok" />
+              200 OK
+            </span>
+          </div>
+        ) : null}
+
+        {track.visual === "code" ? (
+          <div className="qa-ide" aria-hidden="true">
+            <div className="qa-ide-bar">
+              <span className="qa-ide-dot qa-ide-dot-r" />
+              <span className="qa-ide-dot qa-ide-dot-y" />
+              <span className="qa-ide-dot qa-ide-dot-g" />
+              <span className="qa-ide-tab">login.spec.ts</span>
+            </div>
+            <pre className="qa-ide-body">
+{`test('user can sign in', async ({ page }) => {
+  await page.goto('/login');
+  await page.getByLabel('Email').fill('qa@demo.io');
+  await expect(page).toHaveURL(/dashboard/);
+});`}
+            </pre>
+          </div>
+        ) : null}
+      </div>
+
+      <div className="qa-skx-soft">
+        <span className="qa-eyebrow">— Soft Skills</span>
+        <div className="qa-skx-soft-grid">
+          {softSkills.map(({ title, detail, icon: Icon }) => (
+            <div key={title} className="qa-skx-soft-card">
+              <span className="qa-skx-soft-icon"><Icon aria-hidden="true" /></span>
+              <span className="qa-skx-soft-name">{title}</span>
+              <span className="qa-skx-soft-detail">{detail}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
 }
