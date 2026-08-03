@@ -701,3 +701,158 @@ function SectionHeading({ eyebrow, title, num: _num }: { eyebrow: string; title:
 export function RedirectToPortfolioSection({ section }: { section: SectionKey }) {
   return <Navigate to="/" hash={section} replace />;
 }
+
+const technicalTracks = [
+  {
+    id: "manual",
+    title: "Manual Testing",
+    icon: TestTube2,
+    level: "Advanced",
+    summary:
+      "Functional, regression, smoke, and exploratory testing across web platforms and internal tooling.",
+    points: ["Risk-based test design", "Exploratory charters", "Reproducible defect trails"],
+    visual: "none",
+  },
+  {
+    id: "api",
+    title: "API Testing",
+    icon: FlaskConical,
+    level: "Advanced",
+    summary:
+      "Request/response validation across REST endpoints with status, schema, and backend workflow checks.",
+    points: ["Postman collections", "Schema & status assertions", "Auth and negative flows"],
+    visual: "flow",
+  },
+  {
+    id: "automation",
+    title: "Automation",
+    icon: Bug,
+    level: "Intermediate",
+    summary: "Playwright specs for critical user journeys, wired into repeatable regression runs.",
+    points: ["Playwright end-to-end specs", "Stable selectors & fixtures", "CI-friendly reporting"],
+    visual: "code",
+  },
+  {
+    id: "sql",
+    title: "SQL & Database",
+    icon: DatabaseZap,
+    level: "Intermediate",
+    summary: "Data validation, integrity checks, and query-based verification across transactional schemas.",
+    points: ["Joins & aggregate verification", "Data integrity audits", "Backend state checks"],
+    visual: "none",
+  },
+  {
+    id: "load",
+    title: "Load Testing",
+    icon: TimerReset,
+    level: "Working",
+    summary: "JMeter fundamentals for traffic shaping and performance baselines.",
+    points: ["Thread group modelling", "UI load runs with Playwright", "Baseline comparisons"],
+    visual: "none",
+  },
+  {
+    id: "security",
+    title: "Security Awareness",
+    icon: ShieldCheck,
+    level: "Working",
+    summary: "Basic vulnerability checks, input fuzzing, and request inspection workflows.",
+    points: ["Input fuzzing", "Auth boundary checks", "Request/response inspection"],
+    visual: "none",
+  },
+] as const;
+
+function SkillsExplorer() {
+  const [active, setActive] = React.useState(technicalTracks[0].id);
+  const track = technicalTracks.find((t) => t.id === active) ?? technicalTracks[0];
+  const ActiveIcon = track.icon;
+
+  return (
+    <div className="qa-skx">
+      <div className="qa-skx-rail" role="tablist" aria-label="Technical skills">
+        {technicalTracks.map((t, i) => {
+          const Icon = t.icon;
+          const on = t.id === active;
+          return (
+            <button
+              key={t.id}
+              type="button"
+              role="tab"
+              aria-selected={on}
+              className={`qa-skx-tab${on ? " is-active" : ""}`}
+              onClick={() => setActive(t.id)}
+              onMouseEnter={() => setActive(t.id)}
+            >
+              <span className="qa-skx-num">{String(i + 1).padStart(2, "0")}</span>
+              <span className="qa-skx-tab-icon"><Icon aria-hidden="true" /></span>
+              <span className="qa-skx-tab-title">{t.title}</span>
+              <span className="qa-skx-tab-level">{t.level}</span>
+            </button>
+          );
+        })}
+      </div>
+
+      <div className="qa-skx-panel" key={track.id}>
+        <div className="qa-skx-panel-head">
+          <span className="qa-skx-panel-icon"><ActiveIcon aria-hidden="true" /></span>
+          <div>
+            <h3 className="qa-skx-panel-title">{track.title}</h3>
+            <span className="qa-skx-panel-level">{track.level}</span>
+          </div>
+        </div>
+        <p className="qa-skx-panel-text">{track.summary}</p>
+        <ul className="qa-skx-panel-list">
+          {track.points.map((p) => (
+            <li key={p}>{p}</li>
+          ))}
+        </ul>
+
+        {track.visual === "flow" ? (
+          <div className="qa-api-flow" aria-hidden="true">
+            <span className="qa-api-pill qa-api-pill-req">
+              <span className="qa-api-dot" />
+              GET /users
+            </span>
+            <span className="qa-api-arrow">→</span>
+            <span className="qa-api-pill qa-api-pill-srv">Backend</span>
+            <span className="qa-api-arrow">→</span>
+            <span className="qa-api-pill qa-api-pill-res">
+              <span className="qa-api-dot qa-api-dot-ok" />
+              200 OK
+            </span>
+          </div>
+        ) : null}
+
+        {track.visual === "code" ? (
+          <div className="qa-ide" aria-hidden="true">
+            <div className="qa-ide-bar">
+              <span className="qa-ide-dot qa-ide-dot-r" />
+              <span className="qa-ide-dot qa-ide-dot-y" />
+              <span className="qa-ide-dot qa-ide-dot-g" />
+              <span className="qa-ide-tab">login.spec.ts</span>
+            </div>
+            <pre className="qa-ide-body">
+{`test('user can sign in', async ({ page }) => {
+  await page.goto('/login');
+  await page.getByLabel('Email').fill('qa@demo.io');
+  await expect(page).toHaveURL(/dashboard/);
+});`}
+            </pre>
+          </div>
+        ) : null}
+      </div>
+
+      <div className="qa-skx-soft">
+        <span className="qa-eyebrow">— Soft Skills</span>
+        <div className="qa-skx-soft-grid">
+          {softSkills.map(({ title, detail, icon: Icon }) => (
+            <div key={title} className="qa-skx-soft-card">
+              <span className="qa-skx-soft-icon"><Icon aria-hidden="true" /></span>
+              <span className="qa-skx-soft-name">{title}</span>
+              <span className="qa-skx-soft-detail">{detail}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
