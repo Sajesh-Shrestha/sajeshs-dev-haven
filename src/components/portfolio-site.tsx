@@ -106,7 +106,6 @@ const tools = [
   { title: "Postman", detail: "API testing and collection-based validation", icon: FileJson },
   { title: "JMeter", detail: "Basic load and performance test execution", icon: TimerReset },
   { title: "Playwright", detail: "Basic browser automation and UI checks", icon: Code2 },
-  { title: "Burp Suite", detail: "Basic security testing and request inspection", icon: ShieldCheck },
 ] as const;
 
 const experienceSteps = [
@@ -742,15 +741,6 @@ const technicalTracks = [
     level: "Working",
     summary: "JMeter fundamentals for traffic shaping and performance baselines.",
     points: ["Thread group modelling", "UI load runs with Playwright", "Baseline comparisons"],
-    visual: "none",
-  },
-  {
-    id: "security",
-    title: "Security Awareness",
-    icon: ShieldCheck,
-    level: "Working",
-    summary: "Basic vulnerability checks, input fuzzing, and request inspection workflows.",
-    points: ["Input fuzzing", "Auth boundary checks", "Request/response inspection"],
     visual: "none",
   },
 ] as const;
