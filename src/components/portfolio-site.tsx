@@ -695,6 +695,8 @@ export function RedirectToPortfolioSection({ section }: { section: SectionKey })
   return <Navigate to="/" hash={section} replace />;
 }
 
+type TrackId = "manual" | "api" | "automation" | "sql" | "load";
+
 const technicalTracks = [
   {
     id: "manual",
@@ -746,7 +748,7 @@ const technicalTracks = [
 ] as const;
 
 function SkillsExplorer() {
-  const [active, setActive] = React.useState(technicalTracks[0].id);
+  const [active, setActive] = React.useState<TrackId>(technicalTracks[0].id);
   const track = technicalTracks.find((t) => t.id === active) ?? technicalTracks[0];
   const ActiveIcon = track.icon;
 
