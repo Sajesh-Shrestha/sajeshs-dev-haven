@@ -406,36 +406,30 @@ export function SinglePagePortfolio() {
       </main>
 
       <aside id="contact" className="qa-dock" aria-label="Contact links">
-        <div className="qa-dock-card">
-          <div className="qa-dock-head">
-            <span className="qa-dock-title">Contact Details</span>
-            <span className="qa-dock-subtitle">Let's connect</span>
-          </div>
-          <div className="qa-dock-row">
-            {[
-              { href: "mailto:sajesh.shrestha04@gmail.com", icon: Mail, label: "sajesh.shrestha04@gmail.com", color: "#EA4335" },
-              { href: "tel:+9779860437025", icon: Phone, label: "+977 9860437025", color: "#34A853" },
-              { href: "https://wa.me/9779860437025", icon: MessageCircleMore, label: "WhatsApp", external: true, color: "#25D366" },
-              { href: "https://www.linkedin.com/in/sajesh-shrestha13/", icon: Linkedin, label: "LinkedIn", external: true, color: "#0A66C2" },
-              { href: "https://www.instagram.com/sajesh_shrestha13?igsh=d2UzYXR5Z3g3cjFl", icon: Instagram, label: "Instagram", external: true, color: "#E4405F" },
-              { href: "/Sajesh-Shrestha-QA-Engineer-CV.txt", icon: Download, label: "Download CV", download: true, color: "var(--color-primary)" },
-            ].map(({ href, icon: Icon, label, external, download, color }, i) => (
-              <a
-                key={label}
-                href={href}
-                {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
-                {...(download ? { download: true } : {})}
-                aria-label={label}
-                className="qa-dock-link"
-                style={{ animationDelay: `${0.35 + i * 0.07}s`, "--dock-accent": color } as React.CSSProperties}
-              >
-                <span className="qa-dock-link-icon" style={{ color }}>
-                  <Icon aria-hidden="true" />
-                </span>
-                <span className="qa-dock-link-label">{label}</span>
-              </a>
-            ))}
-          </div>
+        <div className="qa-dock-inner">
+          {[
+            { href: "https://www.linkedin.com/in/sajesh-shrestha13/", icon: Linkedin, label: "LinkedIn", external: true, color: "#0A66C2" },
+            { href: "https://wa.me/9779860437025", icon: MessageCircleMore, label: "WhatsApp", external: true, color: "#25D366" },
+            { href: "https://www.instagram.com/sajesh_shrestha13?igsh=d2UzYXR5Z3g3cjFl", icon: Instagram, label: "Instagram", external: true, color: "#E4405F" },
+            { href: "mailto:sajesh.shrestha04@gmail.com", icon: Mail, label: "sajesh.shrestha04@gmail.com", color: "#EA4335" },
+            { href: "tel:+9779860437025", icon: Phone, label: "+977 9860437025", color: "#34A853" },
+            { href: "/Sajesh-Shrestha-QA-Engineer-CV.txt", icon: Download, label: "Download CV", download: true, color: "var(--color-primary)" },
+          ].map(({ href, icon: Icon, label, external, download, color }, i) => (
+            <a
+              key={label}
+              href={href}
+              {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
+              {...(download ? { download: true } : {})}
+              aria-label={label}
+              className="qa-dock-item"
+              style={{ animationDelay: `${0.35 + i * 0.07}s`, "--dock-accent": color } as React.CSSProperties}
+            >
+              <span className="qa-dock-icon" style={{ color }}>
+                <Icon aria-hidden="true" />
+              </span>
+              <span className="qa-dock-tip">{label}</span>
+            </a>
+          ))}
         </div>
       </aside>
 
