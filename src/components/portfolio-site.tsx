@@ -450,33 +450,92 @@ export function SinglePagePortfolio() {
 
       </main>
 
-      <aside id="contact" className="qa-dock" aria-label="Contact links">
-        <div className="qa-dock-inner">
-          {[
-            { href: "https://www.linkedin.com/in/sajesh-shrestha13/", icon: Linkedin, label: "LinkedIn", external: true, color: "#0A66C2" },
-            { href: "https://wa.me/9779860437025", icon: MessageCircleMore, label: "WhatsApp", external: true, color: "#25D366" },
-            { href: "https://www.instagram.com/sajesh_shrestha13?igsh=d2UzYXR5Z3g3cjFl", icon: Instagram, label: "Instagram", external: true, color: "#E4405F" },
-            { href: "mailto:sajesh.shrestha04@gmail.com", icon: Mail, label: "sajesh.shrestha04@gmail.com", color: "#EA4335" },
-            { href: "tel:+9779860437025", icon: Phone, label: "+977 9860437025", color: "#34A853" },
-            { href: "/Sajesh-Shrestha-QA-Engineer-CV.txt", icon: Download, label: "Download CV", download: true, color: "var(--color-primary)" },
-          ].map(({ href, icon: Icon, label, external, download, color }, i) => (
-            <a
-              key={label}
-              href={href}
-              {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
-              {...(download ? { download: true } : {})}
-              aria-label={label}
-              className="qa-dock-item"
-              style={{ animationDelay: `${0.35 + i * 0.07}s`, "--dock-accent": color } as React.CSSProperties}
-            >
-              <span className="qa-dock-icon" style={{ color }}>
-                <Icon aria-hidden="true" />
+      <footer id="contact" className="qa-footer-static" aria-label="Contact details">
+        <div className="qa-footer-static-inner">
+          <div className="qa-footer-static-head">
+            <span className="qa-footer-static-eyebrow">— Contact Details</span>
+            <h2 className="qa-footer-static-title">Let's connect</h2>
+            <p className="qa-footer-static-lead">
+              Open to QA opportunities, collaborations, or a quick chat about software quality.
+            </p>
+          </div>
+
+          <div className="qa-footer-static-grid">
+            <a href="mailto:sajesh.shrestha04@gmail.com" className="qa-footer-static-row">
+              <span className="qa-footer-static-icon" style={{ color: "#EA4335" }}>
+                <Mail aria-hidden="true" />
               </span>
-              <span className="qa-dock-tip">{label}</span>
+              <span className="qa-footer-static-label">Email</span>
+              <span className="qa-footer-static-value">sajesh.shrestha04@gmail.com</span>
             </a>
-          ))}
+            <a href="tel:+9779860437025" className="qa-footer-static-row">
+              <span className="qa-footer-static-icon" style={{ color: "#34A853" }}>
+                <Phone aria-hidden="true" />
+              </span>
+              <span className="qa-footer-static-label">Phone</span>
+              <span className="qa-footer-static-value">+977 9860437025</span>
+            </a>
+            <a href="https://wa.me/9779860437025" target="_blank" rel="noreferrer" className="qa-footer-static-row">
+              <span className="qa-footer-static-icon" style={{ color: "#25D366" }}>
+                <MessageCircleMore aria-hidden="true" />
+              </span>
+              <span className="qa-footer-static-label">WhatsApp</span>
+              <span className="qa-footer-static-value">+977 9860437025</span>
+            </a>
+            <div className="qa-footer-static-row qa-footer-static-row--muted">
+              <span className="qa-footer-static-icon" style={{ color: "var(--color-primary)" }}>
+                <MapPin aria-hidden="true" />
+              </span>
+              <span className="qa-footer-static-label">Location</span>
+              <span className="qa-footer-static-value">Narayantar, Kathmandu</span>
+            </div>
+          </div>
+
+          <div className="qa-footer-static-socials">
+            <a
+              href="https://www.linkedin.com/in/sajesh-shrestha13/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn"
+              className="qa-footer-static-social"
+              style={{ "--social-accent": "#0A66C2" } as React.CSSProperties}
+            >
+              <Linkedin aria-hidden="true" />
+            </a>
+            <a
+              href="https://wa.me/9779860437025"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="WhatsApp"
+              className="qa-footer-static-social"
+              style={{ "--social-accent": "#25D366" } as React.CSSProperties}
+            >
+              <MessageCircleMore aria-hidden="true" />
+            </a>
+            <a
+              href="https://www.instagram.com/sajesh_shrestha13?igsh=d2UzYXR5Z3g3cjFl"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram"
+              className="qa-footer-static-social"
+              style={{ "--social-accent": "#E4405F" } as React.CSSProperties}
+            >
+              <Instagram aria-hidden="true" />
+            </a>
+            <a
+              href="/Sajesh-Shrestha-QA-Engineer-CV.txt"
+              download
+              aria-label="Download CV"
+              className="qa-footer-static-social"
+              style={{ "--social-accent": "var(--color-primary)" } as React.CSSProperties}
+            >
+              <Download aria-hidden="true" />
+            </a>
+          </div>
+
+          <p className="qa-footer-static-copy">© {new Date().getFullYear()} Sajesh Shrestha. All rights reserved.</p>
         </div>
-      </aside>
+      </footer>
 
     </div>
   );
