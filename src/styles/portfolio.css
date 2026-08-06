@@ -2125,24 +2125,6 @@
   .qa-skx-soft-name { font-size: 0.85rem; font-weight: 600; color: var(--color-foreground); }
   .qa-skx-soft-detail { font-size: 0.72rem; line-height: 1.45; color: var(--color-muted-foreground); }
 
-  /* ---------- Minimal icon dock ---------- */
-  .qa-dock { inset: auto 0 1.25rem 0; }
-  .qa-dock-inner {
-    flex-direction: row;
-    align-items: center;
-    gap: 0.35rem;
-    padding: 0.5rem 0.9rem;
-    border-radius: 999px;
-  }
-  .qa-dock-item { width: 2.5rem; height: 2.5rem; }
-  .qa-dock-item svg { width: 1.15rem; height: 1.15rem; }
-  .qa-main-flow { padding-bottom: clamp(7rem, 14vh, 10rem); }
-  @media (max-width: 640px) {
-    .qa-dock { inset: auto 0 0.75rem 0; }
-    .qa-dock-inner { padding: 0.4rem 0.6rem; gap: 0.15rem; border-radius: 999px; }
-    .qa-dock-item { width: 2.2rem; height: 2.2rem; }
-    .qa-main-flow { padding-bottom: 8rem; }
-  }
 }
 
 /* ============ QA themed animated backdrop ============ */
