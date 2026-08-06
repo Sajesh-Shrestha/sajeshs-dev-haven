@@ -211,6 +211,49 @@ const awards = [
   },
 ] as const;
 
+const backdropGlyphs = [
+  { kind: "icon" as const, Icon: Bug, cls: "qa-bd-1" },
+  { kind: "icon" as const, Icon: FlaskConical, cls: "qa-bd-2" },
+  { kind: "icon" as const, Icon: TestTube2, cls: "qa-bd-3" },
+  { kind: "icon" as const, Icon: FileJson, cls: "qa-bd-4" },
+  { kind: "icon" as const, Icon: Code2, cls: "qa-bd-5" },
+  { kind: "icon" as const, Icon: ShieldCheck, cls: "qa-bd-6" },
+  { kind: "icon" as const, Icon: GitBranch, cls: "qa-bd-7" },
+  { kind: "icon" as const, Icon: TimerReset, cls: "qa-bd-8" },
+];
+
+const backdropTokens = [
+  { text: "GET /api/users", cls: "qa-bd-t1", tone: "info" },
+  { text: "200 OK", cls: "qa-bd-t2", tone: "pass" },
+  { text: "404 Not Found", cls: "qa-bd-t3", tone: "fail" },
+  { text: "expect(status).toBe(200)", cls: "qa-bd-t4", tone: "info" },
+  { text: "AssertionError", cls: "qa-bd-t5", tone: "fail" },
+  { text: "POST /auth/login", cls: "qa-bd-t6", tone: "info" },
+  { text: "✓ 42 passed", cls: "qa-bd-t7", tone: "pass" },
+  { text: "✕ 1 failed", cls: "qa-bd-t8", tone: "fail" },
+  { text: "{ \"status\": \"verified\" }", cls: "qa-bd-t9", tone: "info" },
+  { text: "500 Internal Error", cls: "qa-bd-t10", tone: "fail" },
+];
+
+function QaThemeBackdrop() {
+  return (
+    <div className="qa-backdrop" aria-hidden="true">
+      <div className="qa-backdrop-grid" />
+      {backdropGlyphs.map(({ Icon, cls }) => (
+        <span key={cls} className={`qa-bd-icon ${cls}`}>
+          <Icon />
+        </span>
+      ))}
+      {backdropTokens.map(({ text, cls, tone }) => (
+        <span key={cls} className={`qa-bd-token qa-bd-${tone} ${cls}`}>
+          {text}
+        </span>
+      ))}
+    </div>
+  );
+}
+
+
 export function SinglePagePortfolio() {
   const [theme, setTheme] = React.useState<"dark" | "light">("light");
 
