@@ -252,6 +252,7 @@ export function SinglePagePortfolio() {
 
   return (
     <div className="qa-page">
+      <QaThemeBackdrop />
       <header className="qa-topbar">
         <div className="qa-topbar-inner">
           <div className="qa-brand">
