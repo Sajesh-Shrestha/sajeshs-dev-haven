@@ -232,6 +232,7 @@ export function SinglePagePortfolio() {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
+
   const introRef = React.useRef<HTMLElement | null>(null);
   const [introVisible, setIntroVisible] = React.useState(false);
   React.useEffect(() => {
