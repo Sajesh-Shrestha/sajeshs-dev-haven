@@ -450,92 +450,63 @@ export function SinglePagePortfolio() {
 
       </main>
 
-      <footer id="contact" className="qa-footer-static" aria-label="Contact details">
-        <div className="qa-footer-static-inner">
-          <div className="qa-footer-static-head">
-            <span className="qa-footer-static-eyebrow">— Contact Details</span>
-            <h2 className="qa-footer-static-title">Let's connect</h2>
-            <p className="qa-footer-static-lead">
-              Open to QA opportunities, collaborations, or a quick chat about software quality.
-            </p>
-          </div>
-
-          <div className="qa-footer-static-grid">
-            <a href="mailto:sajesh.shrestha04@gmail.com" className="qa-footer-static-row">
-              <span className="qa-footer-static-icon" style={{ color: "#EA4335" }}>
-                <Mail aria-hidden="true" />
-              </span>
-              <span className="qa-footer-static-label">Email</span>
-              <span className="qa-footer-static-value">sajesh.shrestha04@gmail.com</span>
-            </a>
-            <a href="tel:+9779860437025" className="qa-footer-static-row">
-              <span className="qa-footer-static-icon" style={{ color: "#34A853" }}>
-                <Phone aria-hidden="true" />
-              </span>
-              <span className="qa-footer-static-label">Phone</span>
-              <span className="qa-footer-static-value">+977 9860437025</span>
-            </a>
-            <a href="https://wa.me/9779860437025" target="_blank" rel="noreferrer" className="qa-footer-static-row">
-              <span className="qa-footer-static-icon" style={{ color: "#25D366" }}>
-                <MessageCircleMore aria-hidden="true" />
-              </span>
-              <span className="qa-footer-static-label">WhatsApp</span>
-              <span className="qa-footer-static-value">+977 9860437025</span>
-            </a>
-            <div className="qa-footer-static-row qa-footer-static-row--muted">
-              <span className="qa-footer-static-icon" style={{ color: "var(--color-primary)" }}>
-                <MapPin aria-hidden="true" />
-              </span>
-              <span className="qa-footer-static-label">Location</span>
-              <span className="qa-footer-static-value">Narayantar, Kathmandu</span>
-            </div>
-          </div>
-
-          <div className="qa-footer-static-socials">
-            <a
-              href="https://www.linkedin.com/in/sajesh-shrestha13/"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="LinkedIn"
-              className="qa-footer-static-social"
-              style={{ "--social-accent": "#0A66C2" } as React.CSSProperties}
-            >
-              <Linkedin aria-hidden="true" />
-            </a>
-            <a
-              href="https://wa.me/9779860437025"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="WhatsApp"
-              className="qa-footer-static-social"
-              style={{ "--social-accent": "#25D366" } as React.CSSProperties}
-            >
-              <MessageCircleMore aria-hidden="true" />
-            </a>
-            <a
-              href="https://www.instagram.com/sajesh_shrestha13?igsh=d2UzYXR5Z3g3cjFl"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="Instagram"
-              className="qa-footer-static-social"
-              style={{ "--social-accent": "#E4405F" } as React.CSSProperties}
-            >
-              <Instagram aria-hidden="true" />
-            </a>
-            <a
-              href="/Sajesh-Shrestha-QA-Engineer-CV.txt"
-              download
-              aria-label="Download CV"
-              className="qa-footer-static-social"
-              style={{ "--social-accent": "var(--color-primary)" } as React.CSSProperties}
-            >
-              <Download aria-hidden="true" />
-            </a>
-          </div>
-
-          <p className="qa-footer-static-copy">© {new Date().getFullYear()} Sajesh Shrestha. All rights reserved.</p>
-        </div>
-      </footer>
+      <aside id="contact" className="qa-dock" aria-label="Contact and social links">
+        <a
+          href="mailto:sajesh.shrestha04@gmail.com"
+          aria-label="Email"
+          className="qa-dock-link"
+          style={{ "--dock-accent": "#EA4335" } as React.CSSProperties}
+        >
+          <Mail aria-hidden="true" />
+        </a>
+        <a
+          href="tel:+9779860437025"
+          aria-label="Phone"
+          className="qa-dock-link"
+          style={{ "--dock-accent": "#34A853" } as React.CSSProperties}
+        >
+          <Phone aria-hidden="true" />
+        </a>
+        <a
+          href="https://wa.me/9779860437025"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="WhatsApp"
+          className="qa-dock-link"
+          style={{ "--dock-accent": "#25D366" } as React.CSSProperties}
+        >
+          <MessageCircleMore aria-hidden="true" />
+        </a>
+        <a
+          href="https://www.linkedin.com/in/sajesh-shrestha13/"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="LinkedIn"
+          className="qa-dock-link"
+          style={{ "--dock-accent": "#0A66C2" } as React.CSSProperties}
+        >
+          <Linkedin aria-hidden="true" />
+        </a>
+        <a
+          href="https://www.instagram.com/sajesh_shrestha13?igsh=d2UzYXR5Z3g3cjFl"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Instagram"
+          className="qa-dock-link"
+          style={{ "--dock-accent": "#E4405F" } as React.CSSProperties}
+        >
+          <Instagram aria-hidden="true" />
+        </a>
+        <a
+          href="/Sajesh-Shrestha-QA-Engineer-CV.txt"
+          download
+          aria-label="Download CV"
+          className="qa-dock-link"
+          style={{ "--dock-accent": "var(--color-primary)" } as React.CSSProperties}
+        >
+          <Download aria-hidden="true" />
+        </a>
+      </aside>
 
     </div>
   );
