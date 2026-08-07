@@ -2104,7 +2104,13 @@
 .qa-bd-t9 { top: 56%; right: 18%; --bd-o: 0.11; --bd-d: 24s; --bd-rot: -2deg; animation-delay: -5s; }
 .qa-bd-t10 { top: 12%; right: 5%; --bd-o: 0.14; --bd-d: 18s; --bd-rot: 3deg; animation-delay: -8s; }
 
-.qa-page > *:not(.qa-backdrop) { position: relative; z-index: 1; }
+.qa-page > *:not(.qa-backdrop):not(.qa-dock) { position: relative; z-index: 1; }
+
+/* Keep the contact dock anchored to the viewport, not the page flow. */
+.qa-page > .qa-dock {
+  position: fixed;
+  z-index: 40;
+}
 
 @media (max-width: 900px) {
   .qa-bd-t4,
