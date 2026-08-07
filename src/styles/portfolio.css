@@ -1214,177 +1214,70 @@
   }
 }
 
-/* Static contact footer */
+/* Sticky contact dock */
 .qa-main-flow {
-  padding-bottom: 0;
+  padding-bottom: 6rem;
 }
 
-.qa-footer-static {
-  border-top: 1px solid color-mix(in oklab, var(--color-border) 50%, transparent);
-  background:
-    linear-gradient(180deg,
-      color-mix(in oklab, var(--color-primary) 5%, transparent),
-      var(--color-background));
-  padding: 2.5rem 0 2rem;
-  margin-top: 1.5rem;
-}
-
-.qa-footer-static-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 0 1.25rem;
-  display: flex;
-  flex-direction: column;
+.qa-dock {
+  position: fixed;
+  left: 50%;
+  bottom: 1.25rem;
+  transform: translateX(-50%);
+  z-index: 40;
+  display: inline-flex;
   align-items: center;
-  gap: 1.5rem;
-  text-align: center;
-}
-
-.qa-footer-static-head {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.55rem;
-}
-
-.qa-footer-static-eyebrow {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: var(--color-primary);
-}
-
-.qa-footer-static-title {
-  font-family: var(--font-display);
-  font-size: clamp(1.6rem, 3vw, 2.2rem);
-  font-weight: 600;
-  letter-spacing: -0.015em;
-  margin: 0;
-  color: var(--color-foreground);
-}
-
-.qa-footer-static-lead {
-  max-width: 38ch;
-  margin: 0;
-  font-size: 0.92rem;
-  color: var(--color-muted-foreground);
-  line-height: 1.55;
-}
-
-.qa-footer-static-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 0.75rem;
-  width: 100%;
-  max-width: 900px;
-}
-
-.qa-footer-static-row {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.25rem;
-  padding: 1rem;
-  border-radius: 0.75rem;
-  border: 1px solid color-mix(in oklab, var(--color-border) 70%, transparent);
-  background: color-mix(in oklab, var(--color-card) 70%, transparent);
-  color: inherit;
-  text-decoration: none;
-  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
-}
-
-.qa-footer-static-row:hover {
-  transform: translateY(-2px);
-  border-color: color-mix(in oklab, var(--color-primary) 35%, transparent);
-  background: var(--color-card);
-}
-
-.qa-footer-static-row--muted {
-  cursor: default;
-}
-
-.qa-footer-static-row--muted:hover {
-  transform: none;
-  border-color: color-mix(in oklab, var(--color-border) 70%, transparent);
-  background: color-mix(in oklab, var(--color-card) 70%, transparent);
-}
-
-.qa-footer-static-icon {
-  display: inline-grid;
-  place-items: center;
-  width: 2.2rem;
-  height: 2.2rem;
+  gap: 0.35rem;
+  padding: 0.55rem;
   border-radius: 999px;
-  background: color-mix(in oklab, var(--color-background) 80%, transparent);
-  margin-bottom: 0.35rem;
+  border: 1px solid color-mix(in oklab, var(--color-border) 70%, transparent);
+  background: color-mix(in oklab, var(--color-card) 82%, transparent);
+  backdrop-filter: blur(16px) saturate(1.2);
+  box-shadow:
+    0 14px 40px color-mix(in oklab, var(--color-foreground) 12%, transparent),
+    inset 0 1px 0 color-mix(in oklab, var(--color-foreground) 8%, transparent);
 }
 
-.qa-footer-static-icon svg {
-  width: 1.1rem;
-  height: 1.1rem;
-}
-
-.qa-footer-static-label {
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--color-muted-foreground);
-}
-
-.qa-footer-static-value {
-  font-size: 0.88rem;
-  font-weight: 500;
-  color: var(--color-foreground);
-  overflow-wrap: anywhere;
-}
-
-.qa-footer-static-socials {
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-}
-
-.qa-footer-static-social {
+.qa-dock-link {
   display: inline-grid;
   place-items: center;
   width: 2.6rem;
   height: 2.6rem;
   border-radius: 999px;
-  border: 1px solid color-mix(in oklab, var(--color-border) 70%, transparent);
-  background: var(--color-card);
   color: var(--color-foreground);
-  transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  background: transparent;
+  transition: transform 0.2s ease, color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
 
-.qa-footer-static-social:hover {
-  transform: translateY(-2px) scale(1.05);
-  color: var(--social-accent, var(--color-primary));
-  border-color: color-mix(in oklab, var(--social-accent, var(--color-primary)) 45%, transparent);
-  background: color-mix(in oklab, var(--social-accent, var(--color-primary)) 10%, var(--color-card));
-  box-shadow: 0 8px 22px -8px color-mix(in oklab, var(--social-accent, var(--color-primary)) 30%, transparent);
+.qa-dock-link:hover,
+.qa-dock-link:focus-visible {
+  transform: translateY(-3px) scale(1.08);
+  color: var(--dock-accent, var(--color-primary));
+  background: color-mix(in oklab, var(--dock-accent, var(--color-primary)) 12%, var(--color-card));
+  box-shadow: 0 8px 22px -6px color-mix(in oklab, var(--dock-accent, var(--color-primary)) 35%, transparent);
+  outline: none;
 }
 
-.qa-footer-static-social svg {
+.qa-dock-link svg {
   width: 1.15rem;
   height: 1.15rem;
 }
 
-.qa-footer-static-copy {
-  margin: 0;
-  font-size: 0.78rem;
-  color: var(--color-muted-foreground);
-  letter-spacing: 0.03em;
-}
-
 @media (max-width: 640px) {
-  .qa-footer-static { padding: 2rem 0 1.5rem; }
-  .qa-footer-static-grid { grid-template-columns: 1fr; }
-  .qa-footer-static-row { flex-direction: row; justify-content: flex-start; text-align: left; gap: 0.75rem; }
-  .qa-footer-static-icon { margin-bottom: 0; }
+  .qa-main-flow { padding-bottom: 5rem; }
+  .qa-dock {
+    bottom: 0.85rem;
+    padding: 0.45rem;
+    gap: 0.25rem;
+  }
+  .qa-dock-link {
+    width: 2.35rem;
+    height: 2.35rem;
+  }
+  .qa-dock-link svg {
+    width: 1.05rem;
+    height: 1.05rem;
+  }
 }
 
 /* ============================================================
